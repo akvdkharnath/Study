@@ -1,6 +1,6 @@
 IAAS or PAAS in database offerings 
 
-Deployment types in databases :(PASS)
+Deployment types in databases :(PaaS)
 1.Single (used for application which need only one data base ) 
 2.Elastic (multi databases but common memory and cpu) is used for Unstable DTU counts when used for many data bases then cost will be less when compared to singlemodel
 3.Managned Instence (latest tech in AZURE )(will very usedfull for onpremisis --> cloud users)
@@ -13,6 +13,10 @@ SQL AZURE DataBase:
 4.geo-replication u can access from your nearest data centers 
 5.down time is very very less 
 6.high sicured 
+7.Automatic patching
+8.Automatic backups
+9.SQL Server feature enhancements without the need to upgrade software
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Offerings:-
@@ -40,12 +44,12 @@ Data Base Pricing Models:
 	standard
 	premium
 
-* User cannot change CPU,Memory,Storage amounts
-* Supports only single and elistic pool
-* Need to use DTU cal to cal amount and then need ti select the range supports for us 
-* right now we are not allowed to change from DTU to Vcore 
-* if u use more than 300 DTU then V core is nice option 
-* can use AZURE CLI to convert from DPU --> V core 
+User cannot change CPU,Memory,Storage amounts
+Supports only single and elistic pool
+Need to use DTU cal to cal amount and then need ti select the range supports for us 
+right now we are not allowed to change from DTU to Vcore 
+if u use more than 300 DTU then V core is nice option 
+can use AZURE CLI to convert from DPU --> V core 
 
 
 2.Vcore
@@ -53,10 +57,17 @@ Data Base Pricing Models:
 	Hyper Scale
 	Business Model
 
-* full flexibility can manage any thing 
-* supports all types of models 
-* for on promisis system changed to cloud then know how much they use so they can configer easly 
-* allows u use server less option in Database (as per our utilization Azure bots only automate our resorces results reduce off cost)
+full flexibility can manage any thing 
+supports all types of models 
+for on promisis system changed to cloud then know how much they use so they can configer easly 
+allows u use server less option in Database (as per our utilization Azure bots only automate our resorces results reduce off cost)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Data Base Backup Models:
+will provide Automatic backups
+Backups are stored in Azure blob geo-redundant storage and by default
+Basic and vCore databases default to seven days of retention(7 days of auto backup)
+vCore databases this value can be adjusted by the administrator
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -132,10 +143,56 @@ DataWare House :
 makes simplity in architecture and simplity of data analysising for end user 
 
 Elements of Dimensional model:
+1.Facts: numerical value generated from investing data, simply there are metric for a solution (sales values ,amounts etc,.)
+2.Dimensions: there are the base perameters for facts (product,custamer data,where it took place ets,.)
+3.Attributes: Detailed information of dimensions (Customer ; age,gender,mindset,locality etc.,)
+4.Star schema
+
+
+2015 G1 Azure sql ware house
+2018 G2 Azure sql ware house
+2019 G3 Azure synapse analytics tools
 
 
 
 
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Cloud DataWare House Vs Traditional DataWare House
+
+cost is very less                                                                very High
+no maintance                                                                     maintance required for some days
+less human power                                                                 large human power needed 
+no external tools needed                                                         lot of external tools and liciences needed
+high scalability(done in min)                                                    hard for scalability
+storage and compute are different which helps us to reduce cost mostly
+massive parallel process
+takes mins to setup a ware house 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Traditional Vs Modern Data ware house Architecture
+
+Traditional Data ware house Architecture:
+1. Geather data (logs,files,media,IOT,Saas,other cloud,data from apps)
+2. Process the data (ETA)
+3. Save data in Data ware house 
+4. Analysis (OLT servers here storage and analatics are coupled togeather, if u use only storage still it will cost u for analatics (query))
+5. Visulization of data 
+
+Modern Data ware house Architecture:
+1. Geather data (logs,files,media,IOT,Saas,other cloud,data from apps)(handels huge data types)
+2. Data factory(Data lake to store the data, very less in cost)
+   (Cost will be charges for only the resorce utilised)
+3. From data lake it can be explored using data bases or data ware house  
+3. From data lake it can clean or prepare or train and test data using ML tools and Data bricks
+3. create and analysis data using BI tools and Data ware house 
+  
+7358528069
+8056037179 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	 
