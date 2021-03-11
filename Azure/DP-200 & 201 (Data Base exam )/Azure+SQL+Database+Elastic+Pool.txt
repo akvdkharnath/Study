@@ -1,9 +1,0 @@
-Azure SQL Database elastic pool
-
--------------------------------
-
-https://docs.microsoft.com/en-us/azure/sql-database/sql-database-elastic-pool
-
-https://docs.microsoft.com/en-us/azure/sql-database/saas-tenancy-app-design-patterns
-
-https://docs.microsoft.com/en-us/azure/sql-database/sql-database-elastic-pool-manage
