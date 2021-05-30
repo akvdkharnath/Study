@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Health Monitoring System</title>
+ <link rel="stylesheet" href="../static/CSS/login.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+  <div class="login-page">
+    <h1><center>User Dashboard</center></h1>
+    <div class="dashboard-table"></div>
+    <fieldset>
+    <input type=button onClick="location.href='profilefreeze-page'" value='Profile Page'>
+    </fieldset> 
+    <fieldset>
+    <input type=button onClick="location.href='record-page'" value='Record Page'>
+    </fieldset>
+    <fieldset>
+    <input type=button onClick="location.href='graph-page'" value='Graph Page'>
+    </fieldset> 
+  </div>
+  
+</body>
+
+<script src="../static/dashboard.js"></script>
+<style>
+  table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+
+.tablecls{
+  border: 1px solid #fff;
+    background: #fff;
+    color: black;
+}
+
+.dashboard-table{
+padding: 0px;
+    background: #7adc48;
+    color: #fff;
+}
+</style>
+</html>

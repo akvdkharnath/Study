@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <title>Health Monitoring System</title>
+    <link rel="stylesheet" href="../static/CSS/profile.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  
+  <body>
+    <div class="container">  
+      <form id="contact" class = "profile-form">
+      <h3>User Personal Information </h3>
+      <fieldset>
+       <label for="usernumber">User Number:</label><br>
+        <input id= 'usernumber'  type="text" tabindex="0" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      <fieldset>
+        <label for="firstname">First Name:</label><br>
+        <input id= 'firstname'  type="text" tabindex="1" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="middlename">Middle Name:</label><br>
+        <input id= 'middlename' type="text" tabindex="2" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="lastname">Last Name:</label><br>
+        <input id= 'lastname'  type="text" tabindex="3" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="dateofbirth">Date Of Birth:</label><br> 
+        <input id= 'dateofbirth'  type="text" tabindex="4" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="height">Height(in Cms):</label><br> 
+        <input id= 'height'  type="text" tabindex="5" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="weight">Weight(in Kgs):</label><br> 
+        <input id= 'weight'  type="text" tabindex="6" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="sex">Sex:</label><br>  
+        <input id= 'sex'  type="text" tabindex="7" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="address">Address:</label><br>  
+        <input id= 'address' type="text" tabindex="8" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      <!-- <fieldset>
+        <label for="email">Email:</label><br>  
+        <input id= 'email'  type="text" tabindex="9" value="" disabled="disabled" required autofocus>
+      </fieldset> -->
+      
+      <fieldset>
+        <label for="phonenumber">Phone Number:</label><br>  
+        <input id= 'phonenumber' type="text" tabindex="10" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="bmivalue">BMI Value:</label><br>  
+        <input id= 'bmivalue' type="text" tabindex="11" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="bmicategory">BMI Category:</label><br>  
+        <input id= 'bmicategory' type="text" tabindex="12" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="minweight">Minimum Weight:</label><br>  
+        <input id= 'minweight' type="text" tabindex="13" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="maxweight">Maximum Weight:</label><br>  
+        <input id= 'maxweight' type="text" tabindex="14" value="" disabled="disabled" required autofocus>
+      </fieldset>
+      
+      <fieldset>
+        <label for="bmrvalue">BMR Value:</label><br>  
+        <input id= 'bmrvalue' type="text" tabindex="15" value="" disabled="disabled" required autofocus>
+      </fieldset>  
+
+      <fieldset>
+      <h4> <span id="score"></span></h4>
+      </fieldset>
+      <fieldset>
+        <label for="sbmrvalue">Suggested BMR Value:</label><br>  
+        <input id= 'sbmrvalue' type="text" tabindex="16" value="" disabled="disabled" required autofocus>
+      </fieldset>
+
+
+
+      <fieldset>
+        <input type=button onClick="location.href='profile-page'" value='Modify User Profile'>
+      </fieldset>
+      <fieldset>
+        <input type=button onClick="location.href='dashboard-page'" value='DashBoard Page'>
+      </fieldset>
+      
+      </form>
+    </div>
+  <body>
+  <script src="../static/profilefreeze.js"></script>
+ 
+</html>
+    

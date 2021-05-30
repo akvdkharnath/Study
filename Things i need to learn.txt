@@ -1,0 +1,19 @@
+
+--- Backend Development 
+Node Js
+Spring
+Kafka
+Rebbit MQ
+Hadoop
+Nginx
+
+-- Devops
+Docker
+Jenkins
+Kubernetes
+
+-- data visualization
+Kibana
+Grafana
+
+
