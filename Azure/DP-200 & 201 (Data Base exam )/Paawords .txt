@@ -1,3 +1,0 @@
-VM name: VM-1
-username: Harnath
-Password: akvdkharnathsrtdnlrH@1

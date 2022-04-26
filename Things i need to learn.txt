@@ -1,7 +1,4 @@
-
 --- Backend Development 
-Node Js
-Spring
 Kafka
 Rebbit MQ
 Hadoop
@@ -15,5 +12,3 @@ Kubernetes
 -- data visualization
 Kibana
 Grafana
-
-
