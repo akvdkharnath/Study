@@ -1,0 +1,146 @@
+Data: its collection of information
+Structured data: Tabular data
+Ex: Data warehouse, ERP, CRM
+Service: Azure SQL DB
+
+
+Semi-Structured data:
+It has some organizational framework but does not have the complete Structure 
+Ex: CSV, XML, JSON
+Service: Azure Cosmos DB
+
+
+Un Structured data:
+where data has no organized format
+Ex: Audio files, Video files, Binary data files 
+Service: Azure Blob Storage
+
+Datastores:
+1. File Storage
+2. Database
+
+
+File Storage: The ability to store data in files is a core element of any computing system
+different types of file storage
+1. Delimited text files: Data is often stored in plain text format with specific field delimiters and row terminators
+    ex: .CSV, .TSV 
+
+2. JavaScript Object Notation: JSON is a ubiquitous format in which a hierarchical document schema is used to define data entities (objects)
+    ex: .JSON
+
+3. Extensible Markup Language: XML is a human-readable data format XML uses tags enclosed in angle-brackets (<../>) to define elements and attributes
+    ex: .XML
+
+4. Binary Large Object: Ultimately, all files are stored as binary data (1's and 0's), but not in the human-readable formats
+    ex: BLOB
+
+
+Optimized file formats:
+1. Avro 
+2. ORC  (Optimized Row Columnar format)
+3. Parquet 
+
+
+Non-relational databases:
+1. Key-value databases
+2. Document databases
+3. Column family databases
+4. Graph databases
+
+
+Transaction System (OLTP):
+stores Day to Day transactions 
+
+
+Analytical System (OLAP):
+extracts information from OLAP and provides insights  
+
+
+Data ingestion: it is the process of importing or obtaining data
+-> Data can be collected in Batch or Stream
+
+
+Data Processing: converting data from raw format to some sort of meaningful data
+Services: Functions, Data bricks, Cognitive Services
+
+
+Batch Processing: Buffer and process data in groups 
+Ex: Credit card bill, Monthly statements 
+-> large volume of data can be processed
+-> can utilize systems when they are free
+
+
+Streaming Processing: Handel's data in the real-time, process when it arrives
+Ex: Stocks, YouTube
+-> can only process a small volume of data but in real-time
+
+
+ETL (Extract Transform Load):
+-> Raw data is Transformed and then loaded to DB
+-> suitable for low complex systems (Transformation will take large time if the system is complex)
+-> Basic cleaning, remove duplicate data and remove unwanted and sensitive data 
+-> ETL can help us with data privacy and compliance and it removes sensitive data before adding to DB
+Services: SSIS (SQL Server Integration Services)
+
+
+ELT (Extract Load Transform):
+-> Raw data is loaded to DB and then Transformed
+-> suitable for complex systems
+-> Best suite for Batch Processing
+Services: Azure Data Factory, Azure HDInsight, Azure Data bricks 
+
+Reports: process of organizing data into information 
+
+Data Visualization: Graphical representation of information
+Services: Power BI
+
+Data Analytical: 
+
+Descriptive analytics: 
+-> what is happening, how is the sale in last month and last 3 months 
+
+Diagnostic analytics: 
+-> why is it happening, why was sale is low 
+
+Predictive analytics:
+-> what's likely to happen, what's going to happen
+
+Prescriptive analytics:
+-> what we can do with Predictive analytics
+
+Cognitive analytics:
+-> AL, ML, DL
+
+
+Deployment types:
+1. Azure portal
+2. Azure CLI
+3. Azure Power Shell
+4. Azure resource template
+
+DTU: Database transaction units
+
+Azure SQL database advantages:
+1. Fully managed (no administration and no maintainer) 
+2. predictable performance and pricing
+3. Elastic pool (where u can purchase large level of compute which can be used by multiple db's)
+4. 99.99% uptime (52 min of downtime of year or 4.39 mins for month)
+5. geo-replication  (for 100 % availability and diester management)
+6. can connect with external tools
+7. scaling with no downtime 
+
+
+
+
+SQL   --   NoSql
+DB           DB 
+Table        Collection
+Index        Index
+Row          Document
+Column       Field
+Joining      Linking & Embedding
+
+
+
+
+

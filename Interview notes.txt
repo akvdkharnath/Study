@@ -1,0 +1,265 @@
+Python was created by Guido van Rossum, and released in 1991.
+PEP 8 stands for Python Enhancement Proposal
+remove --> removes element in list
+del --> removes elemrnt by index
+shuffle() --> shuffle elements in a list need to import from random
+help() --> used to display the documentation string
+dir() --> used to display all attributes of a function
+enumerate() --> used to get index and value at a time [1,2,3] --> [(0,1),(1,2),(2,3)] 
+range() --> generate a sequence of int and returns list
+Xrange() --> generate a sequence of int and returns Xrange object
+super() --> The parent class members can be accessed in child class using the super keyword 
+issubclass(A,B) --> used to find weather A is sub class of B or not 
+Ord() –-> converts characters into integer
+
+
+
+
+global  --> to access global variables
+nonlocal --> in the nested functions we use this to access variables from the parent function
+
+multiprocessing and asyncio  are packages for python multi-threading
+annotations --> saying python compiler to accept only selected datatypes are allowed for a variable
+virtualenv's --> helps to create an isolated workspace for the project 
+Self --> is a variable that represents the instance of the object to itself.
+Cython --> is a programming language that aims to be a superset of the Python programming language, designed to give C-like performance with code that is written mostly in Python with optional additional C-inspired syntax.
+module --> is a python file
+package --> is a folder with a set of python files (modules)
+
+.py files contain the source code of a program
+.pyc file contains the bytecode of your program
+PYTHONPATH is used for checking if the imported packages or modules are available in the existing directories
+
+*args is a special syntax used in the function definition to pass variable-length arguments.
+myFun('Hello', 'Welcome', 'to', 'GeeksforGeeks')
+**kwargs is a special syntax used in the function definition to pass variable-length keyworded arguments
+myFun(first ='Geeks', mid ='for', last='Geeks')   
+
+[1, 3, 2] * 2 --> [1, 3, 2, 1, 3, 2]
+
+Memory management in python is managed by Python private heap space
+
+
+_ variable --> Protected 
+__ variable --> Private  (can only access inside a class)
+Local Namespace --> variables inside a function or class, deletes after returning the data
+Global Namespace --> created when a package is imported 
+Built-in Namespace --> have some built in variables and types of errors 
+
+Armstrong --> 153 = 1^3 + 5^3 + 3^3, 1634 = 1^4 + 6^4 + 3^4 + 4^4
+Fibonacci -->  0, 1, 1, 2, 3, 5, 8
+palindrome  --> 121, 111, 12321
+Perfect squares --> 28 == sum(1, 2, 4, 7, 14)
+Strong number --> 145 == sum(1!, 4!, 5!)
+swap two number without using third variable --> a=a-b, b=a+b, a=b-a
+
+difference between == and is:
+The Equality operator (==) compares the values of both the operands and checks for value equality. 
+Whereas the ‘is’ operator checks whether both the operands refer to the same object or not (present in the same memory location).
+https://www.geeksforgeeks.org/difference-operator-python/#:~:text=The%20Equality%20operator%20(%3D%3D),in%20the%20same%20memory%20location).
+
+
+Both Multiprocessing and Multithreading are used to increase the computing power of a system.
+Multiprocessing:
+Multiprocessing is a system that has more than one or two processors. 
+In Multiprocessing, CPUs are added for increasing computing speed of the system. 
+Because of Multiprocessing, There are many processes are executed simultaneously. 
+Multiprocessing are classified into two categories:
+1. Symmetric Multiprocessing
+2. Asymmetric Multiprocessing
+
+Multithreading:
+Multithreading is a system in which multiple threads are created of a process for increasing the computing speed of the system. 
+In multithreading, many threads of a process are executed simultaneously 
+and process creation in multithreading is done according to economical.
+
+
+Generator: functions are functions that can suspend their execution after returning a value, in order to resume it at some later time and return another value. This is made possible by the yield keyword, which you use in place of return
+Decorator: is defined as a function that adds functionality to another function without changing it. It wraps the function to add some functionality to it.Some PDB commands include
+
+https://www.geeksforgeeks.org/difference-between-multithreading-vs-multiprocessing-in-python/
+
+pickling: converting string to obj
+unpickling: getting obj from string
+Shallow Copy(only copy the pointer so one changes other also changes, faster) and 
+Deep Copy(full copy of whole variable if one changes then other changes)
+
+compile-time: source code written using high-level language is required to get converted to machine code for a computer to understand
+Ex: Java
+errors: During compile time errors occur because of syntax and semantic
+
+run-time: A program’s life cycle is a runtime when the program is in execution
+error: Division by zero
+
+---------------------------------------- OOPS ---------------------------------------------
+
+Single Inheritance         A --> B
+Multi-level Inheritance    A --> B --> C
+Multiple Inheritance       A --> C    and B --> C
+Hierarchical Inheritance   A --> B    and A --> C 
+
+Superclass --> is the class from which we are inheriting. It is also called the base class or parent class.
+Derived Class --> is the class that is inherited. It is also called the child class
+
+
+print(class_object) --> uses this function __repr__
+print([class_object]) --> uses this function __str__
+if no __str__ then for both class_object and [class_object] it will use __repr__
+
+Need to check:
+1. Static and normal class 
+2. Encapsulation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------- FLASK ---------------------------------------------
+jsonify() --> function is used to return flask.Response() object with content-type header 'application/json'.
+before_request() --> These connections are called before making a request and no arguments are passed
+after_request() --> These connections are called after making a request and response is passed that will be sent to the client.
+teardown_request() --> These connections are called in a situation where an exception is raised and the response are not sure to get. They are also called after the construction of response. These are not allowed to change the request, and their values can be ignored.
+request.content_type is used to check the request type in Flask
+
+Flask-Admin --> admin interface in flask 
+Flask-Social --> integrate social apps like Twitter, FB, insta etc,.
+Flask-WTF --> validation library
+Flask-SQLAlchemy --> its for SQL database
+Flask-MongoEngine -->  its for no-SQL database
+
+Flask Microframework --> only provides core features such as request, routing, and blueprints for other like catching, ORM we need to import things  
+template engines --> template is file contains both static and dynamic data related to UI, we use Jinja2 lo lode these 
+render_template --> it is used to render templates from template folder to screen
+
+
+GET: sends data in unencrypted form
+HEAD: sends data but no response
+POST: mostly for inject data
+PATCH: Update data
+DELETE: delete data 
+
+
+
+
+
+
+Tell me about your self:
+my name is harnath and I am 23 years old,
+I graduated with an engineering degree in 2019 from KL University
+and was offered an Backend developer intern position from Algonox,
+from where my career started 
+For the past 3 years, I’ve been working as a Backend developer at Algonox and then Eunimart
+I have some background in Azure in addition to that
+coming to my key skills
+I am good in developing things using python along with Flask or FastAPI frameworks
+I have experiencing in developing database and deploying solution at azure to certain extend 
+I am from Ongole, proud to from a city which is well names for cattle bred
+my father runes a small hardware store and my mother is a home maker, 
+on short note that's all about be
+
+
+You See Yourself in 5 Years:
+In five years, I want to complete the self learning of AL/ML from the course I have enrolled 
+and will actively looking on how to solve Realtime programs using my skills 
+Krish Naik
+
+
+I'm open to discussing, My salary requirements are flexible
+However, based on my previous salary, my knowledge of the industry, and my understanding 
+I would expect to receive something in the range of 14 to 15.
+
+
+I am looking out for an opportunity that allows me to work on interesting as well as challenging projects which allowes me to learn new skills
+
+
+I quite often underestimate the time it will take to do smaller jobs, I have to rush to get things done. Sometimes I miss deadlines
+
+
+In my career till now I worked for StartUps as product eng but 
+
+
+Data definition language (DDL) --> CREATE, ALTER, DROP
+Data manipulation language (DML): --> SELECT, UPDATE, INSERT
+
+Difference between Union and Union all 
+
+substring(FIRST_NAME,1,3) --> select only 1 to 3 char in column
+INSTR(FIRST_NAME, BINARY'a') --> serch for first occr
+RTRIM(FIRST_NAME) --> rstrip()
+LTRIM(FIRST_NAME) --> lstrip()
+distinct () --> for unique
+length() --> len()
+REPLACE()
+CONCAT(FIRST_NAME, ' ', LAST_NAME)
+%a% --> contains a
+%a -->  ends with a
+a% --> starts with a
+'_____h' --> ending with h and 7 car so i have 7 under scores
+MOD (WORKER_ID, 2) <> 0 --> select only odd rows
+MOD (WORKER_ID, 2) = 0 --> select only even rows
+CURDATE() --> date
+NOW() --> time
+DATETIME() --> datetime
+TOP 10 --> select top 10 
+LIMIT --> select upto 10 from start 
+LIMIT n-1,1 to select 5th row n = 5 
+OFFSET rows_to_skip FETCH NEXT number_of_rows ROWS ONLY
+
+SELECT * INTO WorkerClone FROM Worker --> copy things from Worker to WorkerClone
+ 
+
+INTERSECT --> common records from two table
+MINUS --> different records
+
+select id, 
+       details->>'$.name' as browser_str,
+       details->'$.name' as browser_name
+       from users;
+
+->>  gives with " "
+-> normal string
+
+
+
+---------------------------------------------------- No SQL ------------------------------------------------------
+use DATABASE_NAME --> create if not exist
+db                --> get current db
+show dbs          --> list of db's
+db.movie.insert({"name":"tutorials point"})   --> insert document(row) in movie collection(table)
+db.dropDatabase() --> drop current db
+db.createCollection(name, options) --> create collection
+capped --> Capped collection is a fixed size collection that automatically overwrites its oldest entries when it reaches its maximum size
+db.collection_name.drop()
+db.COLLECTION_NAME.insert(document) document = [{}, {}] or {}
+db.COLLECTION_NAME.insertMany()
+db.COLLECTION_NAME.insertOne()
+.limit(10)  --> top 10
+.skip(2) --> will skip first 2
+.sort({KEY:1}) --> 1 for ascending  and -1 for descending 
+.createIndex({KEY:1}) --> 1 for ascending  and -1 for descending
+.dropIndex()
+.dropIndexs()
+.getIndexes()
+
+Embedded Relationships: where we will have list of json for a same feild
+Referenced Relationships: where we will have object ID here and real data will be in some other collection
+
+
+
+
