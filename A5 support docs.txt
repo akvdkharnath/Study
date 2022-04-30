@@ -1,0 +1,6 @@
+Mailing Service:
+1. SendGrid
+2. MailGun
+3. Mailjet
+4. SendInBlue
+5. SocketLabs
