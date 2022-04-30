@@ -11,7 +11,7 @@ Xrange() --> generate a sequence of int and returns Xrange object
 super() --> The parent class members can be accessed in child class using the super keyword 
 issubclass(A,B) --> used to find weather A is sub class of B or not 
 Ord() –-> converts characters into integer
-
+print ("Hola! ", end="")  --> 2 print statements in single line
 
 
 
@@ -21,7 +21,6 @@ nonlocal --> in the nested functions we use this to access variables from the pa
 multiprocessing and asyncio  are packages for python multi-threading
 annotations --> saying python compiler to accept only selected datatypes are allowed for a variable
 virtualenv's --> helps to create an isolated workspace for the project 
-Self --> is a variable that represents the instance of the object to itself.
 Cython --> is a programming language that aims to be a superset of the Python programming language, designed to give C-like performance with code that is written mostly in Python with optional additional C-inspired syntax.
 module --> is a python file
 package --> is a folder with a set of python files (modules)
@@ -44,7 +43,7 @@ _ variable --> Protected
 __ variable --> Private  (can only access inside a class)
 Local Namespace --> variables inside a function or class, deletes after returning the data
 Global Namespace --> created when a package is imported 
-Built-in Namespace --> have some built in variables and types of errors 
+Built-in Namespace --> have some built-in variables and types of errors 
 
 Armstrong --> 153 = 1^3 + 5^3 + 3^3, 1634 = 1^4 + 6^4 + 3^4 + 4^4
 Fibonacci -->  0, 1, 1, 2, 3, 5, 8
@@ -59,21 +58,6 @@ Whereas the ‘is’ operator checks whether both the operands refer to the same
 https://www.geeksforgeeks.org/difference-operator-python/#:~:text=The%20Equality%20operator%20(%3D%3D),in%20the%20same%20memory%20location).
 
 
-Both Multiprocessing and Multithreading are used to increase the computing power of a system.
-Multiprocessing:
-Multiprocessing is a system that has more than one or two processors. 
-In Multiprocessing, CPUs are added for increasing computing speed of the system. 
-Because of Multiprocessing, There are many processes are executed simultaneously. 
-Multiprocessing are classified into two categories:
-1. Symmetric Multiprocessing
-2. Asymmetric Multiprocessing
-
-Multithreading:
-Multithreading is a system in which multiple threads are created of a process for increasing the computing speed of the system. 
-In multithreading, many threads of a process are executed simultaneously 
-and process creation in multithreading is done according to economical.
-
-
 Generator: functions are functions that can suspend their execution after returning a value, in order to resume it at some later time and return another value. This is made possible by the yield keyword, which you use in place of return
 Decorator: is defined as a function that adds functionality to another function without changing it. It wraps the function to add some functionality to it.Some PDB commands include
 
@@ -86,7 +70,7 @@ Deep Copy(full copy of whole variable if one changes then other changes)
 
 compile-time: source code written using high-level language is required to get converted to machine code for a computer to understand
 Ex: Java
-errors: During compile time errors occur because of syntax and semantic
+errors: During compile-time errors occur because of syntax and semantic
 
 run-time: A program’s life cycle is a runtime when the program is in execution
 error: Division by zero
@@ -106,38 +90,85 @@ print(class_object) --> uses this function __repr__
 print([class_object]) --> uses this function __str__
 if no __str__ then for both class_object and [class_object] it will use __repr__
 
+
+Encapsulation: used to restrict access to methods and variables. 
+code and data are wrapped together within a single unit from being modified by accident
+
+instance: each object created for a class is called an instance
+Self --> is a variable that represents the instance of the object to itself. helps to access attributes and methods of a class
+__init__: its called a constructor it will be executed while an object is assigned 
+1. if there is no constructor class will call the default constructor
+2. if there are more than 2 constructors it will call the last constructor
+
+Data abstraction --> Hiding variables in class using __
+Method Overriding --> where there will be the same methods in parent and child class but prams will be same 
+PolyMorphism --> same as Method Overriding but the difference here is there will be the difference in method prams in child and parent 
+so code decides to call child or parent 
+
+
+
 Need to check:
 1. Static and normal class 
-2. Encapsulation
+2. Abstract class and method
+3. func” vs “func()
+4. Lambda function
+
+-------------------------------------------------------- Multiprocessing and Multithreading -----------------------------------
+Both Multiprocessing and Multithreading are used to increase the computing power of a system.
+Multiprocessing:
+Multiprocessing is a system that has more than one or two processors. 
+In Multiprocessing, CPUs are added for increasing the computing speed of the system. 
+Because of Multiprocessing, There are many processes are executed simultaneously. 
+Multiprocessing is classified into two categories:
+1. Symmetric Multiprocessing
+2. Asymmetric Multiprocessing
+
+Multithreading:
+Multithreading is a system in which multiple threads are created of a process for increasing the computing speed of the system. 
+In multithreading, many threads of a process are executed simultaneously 
+and process creation in multithreading is done according to economical.
+
+lock.acquire() --> to lock a thread
+lock.release() --> to upload a thread
+threading.activeCount() --> get active thread count
+threading.currentThread() --> current thread
+threading.enumerate() --> list of all active threads
+getName()  --> name of thread
+setName() --> name a thread
 
 
 
+os.getpid() -->  main process ID, main and sub tread ID
+name.pid --> to get specific process ID
+name.is_alive() --> to get specific process status
+
+https://www.geeksforgeeks.org/multiprocessing-python-set-2/
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+------------------------------------------------------ DS ----------------------------------------------------------------
+Liner Data Structures:
+1. Array (https://www.tutorialspoint.com/python_data_structure/python_arrays.htm)
+2. Linked list
+3. Stack (FILO, LIFO)
+4. Queue (FIFO)
+5. 2D array (https://www.tutorialspoint.com/python_data_structure/python_2darray.htm)
+6. Matrix (https://www.tutorialspoint.com/python_data_structure/python_matrix.htm)
+Non-Liner Data Structures:
+1. Binary Tree
+2. Heap
+3. Hash table
+4. Graph
 
 
 --------------------------- FLASK ---------------------------------------------
 jsonify() --> function is used to return flask.Response() object with content-type header 'application/json'.
 before_request() --> These connections are called before making a request and no arguments are passed
-after_request() --> These connections are called after making a request and response is passed that will be sent to the client.
-teardown_request() --> These connections are called in a situation where an exception is raised and the response are not sure to get. They are also called after the construction of response. These are not allowed to change the request, and their values can be ignored.
+after_request() --> These connections are called after making a request and a response is passed that will be sent to the client.
+teardown_request() --> These connections are called in a situation where an exception is raised and the response is not sure to get. They are also called after the construction of response. These are not allowed to change the request, and their values can be ignored.
 request.content_type is used to check the request type in Flask
 
-Flask-Admin --> admin interface in flask 
+Flask-Admin --> admin interface in the flask 
 Flask-Social --> integrate social apps like Twitter, FB, insta etc,.
 Flask-WTF --> validation library
 Flask-SQLAlchemy --> its for SQL database
@@ -159,9 +190,17 @@ DELETE: delete data
 
 
 
-Tell me about your self:
+Tell me about yourself:
 my name is harnath and I am 23 years old,
 I graduated with an engineering degree in 2019 from KL University
+and was offered a Backend developer and from past 3 years I am as Backend full stack
+luckily till date I worked for startups that too product based company where I got a chance to develop products from scratch 
+I am good in dealing things with python, flask
+
+
+
+
+
 and was offered an Backend developer intern position from Algonox,
 from where my career started 
 For the past 3 years, I’ve been working as a Backend developer at Algonox and then Eunimart
@@ -182,10 +221,10 @@ Krish Naik
 
 I'm open to discussing, My salary requirements are flexible
 However, based on my previous salary, my knowledge of the industry, and my understanding 
-I would expect to receive something in the range of 14 to 15.
+I would expect to receive something in the range of 16.5 to 17.
 
 
-I am looking out for an opportunity that allows me to work on interesting as well as challenging projects which allowes me to learn new skills
+I am looking out for an opportunity that allows me to work on interesting as well as challenging projects which allows me to learn new skills
 
 
 I quite often underestimate the time it will take to do smaller jobs, I have to rush to get things done. Sometimes I miss deadlines
@@ -235,6 +274,13 @@ select id,
 ->>  gives with " "
 -> normal string
 
+UNION removes duplicate records (where all columns in the results are the same), UNION ALL does not.
+
+HAVING --> clause in SQL is used to filter records in combination with the GROUP BY clause. It is different from WHERE, since the WHERE clause cannot filter aggregated records.
+DELETE --> statement is used to delete rows from a table.
+TRUNCATE --> command is used to delete all the rows from the table and free the space containing the table.
+DROP --> command is used to remove an object from the database
+
 
 
 ---------------------------------------------------- No SQL ------------------------------------------------------
@@ -257,7 +303,7 @@ db.COLLECTION_NAME.insertOne()
 .dropIndexs()
 .getIndexes()
 
-Embedded Relationships: where we will have list of json for a same feild
+Embedded Relationships: where we will have list of json for a same field
 Referenced Relationships: where we will have object ID here and real data will be in some other collection
 
 
