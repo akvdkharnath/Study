@@ -2,11 +2,11 @@
 # -*-coding:utf-8 -*-
 '''
 @File    :   run.py
-@Time    :   2021/11/10 14:19:53
-@Author  :   Eunimart
+@Time    :   2021/11/11 16:29:45
+@Author  :   Harnath 
 @Version :   1.0
-@Contact :   contact@eunimart.com
-@License :   © Copyright 2021 Eunimart. All rights reserved
+@Contact :   akvdkharnath@gmail.com.com
+@License :   © Copyright 2021 Harnath. All rights reserved
 @Desc    :   Main file
 '''
 
@@ -25,7 +25,7 @@ from app.config.config import Config
 from app.config.db import engine
 from app.core.exception_handler import application_exception_handler
 
-from app.routers.v1.asn_line_item import asn_line_item_router
+from app.routers.v1.profile import profile_router
 
 from app.core.exception_handler import *
 
@@ -43,7 +43,7 @@ async def log_json(request: Request):
 
 def build_router(app):
     """ Mapping all API's from router to application """ 
-    app.include_router(asn_line_item_router, dependencies=[Depends(log_json)])
+    app.include_router(profile_router, dependencies=[Depends(log_json)])
 
 def create_tables():
     """ creating tables in database """
@@ -61,11 +61,11 @@ def create_static_data():
 
 def start_application():
     app = FastAPI(
-        title="ASN MANAGEMENT",
+        title="PROJECT A5",
         description=description,
         version="2.0",
         license_info={
-            "name": "© Copyright 2021 Eunimart. All rights reserved",
+            "name": "© Copyright 2021 Harnath. All rights reserved",
         },
     )
 

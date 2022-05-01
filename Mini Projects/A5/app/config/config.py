@@ -1,13 +1,7 @@
 from os import getenv, path
 from os import getenv, path
 from dotenv import load_dotenv
-
-
-FILE_PATH = path.dirname(__file__)
-APP_ROOT = '/'.join(FILE_PATH.split('/')[:-2])
-DOT_ENV_PATH = APP_ROOT + '/.env' 
-
-load_dotenv(DOT_ENV_PATH)
+load_dotenv()
 
 class Config(object):
 
@@ -26,8 +20,15 @@ class Config(object):
     POSTGRES_PORT = getenv('POSTGRES_PORT')
 
     POSTGRES_DATABASE = getenv('POSTGRES_DATABASE')
-    
-    # postgres://rwmlzpnxtekxbt:a3244d8047c8fd0a22844a69be002dc39a3bbab5e3dac8b84cf5f46ac73af1b6@ec2-52-5-110-35.compute-1.amazonaws.com:5432/dfn446ohg0bbis
-    
-    # SQLALCHEMY_DATABASE_URL = "postgres://{}:{}@{}:{}/{}".format(POSTGRES_USER,POSTGRES_PASSWORD,POSTGRES_HOST,POSTGRES_PORT,POSTGRES_DATABASE)
-    SQLALCHEMY_DATABASE_URL = "postgresql://rwmlzpnxtekxbt:a3244d8047c8fd0a22844a69be002dc39a3bbab5e3dac8b84cf5f46ac73af1b6@ec2-52-5-110-35.compute-1.amazonaws.com:5432/dfn446ohg0bbis"
+
+    JWT_SECRET_KEY = getenv('JWT_SECRET_KEY')
+
+    JWT_ALGORITHM = getenv('JWT_ALGORITHM')
+
+    HASHING_ALGORITHM = getenv('HASHING_ALGORITHM')
+
+    ACCESS_TOKEN_EXPIRE_MINUTES = getenv('ACCESS_TOKEN_EXPIRE_MINUTES')
+
+
+    # SQLALCHEMY_DATABASE_URL = "postgresql://{}:{}@{}:{}/{}".format(POSTGRES_USER,POSTGRES_PASSWORD,POSTGRES_HOST,POSTGRES_PORT,POSTGRES_DATABASE)
+    SQLALCHEMY_DATABASE_URL = "postgresql://llnimppazukiib:08ebcf22ee533f69f4e391815de654d4e92005376ae87dac05e51ad9a19c3bb8@ec2-44-195-169-163.compute-1.amazonaws.com:5432/df2cgd61ece65k"

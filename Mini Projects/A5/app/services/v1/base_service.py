@@ -1,29 +1,14 @@
-#!/usr/bin/env python
-# -*-coding:utf-8 -*-
-'''
-@File    :   base_service.py
-@Time    :   2021/11/10 14:18:42
-@Author  :   Eunimart 
-@Version :   1.0
-@Contact :   contact@eunimart.com
-@License :   © Copyright 2021 Eunimart. All rights reserved
-@Desc    :   Base configuration for services
-'''
 
 import math
 import json
 from typing import Dict, Optional, List, Any, Union
 from urllib import response
 import requests
-from app.core.helpers import Helpers
 from sqlalchemy.orm import load_only
 from sqlalchemy import desc, asc
 
 
-from app.models.base_data import get_base_data
 
-calculator_dic,package_dic,logistics_dic = get_base_data()
-# calculator_dic,package_dic,logistics_dic = ({},{},{})
 
 
 class BaseService(object):

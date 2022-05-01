@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# -*-coding:utf-8 -*-
-'''
-@File    :   base_model.py
-@Time    :   2021/11/10 14:17:45
-@Author  :   Eunimart 
-@Version :   1.0
-@Contact :   contact@eunimart.com
-@License :   © Copyright 2021 Eunimart. All rights reserved
-@Desc    :   base_model table
-'''
 
 from sqlalchemy.dialects.mysql import TINYINT
 from sqlalchemy import Column, DateTime, Integer, String
@@ -41,7 +30,7 @@ class BaseTime(object):
 class BaseModel(Base):
     __abstract__ = True
     id = Column(Integer, primary_key=True, autoincrement=True)
-    is_archive = Column(TINYINT, default=0)
+    is_archive = Column(Integer, default=0)
 
     @declared_attr
     def created_datetime(self):
@@ -53,11 +42,11 @@ class BaseModel(Base):
 
     @declared_attr
     def created_by(self):
-        return Column(String(255), nullable=False)
+        return Column(String(255))
 
     @declared_attr
     def updated_by(self):
-        return Column(String(255), nullable=False)
+        return Column(String(255))
 
     def __repr__(self):
         name = self.id
