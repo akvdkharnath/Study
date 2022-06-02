@@ -1,0 +1,12 @@
+1. producer
+2. exchange
+3. Queue
+4. Consumer
+
+
+exchange types:
+1. Direct
+2. Topic
+3. Fanout
+
+Cloud AMQP

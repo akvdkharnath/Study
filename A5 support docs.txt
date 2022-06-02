@@ -4,3 +4,8 @@ Mailing Service:
 3. Mailjet
 4. SendInBlue
 5. SocketLabs
+
+
+SMS: 
+1. Sinch
+2. Twilio
