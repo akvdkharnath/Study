@@ -4,11 +4,10 @@ from typing import List
 class DynamoDB(object):
 
     def __init__(self):
-        # self.dynamo_client = boto3.client('dynamodb')
-        self.dynamodb = boto3.resource('dynamodb')
+        self.conn = boto3.resource('dynamodb')
 
     def create_table(self, table_name:str, key_schema: List, attributes: List, provision: dict):
-        table = self.dynamodb.create_table(
+        table = self.conn.create_table(
             TableName = table_name,
             KeySchema = key_schema,
             AttributeDefinitions = attributes,
@@ -16,17 +15,35 @@ class DynamoDB(object):
         )
         print(table)
         
-
     def insert_into_table(self, table_name:str, data:dict):
-        table  = self.dynamodb.Table(table_name)        
+        table  = self.conn.Table(table_name)        
         table.put_item(Item = data, TableName = table_name)
         
-    def get_from_table(self, table_name:str, data:dict):
-        table  = self.dynamodb.Table(table_name)
-        data = table.get_item(Key = data, TableName = table_name)
-        print(data)
-        data = data["Item"]
-        print(data)
+    def get_from_table(self, table_name:str, query:dict):
+        table  = self.conn.Table(table_name)
+        data = table.get_item(Key = query, TableName = table_name)
+        if "Item" in data:
+            data = data["Item"]
+            print(data)
+            return data
+        else:
+            print("Data Not There")
+            return {}
+    
+    def update_to_table(self, table_name:str, query:dict, update_expression:str, expression_values:dict):
+        table  = self.conn.Table(table_name)
+        data = table.update_item(
+            Key = query,
+            UpdateExpression = update_expression,
+            ExpressionAttributeValues = expression_values
+            )
+    
+    def delete_from_table(self, table_name:str, query:dict):
+        table  = self.conn.Table(table_name)
+        data = table.update_item(
+            Keys = query
+        )
+
 
 DynamoDBOperations = DynamoDB()
 
@@ -79,9 +96,25 @@ data  = {
 
 
 # getting data from table 
-data  = {
+
+query  = {
     "key": "key3",
     "name": "harnath",
 }
 
-DynamoDBOperations.get_from_table(table_name, data)
+data = DynamoDBOperations.get_from_table(table_name, query)
+print(data)
+print(data["amount"])
+
+# data["amount"] = 2001
+
+DynamoDBOperations.update_to_table(table_name, query, "SET amount = :amount", {":amount": 20001})
+
+data = DynamoDBOperations.get_from_table(table_name, query)
+print(data)
+print(data["amount"])
+
+# app_id
+# secar
+# key 
+
