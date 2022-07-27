@@ -85,7 +85,6 @@ Hierarchical Inheritance   A --> B    and A --> C
 Superclass --> is the class from which we are inheriting. It is also called the base class or parent class.
 Derived Class --> is the class that is inherited. It is also called the child class
 
-
 print(class_object) --> uses this function __repr__
 print([class_object]) --> uses this function __str__
 if no __str__ then for both class_object and [class_object] it will use __repr__

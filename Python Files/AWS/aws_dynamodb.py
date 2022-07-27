@@ -40,8 +40,8 @@ class DynamoDB(object):
     
     def delete_from_table(self, table_name:str, query:dict):
         table  = self.conn.Table(table_name)
-        data = table.update_item(
-            Keys = query
+        data = table.delete_item(
+            Key = query
         )
 
 
