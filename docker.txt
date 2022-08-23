@@ -1,9 +1,14 @@
 docker run <image name> --> will run selected image
+
 docker image ls  --> to get list of images in current folder
+
 docker images    --> to get list of images in current folder
+
 docker rmi <image id> --> will delete image based on image id 
+
 docker rmi -f <image id> --> will delete image based on image id in force mode (even it is running)
-docker build -t <image name> .
+
+docker build -t <image name> . --> to create a new image with selected name using docker file
 
 Push image to docker hub
 docker tag <python image>/<tag name> <repo name>/<image name>

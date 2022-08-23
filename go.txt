@@ -1,0 +1,19 @@
+const 
+
+var con int = 10
+var con = [50]string ->  array
+var con = []string   -> slice or list
+con := 10
+
+%T for type 
+
+&varible_name to get pointer 
+
+slice is like list in python 
+
+
+
+adding a value to slice:
+append(slice_name, varible_name)
+
+_ is a blank identifier
