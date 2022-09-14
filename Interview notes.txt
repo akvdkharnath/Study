@@ -184,18 +184,12 @@ POST: mostly for inject data
 PATCH: Update data
 DELETE: delete data 
 
-
-
-
-
-
 Tell me about yourself:
 my name is harnath and I am 23 years old,
 I graduated with an engineering degree in 2019 from KL University
 and was offered a Backend developer and from past 3 years I am as Backend full stack
 luckily till date I worked for startups that too product based company where I got a chance to develop products from scratch 
 I am good in dealing things with python, flask
-
 
 
 https://www.interviewbit.com/hr-interview-questions/

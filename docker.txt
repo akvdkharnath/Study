@@ -8,8 +8,22 @@ docker rmi <image id> --> will delete image based on image id
 
 docker rmi -f <image id> --> will delete image based on image id in force mode (even it is running)
 
-docker build -t <image name> . --> to create a new image with selected name using docker file
+docker build -t <image nme> . --> to create a new image with selected name using docker file
 
 Push image to docker hub
+
 docker tag <python image>/<tag name> <repo name>/<image name>
+
 push <repo name>/<image name>
+
+pull <repo name>/<image name>
+
+
+
+
+1. develop dockerFile
+2. build image from docjerFiler
+3. create repo in docker
+4. push image 
+5. pull image
+6. run image

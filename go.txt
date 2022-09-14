@@ -1,15 +1,41 @@
-const 
+# creating package 
+go mod init <package or folder name>
 
+
+# Python to go changes
+NONE                    nil
+# comment           // comment
+""" comment """     /* comment */
+List                    slices
+dict                    maps
+type()                  reflect.TypeOf()  or %T
+and                     &&
+or                      ||
+
+
+
+# creating values
 var con int = 10
 var con = [50]string ->  array
 var con = []string   -> slice or list
 con := 10
 
+
+
+%v for default format
+%d for int
+%c for char
+%t for bool
+%f for float
+%2f for float with 2 decimal  
 %T for type 
 
 &varible_name to get pointer 
 
-slice is like list in python 
+
+fallthrough: used to execute thr current case and next case in golang switch code 
+
+
 
 
 
@@ -17,3 +43,8 @@ adding a value to slice:
 append(slice_name, varible_name)
 
 _ is a blank identifier
+
+def f1():
+    v1 _ local
+    def f2():
+        v2 not local
