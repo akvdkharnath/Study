@@ -1,0 +1,45 @@
+WCF: (Windows Communication Foundation): It is a framework used for developing SOAP
+API: (Application Programming Interface)for both web browsers and web servers
+
+API:
+       1. SOAP-based services and RESTful services
+       2. supports various MVC features
+       3. HTTP protocol
+
+WCF:
+       1. SOAP-based services
+       2. No MVC features
+       3. HTTP, UDP, custom transport
+
+
+
+SOAP: (Simple Object Access Protocol)
+framework used to exchange data from different applications developed in different languages
+       1. Function - Driven
+       2. API calls can not be cached
+       3. WL Security, SSL 
+       4. More band and cpu power
+       5. XML
+       6. HTTP, UDP, SMTP
+
+
+REST: (Representational State Transfer)
+its advanced version of SOAP to transfer data in many types 
+       1. Data - Driven
+       2. API calls can be cached
+       3. HTTPS, SSL
+       4. less cpu power and band 
+       5. XML, JSON, YAML, Plain Text ect,.
+       6. HTTP
+
+
+XML -> used to transfer data its like HTML
+JSON -> used to transfer data its like dic
+
+
+SOP -> Same origin policy 
+CORS -> Cross - Origin resorce sharing 
+
+by default application will not allow ajax request from different origin so we need to config cors to over come SOP
+
+ajax -> tech to call API asyncio using JS

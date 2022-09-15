@@ -1,0 +1,86 @@
+Types: 
+       1. built in 
+              1.1 list
+              1.2 dict
+              1.3 tuple
+              1,4 set
+              1.5 array
+       2. User define 
+              2.1 Stack
+              2.2 Queue
+              2.3 Tree
+              2.4 Graph
+
+Liner Data Structures:
+1. Array (https://www.tutorialspoint.com/python_data_structure/python_arrays.htm)
+2. Linked list
+3. Stack (FILO, LIFO)
+4. Queue (FIFO)
+5. 2D array (https://www.tutorialspoint.com/python_data_structure/python_2darray.htm)
+6. Matrix (https://www.tutorialspoint.com/python_data_structure/python_matrix.htm)
+Non-Liner Data Structures:
+1. Binary Tree
+2. Heap
+3. Hash table
+4. Graph
+
+
+----------------------------------------------------------------------------------------------------------
+
+Array:
+Advantages:
+
+1. easy to sort and replace
+
+Dis - Advantages:
+1. fixed size
+2. insert and delete are hard (after delete or insert we need to swap rest of the elements)
+3. contiguous memory localtion (need to have memory for whole array in a single slot we can not split or use junks of data for array)
+4. requirment is less than capasity then there will be memory loss
+
+----------------------------------------------------------------------------------------------------------
+
+
+Stack:
+LIFO
+1. Push(x): insert x into 
+2. pop(): removes top element
+3. size(): len of stack
+4. empty(): make stack 0
+
+Advantages:
+1. last element is ready to use 
+2. O(1) to do any operation
+
+Dis - Advantages:
+1. data modification (no random access)
+
+----------------------------------------------------------------------------------------------------------
+  
+Queue:
+FIFO
+1. enqueue(x): inser x into top
+2. dequeue(): delete last element
+3. peekfirst(): return first element
+4. peeklast(): return last elelment
+
+Advantages:
+1. first and last element is ready to use 
+2. O(1) to do any operation
+
+Dis - Advantages:
+1. data modification  (no random access)
+
+----------------------------------------------------------------------------------------------------------
+  
+Linked List:
+Advantages:
+1. can store data in memory randomly
+2. Easy to inser and delete
+
+
+Dis - Advantages:
+1. Memory utilzation is more when compared to list
+2. slow when compared to list
+3. if lost head node will loose every thing in linked list
+4. data modification (no random access)
