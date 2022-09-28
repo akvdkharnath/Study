@@ -1,0 +1,33 @@
+source code: high-level language is one that is understandable by us(humans)
+machine code: language in 0 and 1 
+byte code: intermediate code which is not machine code it can not understandable for processer but by PVM but its also in 0,1 
+
+
+Interpreter's and Compiler's are used to convert source code to machine code
+
+PVM: python virtual mechine 
+ 
+__pycache__: it will store all byte code files in python 
+
+Steps to see instructions in python file: "python3 -m dis filename.py"
+
+Different Interpreter in python:
+1. Cpython - written in C
+2. Jython  - written in java
+3. IronPython - written in .net
+4. Cython - written in C
+5. pypy - written in python
+
+Interpreter:
+1. Translates program one statement at a time.
+2. less amount of time to analyze the source code
+3. slow overall execution time
+4. No Object Code is generated
+Ex: JavaScript, Python, Ruby
+
+Compiler:
+1. Scans the entire program and translates it as a whole into machine code
+2. large amount of time to analyze the source code
+3. fast overall execution time
+4. Object Code is generated
+Ex: C, C++, Java
