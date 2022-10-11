@@ -1,0 +1,55 @@
+Conenect server: redis-cli -h host -p port -a password 
+
+
+redis-cli -> start server 
+SELECT 10 -> it will select DB 10 in rediswill have DB from 0-15
+
+
+Redis:
+1. Stores everything in primary memory
+2. R/W operations are extremely fast
+3. Primary memory is in lesser in size and super costely
+
+Normal Database:
+1. Stores everything in secondary memory
+2. R/W operations are slow
+3. Secondary memory is in abundant in size 
+
+
+DataTypes:
+1. String
+    Note − A string value can be at max 512 megabytes in length.
+
+    SET name "tutorialspoint"    (will create varible name with tutorialspoint as value)
+    GET name                     (will get value related to name varible)
+    DEL name                     (will delete name varible)
+    EXISTS name
+    EXPIRE                       Sets the expiry of the key after the specified time in sec
+    KEYS tutorial*               (will return all varible names starting with tutorial)
+    STRLEN name                  len of varible
+    TYPE name                    data type of value stored in varible 
+2. Hashes
+    A hash is a collection of key value pairs (dict)
+    Note − Every hash can store up to 2^32 - 1 field-value pairs (more than 4 billion).
+    
+    HMSET user:1 username tutorialspoint password tutorialspoint points 200 
+
+3. Lists
+    lpush tutoriallist redis 
+    lpush tutoriallist redis2
+    lpush tutoriallist redis3
+
+    lrange tutoriallist 0 10 
+    tutoriallist =  [redis, redis2, redis3] (final value)
+    Note − The max length of a list is 232 - 1 elements
+
+4. Sets
+    sadd tutoriallist redis 
+    sadd tutoriallist redis2
+    sadd tutoriallist redis2
+
+    smembers tutoriallist  
+    tutoriallist =  {redis, redis2} (final value)
+    Note − The max length of a list is 232 - 1 elements
+
+    
