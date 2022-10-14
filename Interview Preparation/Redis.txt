@@ -6,9 +6,10 @@ SELECT 10 -> it will select DB 10 in rediswill have DB from 0-15
 
 
 Redis:
-1. Stores everything in primary memory
+1. Stores everything in primary memory (in memory database)
 2. R/W operations are extremely fast
 3. Primary memory is in lesser in size and super costely
+4. can also be used as primary DB like SQL
 
 Normal Database:
 1. Stores everything in secondary memory
@@ -33,7 +34,10 @@ DataTypes:
     Note − Every hash can store up to 2^32 - 1 field-value pairs (more than 4 billion).
     
     HMSET user:1 username tutorialspoint password tutorialspoint points 200 
-
+    HMSET myhash field1 "foo" field2 "bar"  (inserts multiple keys and values into system)
+    HGET myhash field1                      (will get value related to field1 key in myhash varible)
+    HKEYS myhash                            (List of keys in hash)
+    HLEN myhash                             (Len of hash )
 3. Lists
     lpush tutoriallist redis 
     lpush tutoriallist redis2
@@ -52,4 +56,5 @@ DataTypes:
     tutoriallist =  {redis, redis2} (final value)
     Note − The max length of a list is 232 - 1 elements
 
-    
+5. Geospatial
+ 
