@@ -18,43 +18,141 @@ Normal Database:
 
 
 DataTypes:
-1. String
-    Note − A string value can be at max 512 megabytes in length.
+0. Keys:
+    Note − A key value can be at max 512 MB in length.
+    case 
 
     SET name "tutorialspoint"    (will create varible name with tutorialspoint as value)
     GET name                     (will get value related to name varible)
     DEL name                     (will delete name varible)
+    
+    to get data back we have 2 cmds KEYS and SCAN 
+    
+    KEYS tutorial*               (will return all varible names starting with tutorial)
+    SCAN 0 tutorial*
+
+    KEYS:
+    1. not good for production
+    2. only for debugging
+    3. very slow if there is huge data  
+
+    SCAN:
+    1. good for production
+    3. very fast if there is huge data  
+
+    to delete data we have 2 cmds DEL and UNLINK 
+    DEL: will delete data in blocking mode if the value assocated with key is too long it will block redis for some time to delete 
+    UNLINK: will just un link and delete it asyc 
+
+    size is less than 64 go for DEL or else UNLINK
+
+1. String
+    Note − A string value can be at max 512 MB in length.
+    INCRC name          (will incress name value by 1)
+    INCRCBY name 20       (will incress name value by 20)
+    DECRBY name 2
+    DECRC
     EXISTS name
     EXPIRE                       Sets the expiry of the key after the specified time in sec
-    KEYS tutorial*               (will return all varible names starting with tutorial)
     STRLEN name                  len of varible
     TYPE name                    data type of value stored in varible 
+
 2. Hashes
     A hash is a collection of key value pairs (dict)
     Note − Every hash can store up to 2^32 - 1 field-value pairs (more than 4 billion).
     
+    HSET key feild1 value1 feild2 value2 feild2 value2 
+    HGETALL key
+    HGET key field
+    HSCAN
+    HDEL key
+    HINCBY      key feild value
+    HINCBYFLOAT key feild value
+
+    HEXISTS key
+
     HMSET user:1 username tutorialspoint password tutorialspoint points 200 
     HMSET myhash field1 "foo" field2 "bar"  (inserts multiple keys and values into system)
     HGET myhash field1                      (will get value related to field1 key in myhash varible)
     HKEYS myhash                            (List of keys in hash)
     HLEN myhash                             (Len of hash )
-3. Lists
-    lpush tutoriallist redis 
-    lpush tutoriallist redis2
-    lpush tutoriallist redis3
 
-    lrange tutoriallist 0 10 
+3. Lists
+    LPUSH tutoriallist redis 
+    LPUSH tutoriallist redis2
+    LPUSH tutoriallist redis3
+    RPUSH   key value 
+    LPOP    key value 
+    RPOP key value 
+    LLEN key 
+    LRANGE key start stop 
+    LTRIM key start stop
+
+    
+    
+    lRANGE tutoriallist 0 10 
     tutoriallist =  [redis, redis2, redis3] (final value)
     Note − The max length of a list is 232 - 1 elements
 
 4. Sets
-    sadd tutoriallist redis 
-    sadd tutoriallist redis2
-    sadd tutoriallist redis2
+    SADD tutoriallist redis 
+    SADD tutoriallist redis2
+    SADD tutoriallist redis2
 
-    smembers tutoriallist  
+    SMEMBERS tutoriallist  
     tutoriallist =  {redis, redis2} (final value)
     Note − The max length of a list is 232 - 1 elements
 
-5. Geospatial
- 
+    SCARD key               -> len of set 
+    SISMEMBER key value     -> checks weather value in set returns 1 or 0
+    SINTER key1 key2        -> set intersection
+    SRIM key value1 value2  -> removes multiple keys from set 
+    SPOP key                -> removes 1 random value from set 
+    SPOP key 3              -> removes 3 random value from set
+
+5. Sorted Sets
+    ZADD        key score member 
+    ZRIM        key member              (removes value in set)
+    ZINCRBY     key increment member    (incress by increment value)
+    ZRANGE      key start end           (will sort data from low ro high )
+    ZREVRANGE   key start end           (will sort data from low ro high )
+    ZRANKE      key value               (will result rank of that value )
+    ZREVRANKE   key value               (will result rev-rank of that value )
+    ZSCORE      key value               (will return score of the value given )
+    ZCOUNT      key min max             (will return count of members between min and max score)
+    ZRANGEBYSCORE   key min max off-ser 
+    ZRANGEBYLEX key min max
+    ZRIMBYRANK
+    ZRIMBYSCORE
+    ZRINBYLEX
+
+
+
+
+Search Types: (Week 2)
+1. Object Inspection 
+2. Faceted Search (Set Intersection)
+3. Hashed index or keys
+
+Object Inspection:
+get data to your code level and inspect very slow with huge data 
+
+Set Intersection:
+createing lists, sets, Sortedsets and filtering them using intersection
+
+Hashed index or keys:
+SHA-512 MD5
+RIPEMD160
+Key syntex:  hsf:has_hvalue
+
+
+Transaction:
+if cmd queued up and connection is lost, none of the cmds will be executed 
+
+MULTI       indicates start of a transaction 
+EXEC        will exec the commentds 
+DISCORD     will discord all existing commends in queue
+
+
+until unless EXEC is given all the cmds in transaction will queued up 
+MULTI in MULTI cmd is not possible 
