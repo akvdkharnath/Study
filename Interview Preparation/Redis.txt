@@ -1,3 +1,10 @@
+Redis: REmote DIctionary Server  (ANSI C language)
+redis-server start
+redis-server restart
+redis-server stop
+
+
+
 Conenect server: redis-cli -h host -p port -a password 
 
 
@@ -10,12 +17,39 @@ Redis:
 2. R/W operations are extremely fast
 3. Primary memory is in lesser in size and super costely
 4. can also be used as primary DB like SQL
+5. single threaded (DIS)
+6. Data replication is supported.
+7. We can use several data types here.
 
 Normal Database:
 1. Stores everything in secondary memory
 2. R/W operations are slow
 3. Secondary memory is in abundant in size 
 
+
+Memcached:
+1. Data replication is not supported.
+2. multi threaded (DIS)
+3. We can only single data types here.
+
+
+TTL -> time to live (gives in howmany sec key will expire)
+TYPE -> datatype
+EXPIRE -> helps to set expire to the key 
+Fsysnc() -> calling this function for every second will help us to retrive data loss till last but one second (durability of Redis be enhanced)
+
+SUNION- union of all the sets that are given.
+a: 1,2,3
+b: 3,4,5
+SUNION: 1,2,3,4,5
+
+SINTER- intersection of all the sets that are given.
+a: 1,2,3
+b: 3,4,5
+SUNION: 3
+
+Sharding: also called partitioning, refers to the data's splitting by the key. We use sharding to increase performance and to reduce the hit as well as memory load on a single resource.
+Replication: also called mirroring, refers to copying all the data. This helps to get high availability of reads. The hit rate on all the resources will reduce if you are reading from multiple replicas. But the memory requirement remains the same for all the resources.
 
 DataTypes:
 0. Keys:
@@ -156,3 +190,6 @@ DISCORD     will discord all existing commends in queue
 
 until unless EXEC is given all the cmds in transaction will queued up 
 MULTI in MULTI cmd is not possible 
+
+
+Fsysnc() -> calling this function for every second will help us to retrive data loss till last but one second (durability of Redis be enhanced)
