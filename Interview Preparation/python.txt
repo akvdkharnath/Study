@@ -73,6 +73,65 @@ error: Division by zero
 
 
 
+Memoization: 
+1. allows you to optimize a Python function by caching its output based on the parameters you supply to it
+2. It can be used to optimize the programs that use recursion
+3. @memoize_factorial
+
+memory = {}
+def memoize_factorial(f):
+     
+    # This inner function has access to memory
+    # and 'f'
+    def inner(num):
+        if num not in memory:
+            memory[num] = f(num)
+            print('result saved in memory')
+        else:
+            print('returning result from saved memory')
+        return memory[num]
+ 
+    return inner
+     
+@memoize_factorial
+def facto(num):
+    if num == 1:
+        return 1
+    else:
+        return num * facto(num-1)
+ 
+print(facto(5))
+print(facto(5)) # directly coming from saved memory
+
+-------------------------------------------------------------------
+
+getters: get the value, will not change value also called as accessors
+setters: set the value also called as mutators 
+
+self: key word is used to work with instance varibles 
+cls: key word is used to work with cls varibles
+
+@classmethod: is used on methods in class to when if we need to work with class varibles 
+@staticmethod: is used on methods in class when there is no need of both instance and class varibles 
+class student:
+    school = 'SVS'    // class varible 
+
+    def __init__(self, m1, m2):
+        self.m1 = m1     // m1,m2 are instance varibles 
+        self.m2 = m2
+
+    def avg(slef):     // instance method 
+        return (self.m1 + self.m2)/2
+
+    @classmethod
+    def getSchool(cls):  // class method
+        return (school)
+
+    @staticmethod
+    def getSatus(cls):  // static method
+        return ("school is running ")
+
+
 Small problems:
 Armstrong --> 153 = 1^3 + 5^3 + 3^3, 1634 = 1^4 + 6^4 + 3^4 + 4^4
 Fibonacci -->  0, 1, 1, 2, 3, 5, 8
@@ -83,6 +142,7 @@ swap two number without using third variable --> a=a-b, b=a+b, a=b-a
 [1, 3, 2] * 2 --> [1, 3, 2, 1, 3, 2]
 [::-1] -> reverse string
 
+https://stackabuse.com/differences-between-pyc-pyd-and-pyo-python-files/
 
 
 ---------------------------------------- OOPS ---------------------------------------------
