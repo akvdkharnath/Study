@@ -2,7 +2,6 @@ source code: high-level language is one that is understandable by us(humans)
 machine code: language in 0 and 1 
 byte code: intermediate code which is not machine code it can not understandable for processer but by PVM but its also in 0,1 
 
-
 Interpreter's and Compiler's are used to convert source code to machine code
 
 PVM: python virtual mechine 

@@ -1,5 +1,4 @@
 Need to check:
-1. Static and normal class 
 2. Abstract class and method
 3. func” vs “func()
 4. Lambda function

@@ -30,7 +30,9 @@ package --> is a folder with a set of python files (modules)
 
 .py files contain the source code of a program
 .pyc file contains the bytecode of your program
+
 PYTHONPATH is used for checking if the imported packages or modules are available in the existing directories
+special environment variable that provides guidance to the Python interpreter about where to find various libraries and applications
 
 *args is a special syntax used in the function definition to pass variable-length arguments.
 myFun('Hello', 'Welcome', 'to', 'GeeksforGeeks')
@@ -128,7 +130,7 @@ class student:
         return (school)
 
     @staticmethod
-    def getSatus(cls):  // static method
+    def getSatus():  // static method
         return ("school is running ")
 
 
@@ -232,3 +234,29 @@ HEAD: sends data but no response
 POST: mostly for inject data
 PATCH: Update data
 DELETE: delete data 
+
+
+
+
+def flatten_dict(dd, separator ='_', prefix =''):
+    return { prefix + separator + k if prefix else k : v
+             for kk, vv in dd.items()
+             for k, v in flatten_dict(vv, separator, kk).items()
+             } if isinstance(dd, dict) else { prefix : dd }
+
+
+Time complexity
+1. Loop(n)    O(n)
+2. Nested Loop  O(n^n)   ^n is number of loops 
+
+O(1)        Best
+O(logn)     Good
+O(n)        Ok
+O(nlogn)    Bad
+O(n!)       Worst
+O(c^n)      Worst
+O(n^c)      Worst
+
+
+Space complexity
+1
