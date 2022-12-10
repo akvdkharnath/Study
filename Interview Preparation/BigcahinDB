@@ -11,3 +11,8 @@ features:
 6. Public and Private servers 
 7. Open sorces 
 8. Traditional and BlockChain Stack
+
+
+These assets can be registered on BigchainDB in two ways
+1. By users in CREATE transactions
+2. Transferred (or updated) to other users in TRANSFER transactions 

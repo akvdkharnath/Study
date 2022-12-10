@@ -1,0 +1,10 @@
+I’ve had many difficult tasks throughout my career, 
+and looking back realize they were some of the most impactful because they allowed for rapid growth.
+out of which the best is handeling a project at my initial stages with out a mentor from my day 3 in profinnatioal crerrour
+from scrach its sounds funny today 
+at that time i use to see tutorials in first in morning and worked on my project in second session
+
+comming to recent days from past 2 months i am working on ONDC project its a gonv project which is like UPI in e-com
+it is tougest aurch i worked till date, which includes multiple protocalls, block chain, anysc APIs, call back URl's, 
+multi level data mapping 
+communicating with multiple 3rd party APIs 
