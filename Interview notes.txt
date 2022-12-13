@@ -3,46 +3,6 @@ Need to check:
 3. func” vs “func()
 4. Lambda function
 
-Tell me about yourself:
-my name is harnath and I am 23 years old,
-I graduated with an engineering degree in 2019 from KL University
-and was offered a Backend developer and from past 3 years I am as Backend full stack
-luckily till date I worked for startups that too product based company where I got a chance to develop products from scratch 
-I am good in dealing things with python, flask
-
-
-https://www.interviewbit.com/hr-interview-questions/
-
-and was offered an Backend developer intern position from Algonox,
-from where my career started 
-For the past 3 years, I’ve been working as a Backend developer at Algonox and then Eunimart
-I have some background in Azure in addition to that
-coming to my key skills
-I am good in developing things using python along with Flask or FastAPI frameworks
-I have experiencing in developing database and deploying solution at azure to certain extend 
-I am from Ongole, proud to from a city which is well names for cattle bred
-my father runes a small hardware store and my mother is a home maker, 
-on short note that's all about be
-
-
-You See Yourself in 5 Years:
-In five years, I want to complete the self learning of AL/ML from the course I have enrolled 
-and will actively looking on how to solve Realtime programs using my skills 
-Krish Naik
-
-
-I'm open to discussing, My salary requirements are flexible
-However, based on my previous salary, my knowledge of the industry, and my understanding 
-I would expect to receive something in the range of 16.5 to 17.
-
-
-I am looking out for an opportunity that allows me to work on interesting as well as challenging projects which allows me to learn new skills
-
-
-I quite often underestimate the time it will take to do smaller jobs, I have to rush to get things done. Sometimes I miss deadlines
-
-
-In my career till now I worked for StartUps as product eng but 
 
 
 Data definition language (DDL) --> CREATE, ALTER, DROP
@@ -89,7 +49,7 @@ select id,
 UNION removes duplicate records (where all columns in the results are the same), UNION ALL does not.
 
 HAVING --> clause in SQL is used to filter records in combination with the GROUP BY clause. It is different from WHERE, since the WHERE clause cannot filter aggregated records.
-DELETE --> statement is used to delete rows from a table.
+DELETE --> statement is used to delete rows from a table (Specific).
 TRUNCATE --> command is used to delete all the rows from the table and free the space containing the table.
 DROP --> command is used to remove an object from the database
 
@@ -118,3 +78,26 @@ db.COLLECTION_NAME.insertOne()
 Embedded Relationships: where we will have list of json for a same field
 Referenced Relationships: where we will have object ID here and real data will be in some other collection
 
+
+Need to look:
+index types of index 
+joints and types of joints 
+REstfull API
+
+sorting in python 
+commends for list and dic 
+API troffice 
+git commends 
+merge and concat in pandas 
+
+
+pands lo questions 
+
+Memory management in pyhton 
+filter, reduce 
+is multi tread parelly working 
+
+# sliding consept window 
+# tri 
+how hash maps works internal
+call by refernce and call by value 

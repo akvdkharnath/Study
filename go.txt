@@ -1,6 +1,7 @@
 # creating package 
 go mod init <package or folder name>
 
+var a,b,c= 9, 7.1, "interviewbit"
 
 # Python to go changes
 NONE                    nil
@@ -36,15 +37,52 @@ con := 10
 fallthrough: used to execute thr current case and next case in golang switch code 
 
 
+"false" is the default value of type "bool".
+GOPATH: environment variable specifies the location of the workspace. You must have to set this environment variable while developing Go code.
+GoROOT: variable determines where the Go SDK is located
+
+Pointers are those variables that hold the address of any variables
+
+* : This operator is called a dereferencing operator and is used for accessing the value in the address stored by the pointer.
+(value in the address)
+& : This operator is called the address operator and is used for returning the address of the variable stored in the pointer
+(address of the pointer)
+
+var x = 10   (x is a varible and 10 is the value in memory)
+var y = &x   (y is a pointer and address of x is in memory) and this will have z as its address
+
+String literals: are those variables storing string constants that can be a single character or that can be obtained as a result of the concatenation of a sequence of characters
+1. Raw string literals
+2. Interproted string literals
+
+goroutine: (Multi treading) is nothing but a function in Golang that usually runs concurrently or parallelly with other functions
+main function of the main package is considered the main goroutine
 
 
 
-adding a value to slice:
-append(slice_name, varible_name)
+Array lenght is required 
+Slice lenght is not required
+Go channel: is a medium using which goroutines communicate data values with each other. It is a technique that allows data transfer to other goroutines
+Channels are safe for concurrent access because they have blocking/locking mechanisms
 
-_ is a blank identifier
 
-def f1():
-    v1 _ local
-    def f2():
-        v2 not local
+copying a slice: 
+slice1 := []int{1, 2}
+slice2 := []int{3, 4}
+slice3 := slice1
+copy(slice1, slice2)
+fmt.Println(slice1, slice2, slice3)
+
+copying a map:
+map1 := map[string]bool{"Interview": true, "Bit": true}
+map2 := make(map[string]bool)
+for key, value := range map1 {
+	map2[key] = value
+}
+
+Shadowing: is a principle when a variable overrides a variable in a more specific scope. This means that when a variable is declared in an inner scope having the same data type and name in the outer scope, the variable is said to be shadowed. The outer variable is declared before the shadowed variable.
+
+byte and rune are two integer types that are aliases for uint8 and int32
+byte represents ASCII characters 
+single Unicode character which is UTF-8 encoded by default.
+Strings are immutable.

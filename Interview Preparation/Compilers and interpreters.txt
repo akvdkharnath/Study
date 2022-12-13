@@ -30,3 +30,19 @@ Compiler:
 3. fast overall execution time
 4. Object Code is generated
 Ex: C, C++, Java
+
+Scripting language
+1. interpreter-based language
+2. convert high-level instructions into machine language. (step by step)
+3. don’t need to compile these language
+4. don’t create any file types.
+5. easy to use and easy to write.
+Eg: Python, JavaScript, PHP
+
+programming language
+1. compiler-based language
+2. converting the full program into the machine language (at once).
+3. first need to compil
+4. will create .exc files 
+5. not easy to use and not easy to write.
+Eg: C, C++, Java 
