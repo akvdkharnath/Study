@@ -12,25 +12,20 @@ communicating with multiple 3rd party APIs
 
 
 Tell me about yourself:
-my name is harnath and I am 23 years old,
+my name is harnath and I am 24 years old,
 I graduated with an engineering degree in 2019 from KL University
-and was offered a Backend developer and from past 3 years I am as Backend full stack
+and was offered a Backend developer and from past 4 years I am as Backend full stack
 luckily till date I worked for startups that too product based company where I got a chance to develop products from scratch 
-I am good in dealing things with python, flask
-
-
-https://www.interviewbit.com/hr-interview-questions/
-
-and was offered an Backend developer intern position from Algonox,
-from where my career started 
-For the past 3 years, I’ve been working as a Backend developer at Algonox and then Eunimart
-I have some background in Azure in addition to that
-coming to my key skills
+from the first char of the project 
 I am good in developing things using python along with Flask or FastAPI frameworks
 I have experiencing in developing database and deploying solution at azure to certain extend 
 I am from Ongole, proud to from a city which is well names for cattle bred
 my father runes a small hardware store and my mother is a home maker, 
 on short note that's all about be
+
+
+https://www.interviewbit.com/hr-interview-questions/
+
 
 
 You See Yourself in 5 Years:
@@ -41,7 +36,7 @@ Krish Naik
 
 I'm open to discussing, My salary requirements are flexible
 However, based on my previous salary, my knowledge of the industry, and my understanding 
-I would expect to receive something in the range of 22.
+I would expect to receive something in the range of 22+.
 
 
 I am looking out for an opportunity that allows me to work on interesting as well as challenging projects which allows me to learn new skills
@@ -51,3 +46,53 @@ I quite often underestimate the time it will take to do smaller jobs, I have to 
 
 
 In my career till now I worked for StartUps as product eng but 
+
+
+
+
+
+How do you manage your workload?
+I prioritize my task by what is most important and urgent to least important and urgent. 
+If there are some tasks that I can assign to others, I will also delegate.
+
+
+What kind of work environment do you prefer?
+I am flexible to my work environment. I can adapt according to almost any situation 
+as i worked in start ups i am moulded to work at any kind of sistuation.
+
+Do you take your work home with you?
+I know the importance of getting work done in a timely manner. So when I need to, I will take work home with me if needed.
+
+
+How do you motivate your employees in tough times?
+I believe that as a leader, I have to be the one who is constantly driving an atmosphere of positivity and focus. 
+I make sure that I am acting and saying positive things about my employees. 
+I remind them daily of the goals and celebrate as we accomplish them.
+
+What do you think are important aspects of a team?
+To have a diverse group of people who have a basis of trust and respect for each other. 
+The communication level must be high and the ability to work together as a team.
+
+What was the least rewarding part of your previous position?
+Some of the paperwork that I would handle for another department on an occasional basis.
+
+
+How would you go about delivering bad news or a decision that will not be popular?
+I would state the news, the reasons behind the news/decision, and I would focus on the positives. 
+I would also take time to ask questions or feedback and answer accordingly.
+
+
+How do you establish rapport with a new employee?
+I will have an initial one on one meeting with the new employee to let them know what my expectations are and also learn about how they like to be managed. 
+That’s a way I will understand how to be effective when I communicate with them.
+
+
+How do you manage the performance of your employees?
+Me and the employee, together, will create achievable goals based on the company goals and their own goals. On a regular basis, I will give feedback to my employees on how they are performing.
+
+
+
+
+
+
+

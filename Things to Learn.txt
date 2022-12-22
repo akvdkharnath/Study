@@ -1,6 +1,34 @@
-1. DP 900
-2. DP 203
-3. Elasticsearch
-4. Logstash 
-5. 
+1. https://refactoring.guru/design-patterns/go    (Design patterns)
+2. post, put, patch difference
+3. difference between CI and CD
+4. Waterfall, Feature-Driven Development, Agile, Scrum, Extreme Programming (XP), Lean,  
+5. advance golang questions ()
+6. concurrency vs parallel programming
+7. concurrency vs multithreading
+8. AJAX Vs REST
+9. stateless vs stateful
+10. URI, URN, URL
+11. concept of statelessness in REST?
+12. Web API	Vs WCF (https://www.interviewbit.com/web-api-interview-questions/)
+13. REST API Vs RESTful API (https://www.interviewbit.com/web-api-interview-questions/)
+14. Indexing in DB
+15. AWS services (https://allcode.com/top-aws-services/)
+16. CORS
+
+
+
+
+
+
+
+
+
+
+Meta data for points:
+idm posis 
+functional projects  programming 
+accter pattren in golang 
+reciver
+brodcasts and different types of it 
+rest as statless 
 

@@ -1,3 +1,5 @@
+https://www.interviewbit.com/rest-api-interview-questions/
+
 WCF: (Windows Communication Foundation): It is a framework used for developing SOAP
 API: (Application Programming Interface)for both web browsers and web servers
 
@@ -43,3 +45,28 @@ CORS -> Cross - Origin resorce sharing
 by default application will not allow ajax request from different origin so we need to config cors to over come SOP
 
 ajax -> tech to call API asyncio using JS
+
+
+1xx - represents informational responses
+2xx - represents successful responses
+3xx - represents redirects
+4xx - represents client errors
+5xx - represents server errors
+
+Most commonly used status codes are:
+200 - success/OK
+201 - CREATED - used in POST or PUT methods.
+304 - NOT MODIFIED - used in conditional GET requests to reduce the bandwidth use of the network. Here, the body of the response sent should be empty.
+400 - BAD REQUEST - This can be due to validation errors or missing input data.
+401- UNAUTHORIZED - This is returned when there is no valid authentication credentials sent along with the request.
+403 - FORBIDDEN - sent when the user does not have access (or is forbidden) to the resource.
+404 - NOT FOUND - Resource method is not available.
+500 - INTERNAL SERVER ERROR - server threw some exceptions while running the method.
+502 - BAD GATEWAY - Server was not able to get the response from another upstream server.
+
+
+GET: This is used for fetching details from the server and is basically a read-only operation.
+POST: This method is used for the creation of new resources on the server.
+PUT: This method is used to update the old/existing resource on the server or to replace the resource.
+DELETE: This method is used to delete the resource on the server.
+PATCH: This is used for modifying the resource on the server.
