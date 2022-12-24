@@ -70,3 +70,25 @@ POST: This method is used for the creation of new resources on the server.
 PUT: This method is used to update the old/existing resource on the server or to replace the resource.
 DELETE: This method is used to delete the resource on the server.
 PATCH: This is used for modifying the resource on the server.
+
+PUT VS POST VS PATCH
+PUT:
+1. UPDATE operations
+2. updates whole resource
+3. idempotent
+4. High Bandwidth 
+
+PATCH:
+1. UPDATE operations
+2. updates part of the resource
+3. not idempotent
+4. Less Bandwidth 
+
+
+POST:
+1. CREATE operations
+2. create new resource
+3. not idempotent
+4. High Bandwidth 
+
+idempotent: is a property of some operations such that no matter how many times you execute them, you achieve the same result
