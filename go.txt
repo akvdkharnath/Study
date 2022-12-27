@@ -1,3 +1,7 @@
+
+GORM: https://gorm.io/docs/migration.html
+
+
 # creating package 
 go mod init <package or folder name>
 

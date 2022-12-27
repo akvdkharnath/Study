@@ -1,0 +1,106 @@
+Software Architecture :
+its a blueprint og building software 
+
+1. Layered Pattern
+2. Client-Server Pattern
+3. Event-Driven Pattern
+4. Microkernel Pattern
+5. Microservices Pattern
+
+Laye: red Pattern:
+    1. each layer has task to do 
+    2. each layer is independent
+    3. one can modify with out effecting other 
+    4.  a. Presentation layer (UI)
+        b. Business layer (Backend)
+        c. Application layer (communication between UI and Data)
+        d. Data layer (DB)
+
+    Ex: E-commerce web applications
+
+Client-Server Pattern:
+    1. it has server and multiple clinets 
+    2. Server will have data (DB, files) Client will request and get response 
+    Ex: Gmail, WWW, file sharing apps 
+
+Event-Driven Pattern:
+    1. its agile approach
+    2. after task events will be triggered
+
+    Ex: Notification system 
+
+Microkernel Pattern:
+    1. it has two blocks (core system and plug-in)
+    2. core system: it handles main functions and operations of application 
+    3. plug-in: softwares working on top of main application
+
+Microservices Pattern: 
+    1. small services all togeather makes an application 
+    2. each service works independently
+    3. modules are loosely coupled
+
+different design patterns:
+1. Model View Controller Pattern (MVC)
+2. Flyweight Pattern
+3. Factory pattern
+4. Singleton pattern
+5. Object Oriented Pattern
+6. Strategy Pattern
+7. Command Pattern
+8. Chain of Responsibility Pattern
+9. Abstract Factory Pattern
+10. Proxy Pattern
+11. Facade Pattern
+12. Observer Pattern
+13. Prototype Pattern
+14. Template Pattern
+15. Adapter Pattern
+16. Builder Pattern
+17. Prototype Pattern
+18. Decorator Pattern
+19. State Pattern
+
+--------------------------------------------------------------------------------------
+MVC: Model-View-Controller
+
+Model:
+1. Intract with DB
+2. Execute Business logic 
+
+
+View:
+1. Generates UI data 
+2. Prodess raw data as a out put 
+3. 
+
+Controller:
+1. takes User/client input and intracts with VIew and Model
+
+Format-1
+Packaging our code based on it’s layer
+application
+    models
+        user.go
+        course.go
+    controller
+        user.go
+        course.go
+    views
+        user.go
+        course.go
+
+Format-2
+packaging our code based on the resource
+application
+    user
+        model.go
+        controller.go
+        store.go
+        view.go
+    course
+        model.go
+        controller.go
+        store.go
+        view.go
+
+------------------------------------------------------------------------------------------------------------

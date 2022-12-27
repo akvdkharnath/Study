@@ -1,0 +1,146 @@
+
+
+Different types od DBMS languages:
+
+Data definition language (DDL):
+commands which are required to define the database.
+E.g., CREATE, ALTER, DROP, TRUNCATE, RENAME, etc.
+
+Data manipulation language (DML):
+commands which are required to manipulate the data present in the database.
+E.g., SELECT, UPDATE, INSERT, DELETE, etc.
+
+Data Control Language (DCL):  
+commands which are required to deal with the user permissions and controls of the database system.
+E.g., GRANT and REVOKE.
+
+Transaction Control Language (TCL):  
+commands which are required to deal with the transaction of the database.
+E.g., COMMIT, ROLLBACK, and SAVEPOINT.
+
+
+My SQL Advantages:
+1. free 
+2. Open sorce
+3. RDBS 
+4. fast and reliable, scalable
+5. easy to use 
+
+RDBMS (Relational Database Management System): used to maintain DB
+SQL: Structured Query Language
+
+SELECT - extracts data from a database
+UPDATE - updates data in a database
+DELETE - deletes data from a database
+INSERT INTO - inserts new data into a database
+CREATE DATABASE - creates a new database
+ALTER DATABASE - modifies a database
+CREATE TABLE - creates a new table
+ALTER TABLE - modifies a table
+DROP TABLE - deletes a table
+CREATE INDEX - creates an index (search key)
+DROP INDEX - deletes an index
+WHERE - is used to filter records.
+ORDER BY - sort the result-set in ascending or descending order.
+LIMIT - used to specify the number of records to return.
+LIKE - search for a specified pattern
+BETWEEN - selects values within a given range
+UNION - combine the result-set of two or more SELECT statements. (but only unique values )
+UNION ALL - combine the result-set of two or more SELECT statements. (but allows duplicates as well )
+GROUP BY - statement groups rows that have the same values into summary rows
+HAVING - works like ware condition for group by conditions (aggregate functions)
+EXISTS - 
+ANY - 
+ALL - 
+IFNULL - 
+COALESCE - 
+
+-- single line comments 
+/* */ - multi line comments 
+
+
+CASE -its acts like if condition 
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+
+% and _ are called as Wildcard Characters
+
+a% -  start with "a"
+%a -  ends with "a"
+%a% -  a in any position
+_a -  a in second position
+__a - a in third position
+a_  - starting with a and need to have atleast 2 char in word 
+a__  - starting with a and need to have atleast 3 char in word 
+a%b  - starts with a and ends with b
+
+
+INNER JOIN: common between A and b
+LEFT JOIN: Returns all records from the left table, and the matched records from the right table
+RIGHT JOIN: Returns all records from the right table, and the matched records from the left table
+CROSS JOIN: Returns all records from both tables
+SELF JOIN: joining same table 
+
+MIN()
+MAX()
+COUNT()
+AVG()
+SUM()
+substring(FIRST_NAME,1,3) --> select only 1 to 3 char in column
+INSTR(FIRST_NAME, BINARY'a') --> serch for first occr
+RTRIM(FIRST_NAME) --> rstrip()
+LTRIM(FIRST_NAME) --> lstrip()
+distinct () --> for unique
+length() --> len()
+REPLACE()
+CONCAT(FIRST_NAME, ' ', LAST_NAME)
+
+MOD (WORKER_ID, 2) <> 0 --> select only odd rows
+MOD (WORKER_ID, 2) = 0 --> select only even rows
+CURDATE() --> date
+NOW() --> time
+DATETIME() --> datetime
+TOP 10 --> select top 10 
+LIMIT --> select upto 10 from start 
+LIMIT n-1,1 to select 5th row n = 5 
+OFFSET rows_to_skip FETCH NEXT number_of_rows ROWS ONLY
+
+SELECT * INTO WorkerClone FROM Worker --> copy things from Worker to WorkerClone
+ 
+
+INTERSECT --> common records from two table
+MINUS --> different records
+
+select id, 
+       details->>'$.name' as browser_str,
+       details->'$.name' as browser_name
+       from users;
+
+->>  gives with " "
+-> normal string
+
+UNION removes duplicate records (where all columns in the results are the same), UNION ALL does not.
+
+HAVING --> clause in SQL is used to filter records in combination with the GROUP BY clause. It is different from WHERE, since the WHERE clause cannot filter aggregated records.
+DELETE --> statement is used to delete rows from a table (Specific).
+TRUNCATE --> command is used to delete all the rows from the table and free the space containing the table.
+DROP --> command is used to remove an object from the database
+
+
+
+
+
+
+
+
+Index: 
+1. faster retrieval of records on a database table
+2. applied on columns 
+
+PRIMARY KEY - clustered index
+rest all are non-clustered index
+

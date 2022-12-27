@@ -1,0 +1,47 @@
+
+
+
+use DATABASE_NAME --> create if not exist
+db                --> get current db
+show dbs          --> list of db's
+db.movie.insert({"name":"tutorials point"})   --> insert document(row) in movie collection(table)
+db.dropDatabase() --> drop current db
+db.createCollection(name, options) --> create collection
+capped --> Capped collection is a fixed size collection that automatically overwrites its oldest entries when it reaches its maximum size
+db.collection_name.drop()
+db.COLLECTION_NAME.insert(document) document = [{}, {}] or {}
+db.COLLECTION_NAME.insertMany()
+db.COLLECTION_NAME.insertOne()
+.limit(10)  --> top 10
+.skip(2) --> will skip first 2
+.sort({KEY:1}) --> 1 for ascending  and -1 for descending 
+.createIndex({KEY:1}) --> 1 for ascending  and -1 for descending
+.dropIndex()
+.dropIndexs()
+.getIndexes()
+
+Embedded Relationships: where we will have list of json for a same field
+Referenced Relationships: where we will have object ID here and real data will be in some other collection
+
+
+Need to look:
+index types of index 
+REstfull API
+
+sorting in python 
+commends for list and dic 
+API troffice 
+git commends 
+merge and concat in pandas 
+
+
+pands lo questions 
+
+Memory management in pyhton 
+filter, reduce 
+is multi tread parelly working 
+
+# sliding consept window 
+# tri 
+how hash maps works internal
+call by refernce and call by value 
