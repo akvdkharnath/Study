@@ -14,12 +14,8 @@
 15. AWS services (https://allcode.com/top-aws-services/)
 16. CORS
 17. Rest Vs Graph API
-
-
-
-
-
-
+18. Websockets Vs WebHooks 
+19. 
 
 
 

@@ -135,12 +135,25 @@ DROP --> command is used to remove an object from the database
 
 
 
+index is an on-disk structure associated with a table or view that speeds retrieval of rows from the table or view
 
-
-Index: 
+Uses:
 1. faster retrieval of records on a database table
 2. applied on columns 
 
 PRIMARY KEY - clustered index
 rest all are non-clustered index
+Types of Index
+Clustered indexes:
+1. used to store and sort data in table
+2. Only one Clustered indexe is allowed for table (PK) 
+3. table is called a clustered table
 
+when you create a table with a UNIQUE constraint, Database Engine automatically creates a nonclustered index
+if you configure a PRIMARY KEY, Database Engine automatically creates a clustered index
+trying to create another PK then Database Engine automatically creates a non clustered index PK
+
+
+Table can not have multiple PK but we can achive this using composite primary key
+
+composite key: made by the combination of two or more columns in a table that can be used to uniquely identify each row in the table when the columns are combined uniqueness of a row is guaranteed, but when it is taken individually it does not guarantee uniqueness

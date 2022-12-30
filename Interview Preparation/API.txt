@@ -58,7 +58,7 @@ Most commonly used status codes are:
 201 - CREATED - used in POST or PUT methods.
 304 - NOT MODIFIED - used in conditional GET requests to reduce the bandwidth use of the network. Here, the body of the response sent should be empty.
 400 - BAD REQUEST - This can be due to validation errors or missing input data.
-401- UNAUTHORIZED - This is returned when there is no valid authentication credentials sent along with the request.
+401 - UNAUTHORIZED - This is returned when there is no valid authentication credentials sent along with the request.
 403 - FORBIDDEN - sent when the user does not have access (or is forbidden) to the resource.
 404 - NOT FOUND - Resource method is not available.
 500 - INTERNAL SERVER ERROR - server threw some exceptions while running the method.
