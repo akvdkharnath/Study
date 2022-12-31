@@ -1,0 +1,29 @@
+Cloud Computing Services 
+1. IAAS (will get infra from provider and we need to develop software)
+2. PAAS (will get infra with platform with multiple frame works we focus on application development)
+3. SAAS (will get software as a solution we need to pay and use it )
+
+
+SSO (Single Sign On): authentication schema allowes user to sign in to different applications using same ID
+flow of SSO:
+
+How to design a secure web API access:
+1. Token based authentication
+2. HMAC (Hash-based Message Authentication Code) authentication
+
+Token based authentication Flow:
+1. enter password 
+2. if valid recive token 
+3. send request using token 
+4. if its a valid token recive response 
+
+HMAC:
+1. request API key 
+2. receive API key 
+3. Generate HMAC A key or signature at client side 
+4. send request using generated signature
+5. Generate HMAC B key or signature at Server side
+6. compares HMAC A and HMAC B if valid send respons 
+
+
+
