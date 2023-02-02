@@ -1,5 +1,7 @@
 https://www.interviewbit.com/rest-api-interview-questions/
 
+-----------------------------------------------------------
+
 WCF: (Windows Communication Foundation): It is a framework used for developing SOAP
 API: (Application Programming Interface)for both web browsers and web servers
 
@@ -13,7 +15,7 @@ WCF:
        2. No MVC features
        3. HTTP, UDP, custom transport
 
-
+-----------------------------------------------------------
 
 SOAP: (Simple Object Access Protocol)
 framework used to exchange data from different applications developed in different languages
@@ -34,6 +36,52 @@ its advanced version of SOAP to transfer data in many types
        5. XML, JSON, YAML, Plain Text ect,.
        6. HTTP
 
+principles:
+1. Client-server model
+2. Uniform interface (every one must follow HTTP or HTTPS only)
+3. Stateless
+4. Layered system
+5. Cacheable
+
+-----------------------------------------------------------
+
+RESTFul:
+services that allow rest architectuer are called RESTFul applications
+1. easy to test 
+2. Communication is easy 
+3. light weight and easy maintained
+
+
+Addressing:
+processing of locating resources in server 
+<protocol>://<application-name>/<type-of-resorce>/<id or version>
+
+URL (Uniform Resource Locator)
+string that denotes the location of a given resource on the Internet: a web page, an image, a mailbox, etc
+identify resorce by only location
+<schema>://<domain>:<port>/path/params/anchor
+
+URI (Uniform Resource Identifier)
+string used to identify a resource on internect by name or location  ocation or both 
+
+URN (Uniform Resource Name)
+string used to identify a resource on internect by name 
+
+
+Messaging:
+the process of client sneding and server habdeling request that all Communication is called Messaging
+
+idempotent: 
+is a property of some operations such that no matter how many times you execute them, you achieve the same result
+
+cache-control Headers:
+helps to control ability of cache data 
+
+public: where both client and server can  cache
+private: only client can cache 
+no-store: on this type browsers not allowed to pull cache and they must pull from client
+
+-----------------------------------------------------------
 
 XML -> used to transfer data its like HTML
 JSON -> used to transfer data its like dic
@@ -63,6 +111,7 @@ Most commonly used status codes are:
 404 - NOT FOUND - Resource method is not available.
 500 - INTERNAL SERVER ERROR - server threw some exceptions while running the method.
 502 - BAD GATEWAY - Server was not able to get the response from another upstream server.
+503 - SERVICE UNAVAILABLE - server was unable to process the request due to maintenance, overloading, or another temporary interference.
 
 
 GET: This is used for fetching details from the server and is basically a read-only operation.
@@ -70,8 +119,10 @@ POST: This method is used for the creation of new resources on the server.
 PUT: This method is used to update the old/existing resource on the server or to replace the resource.
 DELETE: This method is used to delete the resource on the server.
 PATCH: This is used for modifying the resource on the server.
+OPTIONS: This method fetches all the various HTTPS that are supported
 
 PUT VS POST VS PATCH
+
 PUT:
 1. UPDATE operations
 2. updates whole resource
@@ -84,11 +135,9 @@ PATCH:
 3. not idempotent
 4. Less Bandwidth 
 
-
 POST:
 1. CREATE operations
 2. create new resource
 3. not idempotent
 4. High Bandwidth 
 
-idempotent: is a property of some operations such that no matter how many times you execute them, you achieve the same result

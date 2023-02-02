@@ -5,8 +5,6 @@
 6. concurrency vs parallel programming
 7. concurrency vs multithreading
 8. AJAX Vs REST
-9. stateless vs stateful (https://www.geeksforgeeks.org/difference-between-stateless-and-stateful-protocol/)
-10. URI, URN, URL (https://auth0.com/blog/url-uri-urn-differences/)
 11. concept of statelessness in REST?
 12. Web API	Vs WCF (https://www.interviewbit.com/web-api-interview-questions/)
 13. REST API Vs RESTful API (https://www.interviewbit.com/web-api-interview-questions/)
@@ -25,4 +23,7 @@ functional projects  programming
 accter pattren in golang 
 reciver
 brodcasts and different types of it 
-rest as statless 
+
+https://blog.hubspot.com/website/backend-interview-questions
+https://www.fullstack.cafe/blog/backend-developer-interview-questions
+https://www.fullstack.cafe/blog/solution-architect-interview-questions

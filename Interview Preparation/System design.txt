@@ -1,3 +1,28 @@
+Content:
+1. Memory Allocation
+2. Cloud Computing Services
+3. SSO
+
+DRY (Don't Repeat Yourself) principle is a software development principle that states that developers should not duplicate code
+DIE (Duplication Is Evil) 
+
+
+
+memory is managed by the Python manager
+Allocation: The procedure of providing memory to objects
+1. Static Memory Allocation
+2. Dynamic Memory Allocation
+
+Static Memory Allocation:
+1. memory allocation happens at the compile time (Ex: C, C++)
+2. we cannot use the memory again in the further program
+3. Stack data structure is used to store the static memory
+
+Dynamic Memory Allocation:
+1. memory allocation happens at the run time
+2. can free update heap 
+3. Heap data structure is used to store the dynamic memory
+
 Cloud Computing Services 
 1. IAAS (will get infra from provider and we need to develop software)
 2. PAAS (will get infra with platform with multiple frame works we focus on application development)
@@ -17,7 +42,7 @@ Token based authentication Flow:
 3. send request using token 
 4. if its a valid token recive response 
 
-HMAC:
+HMAC (Hash-based Message Authentication Code):
 1. request API key 
 2. receive API key 
 3. Generate HMAC A key or signature at client side 
@@ -27,3 +52,16 @@ HMAC:
 
 
 
+
+
+CA: if particular information cannot be guaranteed to be up to date due to network partitioning
+AC: availability over consistency, the system will always process the query and try to return the most recent available
+
+RDBMS(SQL) choose consistency over availability,
+NoSQL: choose availability over consistency.
+
+scle + micro service we can not achibe CAP at a time
+
+
+
+https://www.linkedin.com/in/%F0%9F%90%8Dharnath-atmakuri-67b948124/
