@@ -8,7 +8,6 @@
 11. concept of statelessness in REST?
 12. Web API	Vs WCF (https://www.interviewbit.com/web-api-interview-questions/)
 13. REST API Vs RESTful API (https://www.interviewbit.com/web-api-interview-questions/)
-14. Indexing in DB
 15. AWS services (https://allcode.com/top-aws-services/)
 16. CORS
 17. Rest Vs Graph API

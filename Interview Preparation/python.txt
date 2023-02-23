@@ -195,6 +195,11 @@ Multiprocessing:
 Multiprocessing is a system that has more than one or two processors. 
 In Multiprocessing, CPUs are added for increasing the computing speed of the system. 
 Because of Multiprocessing, There are many processes are executed simultaneously. 
+(if there are 2 process created you can see 3 (main + 2 created) process in task manger)
+each processes will have there own memory(address apace) and by default memory shearing is not possible 
+need to use Interprocess Communication (IPC) to share data between process
+
+High weight
 Multiprocessing is classified into two categories:
 1. Symmetric Multiprocessing
 2. Asymmetric Multiprocessing
@@ -203,6 +208,8 @@ Multithreading:
 Multithreading is a system in which multiple threads are created of a process for increasing the computing speed of the system. 
 In multithreading, many threads of a process are executed simultaneously 
 and process creation in multithreading is done according to economical.
+Global Interpreter Lock
+Light weight
 
 lock.acquire() --> to lock a thread
 lock.release() --> to upload a thread

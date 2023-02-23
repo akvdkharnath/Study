@@ -141,3 +141,7 @@ POST:
 3. not idempotent
 4. High Bandwidth 
 
+
+CORS:
+
+
