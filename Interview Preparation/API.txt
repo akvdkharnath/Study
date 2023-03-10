@@ -141,7 +141,23 @@ POST:
 3. not idempotent
 4. High Bandwidth 
 
+---------------------------------------------------------------------------
+https://www.youtube.com/watch?v=LtpJup6vcS4
+https://www.youtube.com/watch?v=uRcnaI8Hnzg
 
-CORS:
+python own server it self is not supported for prod and can only process single request at a time 
+to over come this we use WSGI or ASGI
 
+WSGI: Web Server Gateway Interface 
+PEP 3333
+framework: Django, Flask, bottle
+Eg: Gunicorn, uWSGI, apache
+No async and await 
 
+ASGI: Asynchronous Server Gateway Interface
+framework: FastAPI
+Eg: uvicorn, hypercorn
+process lot more request than WSGI
+I/o operations faster
+
+Workers = (2 * CPU cores) + 1
