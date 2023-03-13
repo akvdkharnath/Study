@@ -144,20 +144,71 @@ POST:
 ---------------------------------------------------------------------------
 https://www.youtube.com/watch?v=LtpJup6vcS4
 https://www.youtube.com/watch?v=uRcnaI8Hnzg
+https://www.youtube.com/playlist?list=PLLz6Bi1mIXhEE3NEaLz3xNn7JHBHNb34I
 
 python own server it self is not supported for prod and can only process single request at a time 
-to over come this we use WSGI or ASGI
+to over come this we use WSGI or ASGI they will provide Workers and each worker can process a request at a time 
 
 WSGI: Web Server Gateway Interface 
 PEP 3333
 framework: Django, Flask, bottle
-Eg: Gunicorn, uWSGI, apache
+Eg: Gunicorn, uWSGI, apache (mod_wsgi, mod_python)
 No async and await 
+
+Gunicorn:
+Easy Setup
+Reliable
+Easy Config
+Light weight
+Fast
+Simple
+Don't run on windows
+no need to proxy
+good for better loads
+
+
+uWSGI:
+Easy Setup
+Faster
+Complex Config
+runs separately from your web server (so as not to overload your web server processes)
+overhead
+Don't run on windows
+need to proxy from your main web server to uWSGI
+mostely used while using NGINX, Apache, Cherokee
+
+
+mod_wsgi:
+run on windows 
+mostely used while using apache server 
+
+
+
 
 ASGI: Asynchronous Server Gateway Interface
 framework: FastAPI
-Eg: uvicorn, hypercorn
+Eg: uvicorn, hypercorn, daphne
 process lot more request than WSGI
 I/o operations faster
 
 Workers = (2 * CPU cores) + 1
+
+uvicorn:
+Fastest
+its top of UVLoop
+supports WebSockets (HTTP/1.1)
+3w - 2.5k RPS
+
+hypercorn:
+its top of Quart but can use UVLoop
+supports WebSockets (HTTP/2.0, HTTP/1.0)
+3w - 1.7k RPS
+
+
+daphne:
+its top of Twisted
+supports WebSockets (HTTP/2.0)
+3w - 1.7k RPS
+
+
+Uvicorn achieved roughly 40% more throughput
