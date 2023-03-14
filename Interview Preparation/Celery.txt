@@ -1,0 +1,18 @@
+Celery is an open-source Python library which is used to run the tasks asynchronously
+
+Advantages:
+1. Open-source Library
+2. Straight Forward Installation
+3. Scheduling
+4. Broker Support
+5. Easy Integration 
+6. Fast 
+
+
+Producers: that manages the web requests. tasks are pushed in to queues
+Consumer: that manages the worker nodes, take task from queues and process them 
+Queue - It is basically a message broker which acts as a bridge between producer and consumer
+
+
+Celery daemon: act as EDA
+Celerybeat: act as scheduler 
