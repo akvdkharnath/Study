@@ -1,7 +1,6 @@
 1. https://refactoring.guru/design-patterns/go    (Design patterns)
 3. difference between CI and CD (https://www.guru99.com/continuous-integration-vs-delivery-vs-deployment.html)
 4. Waterfall, Feature-Driven Development, Agile, Scrum, Extreme Programming (XP), Lean,  
-5. advance golang questions ()
 6. concurrency vs parallel programming
 7. concurrency vs multithreading
 8. AJAX Vs REST
@@ -12,7 +11,7 @@
 16. CORS
 17. Rest Vs Graph API
 18. Websockets Vs WebHooks 
-19. 
+19. Virtualization Vs Containerization
 
 
 

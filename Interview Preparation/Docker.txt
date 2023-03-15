@@ -1,14 +1,73 @@
-docker run <image name> --> will run selected image
+Docker: its solves problem of having same set of congigarations in all the env's using containers
 
+Docker Benefits:
+1. easy deployment
+2. portability 
+3. version control
+4. Isolation
+
+Docker Client: UI to intract eg: CMD, Terminal, powershell 
+
+Docker File: its the guid or rule book to create docker image 
+
+Docker Image: there are templates used to create docker containers
+
+Container: running instances of images 
+
+Docker File -> Docker Image -> Container
+
+Dangling Images: there are the images assocated with a containers 
+
+Docker Compose: its a tool to defin and run multiple-containers docker application
+uses yaml files to config 
+
+Docker Volumes: there are spaces allocated to containers to save data 
+basically if no volume is specified containers will allocate space for data in side them so when ever we delete containers data will also be deleted 
+
+Volumes Benefits:
+1. decouple Container and Storage
+2. Share same storage between different containers
+3. deleting containers will not delete data in it 
+
+-------------------------------- CMD -------------------------------
+
+Basic:
+service docker start 
+service docker stop 
+--help
+docker system df --> space and stacks of docker  
+docker system prune  --> will remove all unused images 
+
+Images:
 docker image ls  --> to get list of images in current folder
-
 docker images    --> to get list of images in current folder
+docker run <image name>     --> will run selected image
+docker pull <image name>    --> will pull lates image
+docker rmi <image id>       --> will delete image based on image id 
+docker rmi -f <image id>    --> will delete image based on image id in force mode (even it is running)
+docker build -t <image nme> .       --> to create a new image with selected name using docker file
+docker build -t <image nme>:<tag> . --> to create a new image with selected name and tag using docker file
 
-docker rmi <image id> --> will delete image based on image id 
 
-docker rmi -f <image id> --> will delete image based on image id in force mode (even it is running)
+Containers:
+docker ps        --> list of containers
 
-docker build -t <image nme> . --> to create a new image with selected name using docker file
+
+Docker Compose:
+docker-compose config  --> it will validate compose file 
+docker-compose build   --> to buld the Container
+docker-compose up      --> to start the Container
+docker-compose down    --> to down the Container
+docker-compose up --scale <service name>=<number of instances>  --> helps to scale perticular service scale up and down 
+
+
+Volumes:
+docker volume create <name>
+docker volume inspect <name>   --> details for a specific volume 
+docker volume prune            --> removes all unused volumes 
+docker volume rm <name>
+
+
 
 Push image to docker hub
 
@@ -17,13 +76,3 @@ docker tag <python image>/<tag name> <repo name>/<image name>
 push <repo name>/<image name>
 
 pull <repo name>/<image name>
-
-
-
-
-1. develop dockerFile
-2. build image from docjerFiler
-3. create repo in docker
-4. push image 
-5. pull image
-6. run image
