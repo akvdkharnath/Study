@@ -1,0 +1,11 @@
+lsof -t -i:5672     --> to get PID of port
+kill -9 360575      --> kill port based on PID
+
+
+ip a   --> internal IP address
+ip r   --> default gateway IP address run
+systemd-resolve --status | grep Current    --> currently used DNS server IP address execute
+
+sudo systemctl enable nginx
+sudo systemctl start nginx
+sudo systemctl status nginx

@@ -10,11 +10,19 @@ Docker Client: UI to intract eg: CMD, Terminal, powershell
 
 Docker File: its the guid or rule book to create docker image 
 
-Docker Image: there are templates used to create docker containers
+Docker Image: there are templates/blueprints used to create docker containers
 
 Container: running instances of images 
 
 Docker File -> Docker Image -> Container
+
+
+Layers in Images:
+1. Parent Image: includes the os layer & runtime layer
+2. Source code layer
+3. dependencies layer
+4. CMD Layer
+
 
 Dangling Images: there are the images assocated with a containers 
 
