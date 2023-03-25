@@ -16,11 +16,6 @@
 
 
 Meta data for points:
-idm posis 
-functional projects  programming 
-accter pattren in golang 
-reciver
-brodcasts and different types of it 
 
 https://blog.hubspot.com/website/backend-interview-questions
 https://www.fullstack.cafe/blog/backend-developer-interview-questions

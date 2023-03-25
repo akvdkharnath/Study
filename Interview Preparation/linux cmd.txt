@@ -1,3 +1,53 @@
+Linux Directory Commands:
+pwd        --> display the location of the current working directory
+mkdir      --> create a new directory
+rmdir      --> remove a directory
+ls         --> list
+cd <path>  --> change the current directory
+cp <existing file name> <new file name>     --> copy a file or directory
+mv <file name> <directory path>             --> move file 
+
+Linux File commands:
+touch <file name>               --> created empty file
+touch <file1 name> <file1 name> --> created empty files 
+cat <file name>                 --> view the file 
+tac <file name>                 --> view the file reverse order 
+more <file name>                --> view the very large file
+rm <file name>                  --> delete the file 
+head <file name>                --> view top 10 lines of file 
+tail <file name>                --> view bottom 10 lines of file
+
+Linux User Commands:
+su <user name>       --> provides administrative access to another user
+id                   --> display the user ID (UID) and group ID (GID)
+useradd <username>   --> create new user 
+passwd <username>    --> create user password
+locate <file name>   --> search a file by file name
+df                   --> display disk space 
+du <file path>       --> display file space            
+ip a                 --> get IP
+ip addr              --> get IP
+
+
+Vi Editor Commands:
+vi <file name>   --> to open a file
+i + Enter        --> insert mode 
+:wq + Enter      --> save and quit 
+:w + Enter       --> save
+:q + Enter       --> quit
+:q! + Enter      --> quit and discard changes 
+
+j	--> To move down
+k	--> To move up
+h	--> To move left
+l	--> To move right
+G	--> Will direct you at the last line of the file
+``	--> Will direct you to your last position in the file
+x	--> Delete the current character
+
+
+
+
 lsof -t -i:5672     --> to get PID of port
 kill -9 360575      --> kill port based on PID
 
@@ -12,5 +62,5 @@ sudo systemctl status nginx
 
 touch <file name>  --> to create a file 
 mkdir <folder name> --> to create a folder
-vi <file name>   --> to open a file 
+ 
 :q! + Enter      --> close file opned by wim 

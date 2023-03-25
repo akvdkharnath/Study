@@ -21,9 +21,13 @@ git tag                  --> get list of tags
 git tag <tagname>        --> create new tags 
 git checkout -b <branch name> --> creates a new local branch using the current branch 
 git stash                --> command temporarily stores all the modified tracked files
-git stash pop            --> apply recent stash 
+git stash save <message> --> command temporarily stores all the modified tracked files with the given comment 
+git stash -u             --> stash only untracked files
+git stash pop            --> apply recent stash to the current code and deleted the stash 
+git stash apply          --> apply recent stash to the current code and keeps the stash 
 git stash list           --> list all the stash things
 git stash drop           --> discards the most recently stashed changeset
+git stash branch <branch_name> <stash_id>  --> Create a new branch to apply your stashed changes  and then delete that stash 
 
 
 
