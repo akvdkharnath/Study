@@ -9,3 +9,8 @@ systemd-resolve --status | grep Current    --> currently used DNS server IP addr
 sudo systemctl enable nginx
 sudo systemctl start nginx
 sudo systemctl status nginx
+
+touch <file name>  --> to create a file 
+mkdir <folder name> --> to create a folder
+vi <file name>   --> to open a file 
+:q! + Enter      --> close file opned by wim 

@@ -1,0 +1,29 @@
+# set github config 
+git config --global user.name "Your Name"
+git config --global user.email "youremail@yourdomain.com"
+git config --list
+
+
+
+git init <folder path>   --> used to start a new repository
+git clone <git url>      --> obtain a repository from an existing URL
+git add <file name>      --> adds a file to the staging area
+git add *                --> adds one or more to the staging area
+git commit -m <message>  --> commit message
+git diff <first_branch> <seconf_brnach> --> checks differences between the two branches
+git reset <commit>       --> undoes all the commits after the specified commit and preserves the changes locally.
+git reset –hard <commit> --> discards all history and goes back to the specified commit
+git status               --> checks status 
+git rm <file path>       --> removed the file and slach them 
+git log                  --> get logs 
+git show <commit>        --> shows changes for the specific commit 
+git tag                  --> get list of tags 
+git tag <tagname>        --> create new tags 
+git checkout -b <branch name> --> creates a new local branch using the current branch 
+git stash                --> command temporarily stores all the modified tracked files
+git stash pop            --> apply recent stash 
+git stash list           --> list all the stash things
+git stash drop           --> discards the most recently stashed changeset
+
+
+
