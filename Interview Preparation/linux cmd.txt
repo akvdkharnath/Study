@@ -50,7 +50,7 @@ x	--> Delete the current character
 
 lsof -t -i:5672     --> to get PID of port
 kill -9 360575      --> kill port based on PID
-
+lsof -i :80         --> to get list of services running on the port 
 
 ip a   --> internal IP address
 ip r   --> default gateway IP address run

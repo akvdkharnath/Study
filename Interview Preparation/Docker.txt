@@ -58,7 +58,9 @@ docker build -t <image nme>:<tag> . --> to create a new image with selected name
 
 
 Containers:
-docker ps        --> list of containers
+docker ps                               --> list of containers
+docker exec -it <container id> bash     --> login into containers
+docker logs <container id> --follow     --> open logs of a container
 
 
 Docker Compose:
@@ -67,6 +69,10 @@ docker-compose build   --> to buld the Container
 docker-compose up      --> to start the Container
 docker-compose down    --> to down the Container
 docker-compose up --scale <service name>=<number of instances>  --> helps to scale perticular service scale up and down 
+docker-compose logs --tail=200 -f <container name>        # ex: downstream
+docker-compose up -d --force-recreate  <container name>    # ex: downstream
+docker-compose pull <container name>
+docker-compose down --remove-orphans 
 
 
 Volumes:

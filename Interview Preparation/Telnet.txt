@@ -1,0 +1,22 @@
+Telnet:
+
+1. Command line tool to access remote systems 
+2. Client Server protocal (Bidirectional)
+3. runs on port 23
+
+
+telnet <ip address>  --> will open a session of remort system 
+telnet <ip address> <port>  --> this will check given port is open or not in remort system 
+
+
+Telnet FLow:
+Telnet Terminal --> Telnet Client --> Internet --> Telnet Server --> Pseudo Termial --> Application
+
+Advantages:
+1. Super fast 
+2. Bidirectional
+3. supports all os
+
+dis-Advantages:
+1. not at all secure 
+2. super old 
