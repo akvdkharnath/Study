@@ -55,13 +55,15 @@ docker rmi <image id>       --> will delete image based on image id
 docker rmi -f <image id>    --> will delete image based on image id in force mode (even it is running)
 docker build -t <image nme> .       --> to create a new image with selected name using docker file
 docker build -t <image nme>:<tag> . --> to create a new image with selected name and tag using docker file
-
+docker image prune          --> will remove unwanted images 
 
 Containers:
 docker ps                               --> list of containers
 docker exec -it <container id> bash     --> login into containers
 docker logs <container id> --follow     --> open logs of a container
-
+docker kill $(docker ps -q)             --> kill all containers at a time 
+docker container prune                  --> will remove unwanted container 
+docker inspect <container id> -f "{{json .NetworkSettings.Networks}}"  --> to get assocated networks for container
 
 Docker Compose:
 docker-compose config  --> it will validate compose file 
@@ -73,14 +75,14 @@ docker-compose logs --tail=200 -f <container name>        # ex: downstream
 docker-compose up -d --force-recreate  <container name>    # ex: downstream
 docker-compose pull <container name>
 docker-compose down --remove-orphans 
-
+docker-compose up --force-recreate
 
 Volumes:
 docker volume create <name>
 docker volume inspect <name>   --> details for a specific volume 
 docker volume prune            --> removes all unused volumes 
 docker volume rm <name>
-
+docker volume prune            --> will remove unwanted container 
 
 
 Push image to docker hub

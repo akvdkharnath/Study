@@ -36,6 +36,13 @@ i + Enter        --> insert mode
 :w + Enter       --> save
 :q + Enter       --> quit
 :q! + Enter      --> quit and discard changes 
+:<start_line_number>,<end_line_number>d   --> will delete lines in the range 
+
+
+Python:
+python -m site  --> path of PIP packages 
+which python    --> path of Interpriter 
+
 
 j	--> To move down
 k	--> To move up
@@ -46,8 +53,6 @@ G	--> Will direct you at the last line of the file
 x	--> Delete the current character
 
 
-
-
 lsof -t -i:5672     --> to get PID of port
 kill -9 360575      --> kill port based on PID
 lsof -i :80         --> to get list of services running on the port 
@@ -56,11 +61,15 @@ ip a   --> internal IP address
 ip r   --> default gateway IP address run
 systemd-resolve --status | grep Current    --> currently used DNS server IP address execute
 
-sudo systemctl enable nginx
-sudo systemctl start nginx
-sudo systemctl status nginx
+sudo systemctl enable <service name> Ex: postgres, nginx
+sudo systemctl start <service name>
+sudo systemctl status <service name>
+sudo systemctl stop <service name>
+sudo systemctl restart <service name>
 
-touch <file name>  --> to create a file 
+find / -name "<file name>" Ex: postgresql.conf
+
+touch <file name>   --> to create a file 
 mkdir <folder name> --> to create a folder
- 
-:q! + Enter      --> close file opned by wim 
+code <file name>    --> to open file in vs code   
+:q! + Enter         --> close file opned by wim 

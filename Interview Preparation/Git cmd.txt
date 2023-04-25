@@ -19,7 +19,7 @@ git log                  --> get logs
 git show <commit>        --> shows changes for the specific commit 
 git tag                  --> get list of tags 
 git tag <tagname>        --> create new tags 
-git checkout -b <branch name> --> creates a new local branch using the current branch 
+git checkout -b <branch name> --> creates a new local branch using thde current branch 
 git stash                --> command temporarily stores all the modified tracked files
 git stash save <message> --> command temporarily stores all the modified tracked files with the given comment 
 git stash -u             --> stash only untracked files
