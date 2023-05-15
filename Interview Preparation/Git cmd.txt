@@ -28,6 +28,6 @@ git stash apply          --> apply recent stash to the current code and keeps th
 git stash list           --> list all the stash things
 git stash drop           --> discards the most recently stashed changeset
 git stash branch <branch_name> <stash_id>  --> Create a new branch to apply your stashed changes  and then delete that stash 
-
+git push --set-upstream origin <branch name> --> creates a new origin branch from local branch
 
 

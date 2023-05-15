@@ -37,7 +37,8 @@ i + Enter        --> insert mode
 :q + Enter       --> quit
 :q! + Enter      --> quit and discard changes 
 :<start_line_number>,<end_line_number>d   --> will delete lines in the range 
-
+:gg              --> cursor to first line
+:G               --> cursor to last line
 
 Python:
 python -m site  --> path of PIP packages 
