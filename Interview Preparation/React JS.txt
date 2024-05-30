@@ -1,0 +1,69 @@
+What is React and why would you use it instead of other JavaScript frameworks?
+Answer:
+React is a JavaScript library developed by Facebook for building user interfaces, particularly for single-page applications where you need a fast response to data changes. React allows developers to create large web applications that can update data without reloading the page. Its key features include virtual DOM, component-based architecture, and JSX.
+
+React is preferred over other frameworks like Angular or Vue.js when you need a flexible and efficient solution with a rich ecosystem and strong community support. Its component-based architecture makes it easier to reuse code, and its performance is enhanced by the virtual DOM.
+
+2. Explain the Virtual DOM. How does React use the Virtual DOM to render UI?
+Answer:
+The Virtual DOM is a concept where a virtual representation of the UI is kept in memory and synced with the real DOM by libraries such as ReactDOM. This process is called reconciliation. React creates a virtual tree of nodes and whenever the state of an object changes, React first updates the virtual DOM. Then, it compares the previous virtual DOM with the new one, calculates the best possible changes, and then updates the real DOM only where actual changes have occurred. This makes the performance better than direct manipulation of the DOM.
+
+3. What are components in React?
+Answer:
+Components are the building blocks of any React application, and a single app usually consists of multiple components. Each component is a JavaScript class or function that can accept inputs, called props, and returns a React element that describes how a section of the UI should appear. React encourages the creation of reusable components that can be nested inside other components.
+
+4. What are props in React?
+Answer:
+Props (short for properties) are a way of passing data from parent to child components in React. They are read-only and help you create components that are dynamic and reusable. Props are also used to communicate between components, typically moving data and event handlers down to child components, or content via slotting.
+
+5. What is state in React and how is it used?
+Answer:
+State is an object that determines the behavior of a component and how it will render. Unlike props, state is local and fully controlled by the component itself. State can be modified using the setState() method or the useState() hook in functional components. Changes to state are asynchronous and trigger a re-render of the component.
+
+6. Explain the lifecycle methods of a React component.
+Answer:
+Lifecycle methods are special methods in React components that allow you to run code at particular times in the process. They can be categorized into mounting (when a component is being created and inserted into the DOM), updating (when a component is being re-rendered as a result of changes to either its props or state), and unmounting (when a component is being removed from the DOM).
+
+componentDidMount: Called once, after the initial rendering occurs.
+shouldComponentUpdate: Returns true or false to determine if the component should update.
+componentDidUpdate: Called after the component's updates are flushed to the DOM.
+componentWillUnmount: Called right before a component is removed from the DOM.
+
+7. What are keys in React and why are they important?
+Answer:
+Keys are a special string attribute you need to include when creating lists of elements in React. They help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity. Using keys increases the efficiency of updates.
+
+
+8. What is Redux and how does it relate to React?
+Answer:
+Redux is a predictable state container for JavaScript apps, often used with React. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. Redux provides a single store that allows you to manage the state of your application in one place. It's not tied to React but is often used with it to manage the state more predictably.
+
+
+
+What are higher-order components?
+Answer:
+A higher-order component (HOC) is an advanced technique in React for reusing component logic. A HOC is a function that takes a component and returns a new component. They are used to extend or modify the behavior of a wrapped component. This pattern is similar to higher-order functions but for components.
+
+
+
+
+Discuss the differences between a Class component and a Functional component in React and when you might choose one over the other.
+Answer:
+Class components were the original method for defining components in React that could hold state and use lifecycle methods. They require you to extend from React.Component and create a render function which returns React elements.
+
+Functional components are simpler and introduced as functions that take props and return React elements. Initially, they were stateless, but with the introduction of Hooks in React 16.8, functional components can now use state and other React features.
+
+Class Components:
+Have more boilerplate code.
+Use lifecycle methods for side effects.
+
+
+Functional Components:
+Less code, easier to write and understand.
+Use React Hooks for managing state and lifecycle events.
+
+
+Functional Components: Preferred for most components, especially after Hooks were introduced. They offer a cleaner and more concise way to write components.
+Class Components: Might still be used in older projects or when a project’s coding standards require them. However, the React team now encourages the use of functional components.
+
+

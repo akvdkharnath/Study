@@ -1,0 +1,22 @@
+1. Explain event bubbling and event capturing. How can you stop it?
+Answer: Event bubbling and capturing are two ways of event propagation in the HTML DOM API when an event occurs in an element inside another element, and both elements have registered a handle for that event. In event bubbling, the event is first captured and handled by the innermost element and then propagated to outer elements. In event capturing, the event is first captured by the outermost element and propagated to the inner elements. You can stop event propagation using the event.stopPropagation() method in the event handler.
+
+2. How does the this keyword work in JavaScript? How is it different when using arrow functions?
+Answer: In JavaScript, this keyword behaves differently compared to other programming languages. It can refer to the global context, the current instance of the class in case of constructors, or the object it belongs to when used inside a function. In arrow functions, this retains the context of the enclosing execution context—the value of this is derived from the closest non-arrow parent function.
+
+3.  Explain the difference between null and undefined in JavaScript.
+Answer: In JavaScript, undefined means a variable has been declared but has not yet been assigned a value. On the other hand, null is an assignment value that represents a deliberate non-value (and is treated as falsy for boolean operations).
+
+4.  What are Promises and how do they work in JavaScript?
+Answer: Promises are used to handle asynchronous operations in JavaScript. They are used to handle the eventual completion (or failure) of asynchronous operations, and their resulting value. A Promise is in one of these states:
+
+Pending: initial state, neither fulfilled nor rejected.
+Fulfilled: meaning that the operation completed successfully.
+Rejected: meaning that the operation failed.
+
+5. Explain the spread operator and give an example of when it might be used.
+Answer: The spread operator ... allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected. It is commonly used to make shallow copies of JS objects, combining arrays, or adding items to them while making copies.
+
+et arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let arr3 = [...arr1, ...arr2]; // [1, 2, 3, 4, 5, 6]

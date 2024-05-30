@@ -1,3 +1,84 @@
+What is PostgreSQL and how does it differ from other relational databases?
+
+Answer:
+PostgreSQL is an open-source object-relational database system known for its robustness, performance, and standards compliance. It supports both SQL (relational) and JSON (non-relational) querying. PostgreSQL is highly extensible, allowing users to define their own data types, index types, functional languages, and more. It differs from other databases in its support for advanced data types and extensive concurrency without read locks.
+
+2. How do you create a new database and a new user in PostgreSQL?
+
+Answer:
+To create a new database, use the SQL command:
+
+sql
+Copy code
+CREATE DATABASE dbname;
+To create a new user, use:
+
+sql
+Copy code
+CREATE USER username WITH PASSWORD 'password';
+These commands can be executed from a PostgreSQL command prompt or through a script.
+
+3. What are indexes in PostgreSQL, and why are they important?
+
+Answer:
+Indexes in PostgreSQL are special lookup tables that the database search engine uses to speed up data retrieval. Simply put, an index is a pointer to data in a table. Indexes are important for improving the speed of data retrieval operations on a database table at the cost of additional writes and storage space to maintain them.
+
+4. Explain the VACUUM command in PostgreSQL. Why is it used?
+
+Answer:
+The VACUUM command is used to reclaim storage occupied by dead tuples (rows). In PostgreSQL, when rows are updated or deleted, the old versions of the rows are not physically removed during the transaction; instead, they are marked as dead. VACUUM cleans up these dead tuples, making space available for future use and preventing table bloat. Regular use of VACUUM is crucial for removing these obsolete rows and maintaining database performance.
+
+Intermediate to Complex Questions
+5. What are transactions in PostgreSQL, and how do you manage them?
+
+Answer:
+Transactions in PostgreSQL are sequences of operations performed as a single logical unit of work that must be either entirely completed or entirely failed. They provide properties described as ACID (Atomicity, Consistency, Isolation, Durability). Transactions are managed with the commands:
+
+
+Describe the different types of JOINs available in PostgreSQL.
+
+Answer:
+PostgreSQL supports several types of JOINs, including:
+
+INNER JOIN: Returns records that have matching values in both tables.
+LEFT OUTER JOIN: Returns all records from the left table, and matched records from the right table; if there is no match, the result is NULL on the side of the right table.
+RIGHT OUTER JOIN: The opposite of LEFT JOIN, returning all records from the right table, and matched ones from the left.
+FULL OUTER JOIN: Combines LEFT and RIGHT JOIN, returning records when there is a match in one of the tables.
+CROSS JOIN: Returns the Cartesian product of both tables.
+7. Explain how PostgreSQL uses MVCC (Multi-Version Concurrency Control).
+
+Answer:
+MVCC in PostgreSQL is used to control data consistency when multiple transactions are occurring concurrently without locking the data. Instead of overwriting live data, PostgreSQL keeps past versions of a row in the same table, which allows for "time travel" within the database and querying an older snapshot of the database, thus increasing concurrency and performance.
+
+8. How does PostgreSQL handle replication and what are the types of replication available?
+
+Answer:
+PostgreSQL handles replication by streaming changes from a primary server to one or more secondary servers. Replication can be synchronous or asynchronous. In synchronous replication, the primary waits for confirmation from the secondary server before committing a transaction, ensuring no data loss. In asynchronous replication, the primary does not wait, which can lead to faster performance but at the risk of potential data loss.
+
+9. Discuss partitioning in PostgreSQL. Why is it used and what are the benefits?
+
+Answer:
+Partitioning in PostgreSQL involves splitting a large table into smaller, more manageable pieces, while keeping the structure of the data intact. It is used to improve query performance, manage large tables, and assist in quicker data access for specific queries based on partition keys. The benefits include improved query performance, easier management of large datasets, and enhanced data retention strategies.
+
+10. What are some ways to optimize a PostgreSQL query?
+
+Answer:
+To optimize a query in PostgreSQL:
+
+Use appropriate indexes: Indexes are critical for improving data retrieval times.
+Avoid SELECT *: Retrieve only the columns needed.
+Use ANALYZE to collect statistics that help the PostgreSQL query
+
+
+
+JS 
+
+
+
+
+
+
+
 
 
 Different types od DBMS languages:
@@ -18,6 +99,8 @@ Transaction Control Language (TCL):
 commands which are required to deal with the transaction of the database.
 E.g., COMMIT, ROLLBACK, and SAVEPOINT.
 
+data is stored in blocks in SQL
+Postgres block  can hold 8KB of data 
 
 My SQL Advantages:
 1. free 
@@ -145,9 +228,19 @@ PRIMARY KEY - clustered index
 rest all are non-clustered index
 Types of Index
 Clustered indexes:
-1. used to store and sort data in table
+1. used to store and sort data in table (No extra storage)
 2. Only one Clustered indexe is allowed for table (PK) 
 3. table is called a clustered table
+4. It is faster than non clustered index 
+5. ID is always 1
+6. Ex: PK
+
+Non Clustered indexes:
+1. creates a seperate key value pares or a table of pointers to store location of data 
+2. Need extra storage to store infomation
+3. ID is always > 1
+4. Ex: UK
+
 
 when you create a table with a UNIQUE constraint, Database Engine automatically creates a nonclustered index
 if you configure a PRIMARY KEY, Database Engine automatically creates a clustered index

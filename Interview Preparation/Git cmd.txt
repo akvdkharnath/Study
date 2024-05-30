@@ -26,8 +26,12 @@ git stash -u             --> stash only untracked files
 git stash pop            --> apply recent stash to the current code and deleted the stash 
 git stash apply          --> apply recent stash to the current code and keeps the stash 
 git stash list           --> list all the stash things
+git stash apply stash@{0} --> will apply provided stash
+git stash show -p stash@{0}  --> this will show changes in the stach in terminal 
 git stash drop           --> discards the most recently stashed changeset
 git stash branch <branch_name> <stash_id>  --> Create a new branch to apply your stashed changes  and then delete that stash 
 git push --set-upstream origin <branch name> --> creates a new origin branch from local branch
-
+git reset --hard HEAD~1  --> if files are commited and not pushed use this cmd to revert the commit 
+git reset --hard HEAD 
+git checkout -b temp_branch stash@{0}  --> will convert a stash to a new branch 
 

@@ -1,0 +1,161 @@
+Python:
+1. What are decorators in Python, and can you provide an example of how you would use one?
+Answer: Decorators are a powerful feature in Python that allows us to modify the behavior of functions or classes. An example is the @property decorator, which allows us to define methods that can be accessed like attributes.
+
+2. Can you explain the difference between list, set, and tuple?
+3. How do you manage memory in Python applications?
+Answer: Python has automatic memory management and garbage collection. To manage memory, we can use things like generators for large data processing and be mindful of reference cycles.
+
+4. What is a context manager in Python and how is it used?
+Answer: A context manager in Python is a way to allocate and release resources precisely when desired. The most common way to use a context manager is with the with statement.
+
+5. Explain the difference between __str__ and __repr__ in Python.
+Answer: __str__ is used for creating output for end users while __repr__ is mainly used for debugging and development. repr is supposed to be clear and unambiguous and str is supposed to be readable.
+
+6. What is the Global Interpreter Lock (GIL) in Python?
+
+Answer: The GIL is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecodes at once, and thus making multi-threading in Python less efficient.
+
+
+SQL:
+1. Explain the difference between INNER JOIN, LEFT JOIN, and RIGHT JOIN in SQL.
+
+Answer: INNER JOIN selects records with matching values in both tables. LEFT JOIN returns all records from the left table and matched records from the right table. RIGHT JOIN is the opposite of LEFT JOIN.
+
+2. What is a subquery, and when would you use one?
+
+Answer: A subquery is a query within another SQL query and is used when we want to perform an operation where the result depends on the outcome of another query.
+
+3. Explain the concept of indexing in databases.
+Answer: Indexing is the process of creating a data structure that improves the speed of data retrieval operations on a database table, at the cost of additional writes and storage space.
+
+4. How do you handle database normalization?
+
+Answer: Database normalization involves organizing tables and relationships to reduce redundancy and dependency. It’s achieved by dividing large tables into smaller ones and defining relationships between them.
+
+
+ORM:
+1. What is lazy loading, and how does it work in an ORM context?
+
+Answer: Lazy loading defers the loading of related entities until they're specifically requested, which can improve the performance of the initial query.
+
+2. What are the advantages of using an ORM?
+3. How does an ORM handle database migrations?
+Answer: ORMs like SQLAlchemy can use tools like Alembic to handle migrations by generating and applying migration scripts to adjust the database schema as your models change.
+
+4. Can you explain lazy loading and eager loading?
+Answer: Lazy loading retrieves related data on demand, whereas eager loading retrieves all related data upfront when the original query is executed.
+
+
+
+Flask:
+Can you explain what the Flask Blueprint feature is used for?
+
+Answer: Blueprints are used for making application components and supporting common patterns within an application or across applications. They help in modularizing applications.
+
+
+
+
+
+
+Python: 
+Lambda Functions and Map/Filter/Reduce
+Decorators and Generators  
+Multithreading and Multiprocessing
+Advantages of Using an ORM
+Magic functions, or dunder methods
+deep and shallow copying
+
+
+Database:
+Views
+Stored Procedures vs. Functions:
+Union and Union All 
+Delete Teuncate 
+
+INNER JOIN, LEFT JOIN, RIGHT JOIN, and FULL JOIN
+clustered and non-clustered
+SQL injection attacks 
+How would you handle database migrations or schema changes in a production environment
+
+
+
+
+
+Write a program that prints the numbers from 1 to 100. But for multiples of three, print "Fizz" instead of the number, and for the multiples of five, print "Buzz". For numbers that are multiples of both three and five, print "FizzBuzz".
+
+
+Group Anagrams: Given a list of strings, write a function to group the anagrams together. The function should return a list of lists, where each inner list contains words that are anagrams of each other.
+
+Input-1:
+["eat", "tea", "tan", "ate", "nat", "bat"] 
+
+Output-1:
+[  ["eat", "tea", "ate"],
+  ["tan", "nat"],
+  ["bat"]
+]
+
+
+Input-2
+["listen", "silent", "hello", "world", "act", "cat", "dog", "god"]
+
+Output-2:
+[  ["listen", "silent"],
+  ["hello"],
+  ["world"],
+  ["act", "cat"],
+  ["dog", "god"]
+]
+
+
+Write a Python function to flatten a nested dictionary. The function should convert all nested keys into a single key using a delimiter to indicate levels.
+delimiter = _
+
+input:
+nested_dict = {
+    "key1": "value1",
+    "key2": {
+        "key3": "value2",
+        "key4": {
+            "key5": "value3"
+        }
+    }
+}
+
+output:
+{
+    "key1": "value1",
+    "key2_key3": "value2",
+    "key2_key4_key5": "value3"
+}
+
+
+Python:
+Can you explain what a Python generator and Decorators is and when you would use it?
+Explain the difference between __new__ and __init__ methods in Python ?
+Global Interpreter Lock (GIL) and its impact on multi-threaded applications. How do you work around the limitations imposed by the GIL?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
