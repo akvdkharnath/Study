@@ -264,15 +264,48 @@ def flatten_dict(dd, separator ='_', prefix =''):
 Time complexity
 1. Loop(n)    O(n)
 2. Nested Loop  O(n^n)   ^n is number of loops 
-
-O(1)        Best
-O(logn)     Good
-O(n)        Ok
-O(nlogn)    Bad
-O(n!)       Worst
-O(c^n)      Worst
-O(n^c)      Worst
+3. Recursion(n) O(n)
+4. Binary Search O(logn)
 
 
-Space complexity
-1
+Time Complexity
+1. O(1) -->     Best
+2. O(logn) -->  Good
+3. O(n) -->     Ok
+4. O(nlogn) --> Bad
+5. O(n!) -->    Worst
+6. O(c^n) -->   Worst
+7. O(n^c) -->   Worst
+
+
+Space Complexity
+1. O(1) --> constant space                   Best
+2. O(n) --> linear space                     Good
+3. O(n^2) --> quadratic space                Bad
+4. O(logn) --> logarithmic space             Ok
+5. O(nlogn) --> linear logarithmic space     Worst
+
+
+
+
+String Interpolation:
+String interpolation is the process of embedding variables or expressions within a string. 
+It allows you to construct strings dynamically by inserting values into placeholders within a string template. 
+This is useful for creating strings that include variable data, such as user input, calculated values, or data from a database.
+
+1. f-string: Eg: f"Hello, {name}!"
+    Readability
+    Best Performance
+    No Backward Compatibility
+    Hard to read
+
+2. format() : Eg: "Hello, {}!".format(name)
+    Flexibility for complex formatting
+    Backward Compatibility
+    Less Performance
+    Hard to read
+
+3. Lazy %-formatting: Eg: "Hello, %s!" % name
+    Efficiency in Logging
+    Backward Compatibility
+    Hard to read
