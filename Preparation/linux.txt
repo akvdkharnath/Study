@@ -1,0 +1,78 @@
+chmod:
+
+Unix file permissions are divided into three categories:
+1. User
+2. Group
+3. Others
+
+Each category can have three types of permissions:
+1. Read (r): User can read the file
+2. Write (w): User can write to the file
+3. Execute (x): User can execute the file
+
+
+4 for Read
+2 for Write
+1 for Execute
+
+7: Read, Write, Execute
+6: Read, Write
+5: Read, Execute
+4: Read
+3: Write, Execute
+2: Write
+1: Execute
+
+777:
+Owner: Read, Write, Execute
+Group: Read, Write, Execute
+Others: Read, Write, Execute
+
+755: (Least Privilege)
+Owner: Read, Write, Execute
+Group: Read, Execute
+Others: Read, Execute
+
+644:
+Owner: Read, Write
+Group: Read
+Others: Read
+
+Stracture of a file:
+-rwxrwxrwx
+File Type Indicator:
+-: File
+d: Directory
+l: Link
+b: Block Device
+c: Character Device
+p: Pipe
+s: Socket
+
+Block Device:
+- Hard Disk
+- SSD
+- USB
+
+Character Device:
+- Keyboard
+- Mouse
+- Printer
+
+
+Permissions:
+r: Read
+w: Write
+x: Execute
+-: No Permission
+
+
+Breakdown of -rw-rw-r--
+
+-: File Type Indicator
+rw-rw-r--: Permissions
+
+rw-: Owner can read and write
+rw-: Group can read and write
+r--: Others can read
+
