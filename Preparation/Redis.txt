@@ -1,16 +1,13 @@
-Redis: REmote DIctionary Server  (ANSI C language)
-redis-server start
-redis-server restart
-redis-server stop
+Redis: Remote Dictionary Server (written in ANSI C)
+- Start: redis-server start
+- Restart: redis-server restart
+- Stop: redis-server stop
 
+Connect to Server: redis-cli -h host -p port -a password 
 
-
-Conenect server: redis-cli -h host -p port -a password 
-
-
-redis-cli -> start server 
-SELECT 10 -> it will select DB 10 in rediswill have DB from 0-15
-
+Basic Commands:
+- redis-cli: Start server
+- SELECT 10: Selects database 10 (Redis has databases 0-15)
 
 Redis:
 1. Stores everything in primary memory (in memory database)
@@ -35,7 +32,9 @@ Memcached:
 
 TTL -> time to live (gives in howmany sec key will expire)
 TYPE -> datatype
-EXPIRE -> helps to set expire to the key 
+EXPIRE -> helps to set expire to the key redis-cli -> start server 
+SELECT 10 -> it will select DB 10 in rediswill have DB from 0-15
+
 Fsysnc() -> calling this function for every second will help us to retrive data loss till last but one second (durability of Redis be enhanced)
 
 SUNION- union of all the sets that are given.
@@ -48,7 +47,21 @@ a: 1,2,3
 b: 3,4,5
 SUNION: 3
 
-Sharding: also called partitioning, refers to the data's splitting by the key. We use sharding to increase performance and to reduce the hit as well as memory load on a single resource.
+Sharding: 
+also called partitioning, method of distributing data across multiple Redis instances. 
+Each instance holds a subset of the data, allowing Redis to scale horizontally.
+
+1. Good for Production, High Availability
+2. Fault tolerance (if one node goes down, the other nodes can continue to serve requests)
+3. High Performance (can handle more requests per second)
+4. Reduces memory load on a single resource
+
+5. Complexity of implementation and management
+
+Use Cases:
+1. High traffic applications
+2. Large Scale Applications
+
 Replication: also called mirroring, refers to copying all the data. This helps to get high availability of reads. The hit rate on all the resources will reduce if you are reading from multiple replicas. But the memory requirement remains the same for all the resources.
 
 DataTypes:
