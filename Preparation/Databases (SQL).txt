@@ -1,22 +1,28 @@
-What is PostgreSQL and how does it differ from other relational databases?
+Relational Database:
+1. Data is stored in tables
+2. Tables are connected by relationships
+3. SQL is used to query the data
 
-Answer:
-PostgreSQL is an open-source object-relational database system known for its robustness, performance, and standards compliance. It supports both SQL (relational) and JSON (non-relational) querying. PostgreSQL is highly extensible, allowing users to define their own data types, index types, functional languages, and more. It differs from other databases in its support for advanced data types and extensive concurrency without read locks.
+Non-Relational Database:
+1. Data is stored in collections
+2. Collections are connected by relationships
+3. NoSQL is used to query the data
 
-2. How do you create a new database and a new user in PostgreSQL?
 
-Answer:
-To create a new database, use the SQL command:
+row: record (individual entity)
+column: field (attribute of the record)
 
-sql
-Copy code
-CREATE DATABASE dbname;
-To create a new user, use:
+Primary Key: unique identifier for each record in a table
+Foreign Key: unique identifier for each record in another table
+Unique Key: unique identifier for each record in a table
 
-sql
-Copy code
-CREATE USER username WITH PASSWORD 'password';
-These commands can be executed from a PostgreSQL command prompt or through a script.
+
+
+Normalization: 
+process of organizing data in a database to reduce data redundancy and improve data integrity
+https://www.youtube.com/watch?v=rBPQ5fg_kiY
+
+
 
 3. What are indexes in PostgreSQL, and why are they important?
 
