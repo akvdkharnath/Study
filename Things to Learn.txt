@@ -12,7 +12,8 @@
 17. Rest Vs Graph API
 18. Websockets Vs WebHooks 
 19. Virtualization Vs Containerization
-
+20. Python3 Vs Python 
+21. Different API servers Like Flask 
 
 
 Meta data for points:
