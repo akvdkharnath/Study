@@ -8,12 +8,31 @@
 12. Web API	Vs WCF (https://www.interviewbit.com/web-api-interview-questions/)
 13. REST API Vs RESTful API (https://www.interviewbit.com/web-api-interview-questions/)
 15. AWS services (https://allcode.com/top-aws-services/)
-16. CORS
+16. CORS and CQRS
 17. Rest Vs Graph API
 18. Websockets Vs WebHooks 
 19. Virtualization Vs Containerization
 20. Python3 Vs Python 
 21. Different API servers Like Flask 
+22. Shrding, Connection pooling 
+23. distributed tracing 
+24. OpenTelemetry and LGTM 
+35. APM tools like datadog and Grafana 
+36. loging tools like zipkin, sleuth 
+37. Request Throttling, Token Bucket, Leaky Bucket, Fixed Window Counter, Sliding window  
+38. image compress packages like sharp and Tiny PNG
+39. how would you handel shared data between multiple micro services 
+40. PUB/SUB communication with workers 
+41. webflex for multi processing 
+42. Circuit Breaker pattern and Bulk head pattern 
+43. Keyclock, Auth0, Okta, AWS Cognito (Identity Providers)
+44. API Security (custom serializers jackson annotation and Mixns)
+45. sys.getsizeof(), tracemalloc, memory_profiler, objgraph, psutil for monitoring and profiling memory usage
+46. Memory Leak, Garbage Collection (gc package)  Weak References (weakref module allows referencing objects without increasing their reference count)
+47. ELK (elasticsearch logstash kibana) and EFK (Fluentd)
+
+
+
 
 
 Meta data for points:

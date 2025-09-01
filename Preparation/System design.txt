@@ -1,3 +1,36 @@
+Basic System Design Terms:
+
+Throughput
+Latency
+Scalability
+Availability
+Reliability
+Fault Tolerance
+Redundancy
+Load Balancing
+Caching
+Sharding
+Replication
+Consistency
+Partitioning
+Concurrency
+Bottleneck
+Queue
+Service-Oriented Architecture (SOA)
+Microservices
+API Gateway
+Rate Limiting
+Heartbeat
+Failover
+Proxy
+Pub/Sub (Publish/Subscribe)
+Circuit Breaker
+Deadlock
+Dead Letter Queue
+Reverse Proxy, Forward Proxy
+Data Partitioning, Federation, Replication
+Master-Slave Replication, Master-Master Replication
+
 Content:
 1. Memory Allocation
 2. Cloud Computing Services

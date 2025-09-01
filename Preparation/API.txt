@@ -4,10 +4,10 @@ Think need to look into:
 2. Protocols: HTTP/HTTPS, WebSocket, gRPC
 3. Authentication: OAuth 2.0, JWT, API Keys, Basic Auth
 4. Authorization: RBAC, ABAC, Scopes
-5. HTTP Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS
+5. HTTP Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD
 6. Status Codes: 2xx, 3xx, 4xx, 5xx series
 7. REST Principles: Stateless, Cacheable, Uniform Interface
-8. Idempotency: Safe vs Unsafe operations
+8. (Done) Idempotency: Safe vs Unsafe operations
 9. API Versioning: URL, Header, Content-Type
 10. Rate Limiting: Throttling, Quotas, Burst limits
 11. Caching: HTTP Cache Headers, CDN, Redis
@@ -16,6 +16,7 @@ Think need to look into:
 14. CORS: Cross-Origin Resource Sharing
 15. gRPC: Protocol Buffers, Streaming
 16. WebSockets: Real-time communication
+
 17. Server-Sent Events: One-way streaming
 18. WSGI/ASGI: Python web servers (Gunicorn, uvicorn)
 19. API Design Patterns: CRUD, Event Sourcing, CQRS
@@ -100,8 +101,11 @@ string used to identify a resource on internect by name
 Messaging:
 the process of client sneding and server habdeling request that all Communication is called Messaging
 
-idempotent: 
-is a property of some operations such that no matter how many times you execute them, you achieve the same result
+Idempotency: 
+some operations such that no matter how many times you execute them, you achieve the same result
+while we deail with POST and PATCH we need to take care of idempotent
+
+Eg: while creating an order page we need to mak sure an unique key is passwed to so if people click on buttons multiple times based on ubiqueu key we can track and eleniminate the dluplicate entrys 
 
 cache-control Headers:
 helps to control ability of cache data 
@@ -133,22 +137,30 @@ ajax -> tech to call API asyncio using JS
 Most commonly used status codes are:
 200 - success/OK
 201 - CREATED - used in POST or PUT methods.
+202 - ACCEPTED - request has been accepted for processing but processing is not complete
+204 - NO CONTENT - server successfully processed the request but there is no content to return
 304 - NOT MODIFIED - used in conditional GET requests to reduce the bandwidth use of the network. Here, the body of the response sent should be empty.
 400 - BAD REQUEST - This can be due to validation errors or missing input data.
 401 - UNAUTHORIZED - This is returned when there is no valid authentication credentials sent along with the request.
 403 - FORBIDDEN - sent when the user does not have access (or is forbidden) to the resource.
 404 - NOT FOUND - Resource method is not available.
+422 - UNPROCESSABLE ENTITY - request was well-formed but contains semantic errors
+429 - TOO MANY REQUESTS - rate limit exceeded
 500 - INTERNAL SERVER ERROR - server threw some exceptions while running the method.
 502 - BAD GATEWAY - Server was not able to get the response from another upstream server.
 503 - SERVICE UNAVAILABLE - server was unable to process the request due to maintenance, overloading, or another temporary interference.
+504 - GATEWAY TIMEOUT - server acting as a gateway did not receive a timely response
 
 
+HTTP Methods:
 GET: This is used for fetching details from the server and is basically a read-only operation.
 POST: This method is used for the creation of new resources on the server.
 PUT: This method is used to update the old/existing resource on the server or to replace the resource.
 DELETE: This method is used to delete the resource on the server.
 PATCH: This is used for modifying the resource on the server.
-OPTIONS: This method fetches all the various HTTPS that are supported
+OPTIONS: This method fetches all the various HTTP methods that are supported.
+HEAD: This method is similar to GET but returns only the headers without the response body.
+TRACE: This method is used for debugging and returns the received request back to the client.
 
 PUT VS POST VS PATCH
 
