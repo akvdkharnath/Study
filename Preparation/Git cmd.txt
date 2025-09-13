@@ -1,29 +1,62 @@
 https://youtu.be/T13gDBXarj0?si=zqTyVY56nIaLn4jc   (pull/fetch/merge)
 
 
-git pull -> git fetch + git merge 
+# HEAD and HEAD~N info
+Commits:  A -- B -- C -- D -- E (HEAD)
+HEAD = E (latest commit)
+HEAD~1 = D (one before latest)
+HEAD~2 = C (two before latest)
+HEAD~N = Nth commit before HEAD
+Use HEAD/HEAD~N with many git commands (log, revert, reset, etc.)
 
+
+
+git pull -> git fetch + git merge 
 git fetch -> will pull code from remote to local but not merge (if there are any new commits in remote it will be shown as 2 pull arrow)
 git merge --> this will merge all the pulled code using git fetch 
 
-https://www.youtube.com/watch?v=mTNWyyMbxmU    (revert/)
 
-# Refer Git_Revert_Notes File
-# revert (We use this to revert the changes made my a commit with out deleating there history)
-git revert HEAD     
-git revert HEAD~N   
-git revert <ID>  
-git revert HEAD~N..HEAD   
+
+
+https://www.youtube.com/watch?v=mTNWyyMbxmU    (revert/reset)
+Refer Git_Revert_Notes File and Git_Reset_Notes File
+revert (We use this to revert the changes made my a commit with out deleating there history)
+
+Examples:
+Commits:  A -- B -- C -- D -- E (HEAD)
+
+git revert HEAD    
+  Result:  A -- B -- C -- D -- E -- F (F undoes E, code = A,B,C,D)
+
+git revert HEAD~1
+  Result:  A -- B -- C -- D -- E -- F (F undoes D, code = A,B,C,E)
+
+git reset --hard HEAD~1
+  Result:  A -- B -- C -- D (HEAD)  (E removed, code = A,B,C,D)
+
+git revert <commit-hash-of-C>
+  Result:  A -- B -- C -- D -- E -- F (F undoes C, code = A,B,D,E)
+
+git reset --hard <commit-hash-of-C>
+  Result:  A -- B -- C (HEAD)  (D,E removed, code = A,B,C)
+
+git revert HEAD~2..HEAD
+  Result:  A -- B -- C -- D -- E -- F -- G -- H (F,G,H undo C,D,E)
+
+git reset --hard HEAD~3
+  Result:  A -- B (HEAD)  (C,D,E removed, code = A,B)
+
+
 
 --no-edit 
 --edit  (default)
 --no-commit
 
-
+--hard 
+--soft
 
 
 # Log
-
 git log                 --> History of all commits in detailed 
 git log --oneline       --> History of all commits in one line format 
 
@@ -69,7 +102,7 @@ git stash show -p stash@{0}  --> this will show changes in the stach in terminal
 git stash drop           --> discards the most recently stashed changeset
 git stash branch <branch_name> <stash_id>  --> Create a new branch to apply your stashed changes  and then delete that stash 
 git push --set-upstream origin <branch name> --> creates a new origin branch from local branch
-git reset --hard HEAD~1  --> if files are commited and not pushed use this cmd to revert the commit 
+git reset --hard HEAD~1  # remove latest commit, code looks like previous commit 
 git reset --hard HEAD 
 git checkout -b temp_branch stash@{0}  --> will convert a stash to a new branch 
 
