@@ -1,5 +1,4 @@
-https://youtu.be/T13gDBXarj0?si=zqTyVY56nIaLn4jc   (pull/fetch/merge)
-
+refer: https://youtube.com/playlist?list=PLzdWZT-ZJD081YB1TLN5rNI1vw5hTdRzH&si=SdJarUCr1_x-B8cA
 
 # HEAD and HEAD~N info
 Commits:  A -- B -- C -- D -- E (HEAD)
@@ -10,7 +9,7 @@ HEAD~N = Nth commit before HEAD
 Use HEAD/HEAD~N with many git commands (log, revert, reset, etc.)
 
 
-
+https://youtu.be/T13gDBXarj0?si=zqTyVY56nIaLn4jc   (pull/fetch/merge)
 git pull -> git fetch + git merge 
 git fetch -> will pull code from remote to local but not merge (if there are any new commits in remote it will be shown as 2 pull arrow)
 git merge --> this will merge all the pulled code using git fetch 
@@ -105,4 +104,22 @@ git push --set-upstream origin <branch name> --> creates a new origin branch fro
 git reset --hard HEAD~1  # remove latest commit, code looks like previous commit 
 git reset --hard HEAD 
 git checkout -b temp_branch stash@{0}  --> will convert a stash to a new branch 
+
+# .gitignore syntax examples
+# file.txt         — Ignore this file in the root.
+# *.ext            — Ignore all files with .ext extension anywhere.
+# folder/          — Ignore this folder in the root.
+# **/folder/       — Ignore any folder named 'folder' anywhere.
+# prefix*          — Ignore all files starting with 'prefix' in the root.
+# **/prefix*       — Ignore all files starting with 'prefix' anywhere.
+# !file.txt        — Do NOT ignore this file (override previous rules).
+# !folder/file.txt — Do NOT ignore this file inside folder/.
+# **/file.txt      — Ignore any file named 'file.txt' anywhere.
+# folder/*.ext     — Ignore all .ext files in folder/ (not subfolders).
+# folder/**        — Ignore everything in folder/ and its subfolders.
+# *.?ar            — Ignore files with any single character before 'ar' (e.g., .tar, .jar).
+# /file.txt        — Ignore file.txt only in the root.
+# **/name          — Ignore any file or folder named 'name' anywhere.
+# !*.md            — Do NOT ignore any .md files.
+# # comment        — This is a comment, ignored by git.
 
