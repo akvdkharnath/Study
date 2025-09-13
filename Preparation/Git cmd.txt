@@ -1,8 +1,46 @@
+https://youtu.be/T13gDBXarj0?si=zqTyVY56nIaLn4jc   (pull/fetch/merge)
+
+
+git pull -> git fetch + git merge 
+
+git fetch -> will pull code from remote to local but not merge (if there are any new commits in remote it will be shown as 2 pull arrow)
+git merge --> this will merge all the pulled code using git fetch 
+
+https://www.youtube.com/watch?v=mTNWyyMbxmU    (revert/)
+
+# Refer Git_Revert_Notes File
+# revert (We use this to revert the changes made my a commit with out deleating there history)
+git revert HEAD     
+git revert HEAD~N   
+git revert <ID>  
+git revert HEAD~N..HEAD   
+
+--no-edit 
+--edit  (default)
+--no-commit
+
+
+
+
+# Log
+
+git log                 --> History of all commits in detailed 
+git log --oneline       --> History of all commits in one line format 
+
+
+
+
+
+
 # set github config 
 git config --global user.name "Your Name"
 git config --global user.email "youremail@yourdomain.com"
 git config --list
 
+
+
+git branch     --> will give all branchs in local 
+git branch -r  --> will give all branchs in remort 
 
 
 git init <folder path>   --> used to start a new repository
@@ -15,7 +53,7 @@ git reset <commit>       --> undoes all the commits after the specified commit a
 git reset –hard <commit> --> discards all history and goes back to the specified commit
 git status               --> checks status 
 git rm <file path>       --> removed the file and slach them 
-git log                  --> get logs 
+
 git show <commit>        --> shows changes for the specific commit 
 git tag                  --> get list of tags 
 git tag <tagname>        --> create new tags 
