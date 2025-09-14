@@ -1,42 +1,184 @@
 1. https://refactoring.guru/design-patterns/go    (Design patterns)
-3. difference between CI and CD (https://www.guru99.com/continuous-integration-vs-delivery-vs-deployment.html)
-4. Waterfall, Feature-Driven Development, Agile, Scrum, Extreme Programming (XP), Lean,  
-6. concurrency vs parallel programming
-7. concurrency vs multithreading
-8. AJAX Vs REST
-11. concept of statelessness in REST?
-12. Web API	Vs WCF (https://www.interviewbit.com/web-api-interview-questions/)
-13. REST API Vs RESTful API (https://www.interviewbit.com/web-api-interview-questions/)
-15. AWS services (https://allcode.com/top-aws-services/)
-16. CORS and CQRS
-17. Rest Vs Graph API
-18. Websockets Vs WebHooks 
-19. Virtualization Vs Containerization
-20. Python3 Vs Python 
-21. Different API servers Like Flask 
-22. Shrding, Connection pooling 
-23. distributed tracing 
-24. OpenTelemetry and LGTM 
-35. APM tools like datadog and Grafana 
-36. loging tools like zipkin, sleuth 
-37. Request Throttling, Token Bucket, Leaky Bucket, Fixed Window Counter, Sliding window  
-38. image compress packages like sharp and Tiny PNG
-39. how would you handel shared data between multiple micro services 
-40. PUB/SUB communication with workers 
-41. webflex for multi processing 
-42. Circuit Breaker pattern and Bulk head pattern 
-43. Keyclock, Auth0, Okta, AWS Cognito (Identity Providers)
-44. API Security (custom serializers jackson annotation and Mixns)
-45. sys.getsizeof(), tracemalloc, memory_profiler, objgraph, psutil for monitoring and profiling memory usage
-46. Memory Leak, Garbage Collection (gc package)  Weak References (weakref module allows referencing objects without increasing their reference count)
-47. ELK (elasticsearch logstash kibana) and EFK (Fluentd)
+2. difference between CI and CD (https://www.guru99.com/continuous-integration-vs-delivery-vs-deployment.html)
+3. Waterfall, Feature-Driven Development, Agile, Scrum, Extreme Programming (XP), Lean
+4. concurrency vs parallel programming
+5. concurrency vs multithreading
+6. AJAX Vs REST
+7. concept of statelessness in REST?
+8. Web API Vs WCF (https://www.interviewbit.com/web-api-interview-questions/)
+9. REST API Vs RESTful API (https://www.interviewbit.com/web-api-interview-questions/)
+10. AWS services (https://allcode.com/top-aws-services/)
+11. CORS and CQRS
+12. Rest Vs Graph API
+13. Websockets Vs WebHooks
+14. Virtualization Vs Containerization
+15. Python3 Vs Python
+16. Different API servers Like Flask
+17. Sharding, Connection pooling
+18. distributed tracing
+19. OpenTelemetry and LGTM
+20. APM tools like datadog and Grafana
+21. logging tools like zipkin, sleuth
+22. Request Throttling, Token Bucket, Leaky Bucket, Fixed Window Counter, Sliding window
+23. image compress packages like sharp and Tiny PNG
+24. how would you handle shared data between multiple micro services
+25. PUB/SUB communication with workers (Publish/Subscribe)
+26. webflex for multi processing
+27. Circuit Breaker pattern and Bulkhead pattern
+28. Keycloak, Auth0, Okta, AWS Cognito (Identity Providers)
+29. API Security (custom serializers, jackson annotation and Mixins)
+30. sys.getsizeof(), tracemalloc, memory_profiler, objgraph, psutil for monitoring and profiling memory usage
+31. Memory Leak, Garbage Collection (gc package), Weak References (weakref module allows referencing objects without increasing their reference count)
+32. ELK (elasticsearch logstash kibana) and EFK (Fluentd)
+
+---
+
+System Design Terms, Patterns, and Algorithms (for 7+ years experience):
+
+A. Basic System Design Terms:
+- Scalability
+- Availability
+- Reliability
+- Fault Tolerance
+- Redundancy
+- Load Balancing
+- Caching (Cache Aside, Read-Through, Write-Through, Write-Back)
+- Sharding (Horizontal Partitioning)
+- Replication (Master-Slave, Master-Master)
+- Consistent Hashing
+- Rate Limiter
+- Circuit Breaker
+- Bulkhead
+- Retry Pattern
+- Failover
+- Graceful Degradation
+- Throttling
+- Health Checks/Heartbeats
+- Database Indexing
+- Read/Write Splitting
+- Data Partitioning
+- Event Sourcing
+- CQRS (Command Query Responsibility Segregation)
+- Saga Pattern (Distributed Transactions)
+- Idempotency
+- Distributed Locking
+- Dead Letter Queue
+- Bottleneck
+- API Gateway
+- Service Discovery
+- Message Queue (Pub/Sub, Point-to-Point)
+- Observer Pattern
+- Publish-Subscribe Pattern
+- Webhooks
+- Request-Reply
+- Fan-out/Fan-in
+- Microservices vs Monolith
+- Service Mesh
+- Sidecar Pattern
+- Strangler Fig Pattern
+- Backend for Frontend (BFF)
+- Blue-Green Deployment
+- Canary Release
+- Shadow Traffic
+- CAP Theorem
+- Eventual Consistency vs Strong Consistency
+- Quorum
+- Leader Election (e.g., using ZooKeeper, etcd)
+- Paxos/Raft (Consensus Algorithms)
+- OAuth/JWT
+- API Rate Limiting
+- Zero Trust Architecture
+- Encryption at Rest/In Transit
+- Audit Logging
+- Centralized Logging
+- Distributed Tracing
+- Metrics & Monitoring
+- Alerting
+- Auto-scaling
+- Proxy (Reverse Proxy, Forward Proxy)
+- Federation
+- Master-Slave Replication, Master-Master Replication
+- SSO (Single Sign On)
+- DRY (Don't Repeat Yourself), DIE (Duplication Is Evil)
+- Dead lock
 
 
 
+B. System Design Algorithms & Patterns:
+- Sliding Window
+- Two Pointer Technique
+- Fast & Slow Pointer (Tortoise and Hare)
+- Divide and Conquer
+- Backtracking
+- Greedy Algorithms
+- Dynamic Programming (Memoization, Tabulation)
+- Top-Down vs Bottom-Up Approaches
+- Binary Search (on arrays, on answer, on trees)
+- Bit Manipulation
+- Prefix Sum / Difference Array
+- Sweep Line Algorithm
+- Monotonic Stack/Queue
+- Union-Find (Disjoint Set Union)
+- Reservoir Sampling
+- Floyd-Warshall Algorithm
+- Dijkstra’s Algorithm
+- A* Search Algorithm
+- KMP Algorithm (String Matching)
+- Trie (Prefix Tree)
+- Bloom Filter
+- LRU/LFU Cache
+- Minimax Algorithm (Game Trees)
+- Segment Tree / Fenwick Tree (Binary Indexed Tree)
+- Suffix Array / Suffix Tree
+- Rabin-Karp Algorithm (String Hashing)
+- Tarjan’s Algorithm (SCC, Bridges, Articulation Points)
+- Kruskal’s/Prim’s Algorithm (MST)
+- Topological Sort
+- Heap / Priority Queue Patterns
+- Producer-Consumer Pattern
+- Service-Oriented Architecture (SOA)
+
+
+C. OOP/Software Engineering Design Patterns:
+- Singleton
+- Factory
+- Observer
+- Decorator
+- Adapter
+- Proxy
+- Command
+- Strategy
+- Repository
+- Dependency Injection
+
+D. Concurrency & Parallelism:
+- Thread Pool
+- Producer-Consumer
+- Reader-Writer Lock
+- Semaphore
+- Mutex
+- Barrier
+- Atomic Operations
+- Lock-Free / Wait-Free Algorithms
+- Fork-Join
+
+E. Security & Reliability:
+- CSRF / XSS
+- Replay Attack
+- Zero Trust
+- Encryption at Rest / In Transit
+- Audit Logging
 
 
 Meta data for points:
-
 https://blog.hubspot.com/website/backend-interview-questions
 https://www.fullstack.cafe/blog/backend-developer-interview-questions
 https://www.fullstack.cafe/blog/solution-architect-interview-questions
+
+
+
+Completed:
+- Persistence
+- Centralized system, Distributed System
+- Latency
+- Throughput

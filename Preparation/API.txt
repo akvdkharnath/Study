@@ -1,3 +1,9 @@
+Micro Services: https://youtube.com/playlist?list=PLJq-63ZRPdBsPWE24vdpmgeRFMRQyjvvj&si=pcJcL8w2htpag9YR
+Security Basics: https://youtube.com/playlist?list=PLJq-63ZRPdBt-RFGwsJO9Pv6A8ZwYHua9&si=gxihcQmeXKvB9yaT
+System Design Shorts: https://youtube.com/playlist?list=PLJq-63ZRPdBveSLgUw2KA2RcAX8A2HzM2&si=DHumxmM_mlXAtWyN
+System Design Questions: https://youtube.com/playlist?list=PLJq-63ZRPdBssWTtcUlbngD_O5HaxXu6k&si=r_PczuZhMmq-c0Qq
+System Design Full: https://youtube.com/playlist?list=PLJq-63ZRPdBt423WbyAD1YZO0Ljo1pzvY&si=k1VqTHjIGQx9R2iP
+
 Think need to look into: 
 
 1. SOAP vs REST vs GraphQL
