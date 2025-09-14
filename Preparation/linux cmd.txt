@@ -1,3 +1,6 @@
+nslookup <domain name> -->  returns domain ip address 
+
+
 Linux Directory Commands:
 pwd        --> display the location of the current working directory
 mkdir      --> create a new directory

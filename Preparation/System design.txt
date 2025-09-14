@@ -1,45 +1,52 @@
-Basic System Design Terms:
+Persistence: data stored in away that data is not lost if system goes down or restarted 
 
-Throughput
-Latency
-Scalability
-Availability
-Reliability
-Fault Tolerance
-Redundancy
-Load Balancing
-Caching
-Sharding
-Replication
-Consistency
-Partitioning
-Concurrency
-Bottleneck
-Queue
-Service-Oriented Architecture (SOA)
-Microservices
-API Gateway
-Rate Limiting
-Heartbeat
-Failover
-Proxy
-Pub/Sub (Publish/Subscribe)
-Circuit Breaker
-Deadlock
-Dead Letter Queue
-Reverse Proxy, Forward Proxy
-Data Partitioning, Federation, Replication
-Master-Slave Replication, Master-Master Replication
+Storage devices like Hard disk, SSD, Databases are Persistence  (will have information until curropted)
+Memory (Non Volatile Storages) like RAM, varibles declared in programs and scripts 
+
+------------------------------
+
+Centralized system: where all processing, data storage, and control are handled by a single central node (server or mainframe). 
+All clients or users connect to this central point.
+
+easy to manage, Single point of failure, 
+
+Distributed System: system is a collection of independent computers (nodes) that work together as a single system. Data and processing are spread across multiple machines, often in different locations.
+
+hard to manage, easy to scale up and down, Fault tolerance (if one failes other can take care)
+
+------------------------------
+
+Latency: Time take to for data to go  from one point to another point of system 
+Low  Latency (need to be fast):  Eg: Online Gamming, Live Trading, Video conferance, Bidding application
+High Latency (ok to be slow): Email, Reports tools (SAP, Tableau), Background processing tasks (Updates, batch processing)
+
+Throughput: Amount of data can be processing in given time 
+
+Low Throughput: Eg: Personal applications, HR applications in small scale, small inventory management
+
+High Throughput: Eg: Payment gateways, Social system platforms, search engines, 
+
+------------------------------
+
+Hashing: Process of comverting data to a fixed side of value (usually into int) out put is called hash value or hash code
+
+Same input will have same hash value all ways 
+
+small change in input will have a big differnce in hash value 
+
+Why hashing 
+
+Fast lookup (python dicts, java hash maps)
+Secure (Encrypted data, Authentication)
+Data Deduplication (Allows to skip deduplicate files )
+Even distribution (Load Balancing (Consistent hashing))
+
+------------------------------
 
 Content:
 1. Memory Allocation
 2. Cloud Computing Services
 3. SSO
-
-DRY (Don't Repeat Yourself) principle is a software development principle that states that developers should not duplicate code
-DIE (Duplication Is Evil) 
-
-
 
 memory is managed by the Python manager
 Allocation: The procedure of providing memory to objects
