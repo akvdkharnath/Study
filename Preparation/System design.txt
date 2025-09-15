@@ -41,6 +41,27 @@ Secure (Encrypted data, Authentication)
 Data Deduplication (Allows to skip deduplicate files )
 Even distribution (Load Balancing (Consistent hashing))
 
+Consistent hashing (Need to look)
+
+------------------------------
+
+Top Redis Caching Strategies:
+
+Strategy:
+cache-aside (Cold Start, Read-Heavy Applications, No Stale Data, E-commerce platforms)
+write-through-cache (High Latency, no stale issue, Good Consistency, Simple)
+write-behind-cache/write-back (High Write, risk of data loss, Complexity,  Logging systems)
+read-through-cache (Read Heavy, no stale issue, Good Consistency, Simple)
+
+TTl: (Time-to-Live)
+1. based on a time, up to how many seconds 
+
+Cache stampede: Also known as cache avalanche, where multiple requests where made for same data and data is not availability or got expaired 
+all started hitting database leading Hight throughput in database or sudden spike in database load 
+
+Cache Warming: preloading cache with frequent accessed data initally, skiping cold start 
+
+Cache Eviction Strategy (Need to look)
 ------------------------------
 
 Content:

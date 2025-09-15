@@ -101,6 +101,7 @@ A. Basic System Design Terms:
 - SSO (Single Sign On)
 - DRY (Don't Repeat Yourself), DIE (Duplication Is Evil)
 - Dead lock
+- Lazy Loading
 
 
 
@@ -137,6 +138,12 @@ B. System Design Algorithms & Patterns:
 - Heap / Priority Queue Patterns
 - Producer-Consumer Pattern
 - Service-Oriented Architecture (SOA)
+- Server side events (SSE)
+- Race Condations 
+- Heap 
+- Solid Principles 
+- Hash maps and Concurrent Hash 
+
 
 
 C. OOP/Software Engineering Design Patterns:
