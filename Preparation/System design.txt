@@ -45,6 +45,7 @@ Consistent hashing (Need to look)
 
 ------------------------------
 
+Refer: Redis_Caching_Strategies.ipynb 
 Top Redis Caching Strategies:
 
 Strategy:
@@ -61,7 +62,14 @@ all started hitting database leading Hight throughput in database or sudden spik
 
 Cache Warming: preloading cache with frequent accessed data initally, skiping cold start 
 
-Cache Eviction Strategy (Need to look)
+Cache Eviction Strategy
+
+Least Recently Used (LRU)
+Least Frequently Used (LFU)
+First-In-First-Out (FIFO)
+Random Replacement
+
+
 ------------------------------
 
 Content:
