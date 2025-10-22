@@ -234,6 +234,88 @@ CAP + PACELC   ?
 
 
 
+------------------------------
+
+https://www.youtube.com/watch?v=XP98YCr-iXQ
+
+Sharding: Its a Horizontal scale Architecture to scale update stabase into multiple databases where each database is called shard  
+
+shard: a single partition of data 
+shard key: field used to figure which shard has which data (identifier of shard)
+
+sharding Strategy: how data is distributed 
+
+
+Advantages: Availability, Horizontal Scaling, data Distribution
+
+Sharding Strategies:
+
+1. Range-Based Sharding
+
+Shard 1: User ID 1-1000
+Shard 2: User ID 1001-2000
+Shard 3: User ID 2001-3000
+
+Advantages: easy, simple 
+
+Disadvantages: un even data, rebalance is hard 
+
+2. Hash-Based Sharding
+
+using a has function out put data is splited 
+
+Shard 1: hash % 3 = 0
+Shard 2: hash % 3 = 1
+Shard 3: hash % 3 = 2
+
+Advantages: Even data, 
+Disadvantages: Range operations, re balance 
+
+3. Dictionary based Sharding:
+
+this is on top of range Based Sharding where shard scope is saved in a dict 
+
+Shard Directory:
+├── User ID 1-500 → Shard A
+├── User ID 501-1000 → Shard B
+└── User ID 1001-1500 → Shard C
+
+
+Advantages: mapping, rebalance 
+Disadvantages: additional work related to lookup
+
+Sharding Patterns:
+
+Vertical Sharding: where sharding happned based on tables 
+
+Database Split by Tables:
+├── User Database (users, profiles)
+├── Order Database (orders, payments)
+└── Product Database (products, inventory)
+
+
+Horizontal Sharding:
+Database Split by Rows:
+├── Shard 1: Users 1-1000
+├── Shard 2: Users 1001-2000
+└── Shard 3: Users 2001-3000
+
+Geographic Sharding
+Shard by Location:
+├── US East Shard
+├── US West Shard
+├── Europe Shard
+└── Asia Shard
+
+
+Time-Based Sharding
+Shard by Time:
+├── 2023 Data Shard
+├── 2024 Data Shard
+└── 2025 Data Shard
+
+------------------------------
+
 Content:
 1. Memory Allocation
 2. Cloud Computing Services
