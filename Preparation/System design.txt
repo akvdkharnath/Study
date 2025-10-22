@@ -68,9 +68,44 @@ Least Recently Used (LRU)
 Least Frequently Used (LFU)
 First-In-First-Out (FIFO)
 Random Replacement
+------------------------------
+Stateful vs Stateless Architecture
 
+Link: https://www.youtube.com/watch?v=QDiPjMWeVC0
+
+Stateful: where information is stick to only specific device or server and tightely coupled with the device 
+
+example if:
+amazon cart or hotstore movie pase inforamtion will be limited to device you used 
+auth like if when you re connect to different server it will ask to login again even you are in same device (only irctc login)
+
+No Scalability, Reliability, sticky session, distributed sessions 
+
+Stateless: where information will be stored in different devices and it can be accessed any where or from any server 
+
+example if:
+amazon cart or hotstore movie pase inforamtion will be shared across the devices 
+login it you re connect to another server if it is able to connect from session data of old server 
+
+good Scalability, Reliability, CI/CD
 
 ------------------------------
+
+Rate Limiting: Cap on number of request user can make in a specific window 
+Patterns:
+1. Fixed Window Pattern
+2. Sliding Window Pattern, Leaky Bucket Pattern, Token Bucket Pattern (Common for both)
+3. Counter Pattern
+
+Throttling: Control how fast requests sre processed 
+
+1. Token Bucket Pattern
+2. Leaky Bucket Pattern
+3. Sliding Window Pattern
+4. Priority Queue Pattern
+5. Adaptive Throttling Pattern
+6. Circuit Breaker Pattern
+
 
 Content:
 1. Memory Allocation
