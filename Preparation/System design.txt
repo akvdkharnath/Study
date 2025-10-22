@@ -1,7 +1,7 @@
 Vertical Scaling: adding more resources to the existing server 
-like: increasing CPU, Memory ect.,
+like: increasing CPU, Memory ect., SQL DB
 
-Horizontal Scaling: adding replicas like new servers 
+Horizontal Scaling: adding replicas like new servers NOSQL DB
 
 ------------------------------
 
@@ -156,6 +156,82 @@ Throttling: Control how fast requests sre processed
 4. Priority Queue Pattern
 5. Adaptive Throttling Pattern
 6. Circuit Breaker Pattern
+
+------------------------------
+
+CAP Theorem  (Brewer's Theorem)
+This says any distributed system can only have 2 properties out of 3 
+
+Consistency: 
+All nodes see same data at a given time, meaning if one node do write operations then other  nodes are in sync and showing same data back 
+
+Availability:
+System remain operational to the response where it can be success or failure, means it never goes down always reponds with some thing 
+
+Partition Tolerance :
+System continues working despite network failures, 
+
+
+CP (Consistency + Partition Tolerance)
+
+Sacrifices: Availability
+System becomes unavailable during network partitions
+SQL, NoSQL
+
+AP (Availability + Partition Tolerance)
+Sacrifices: Consistency
+System remains available but may return stale data
+
+
+CA (Consistency + Availability)
+Sacrifices: Partition Tolerance
+System only works if there is no network problems 
+
+
+Example (E-commerce System)
+
+Product Catalog (AP):
+- High availability needed
+- Temporary inconsistencies acceptable
+- Users can see different prices temporarily
+
+--> Social Media, Analytics, Non-critical Data
+
+Shopping Cart (CP):
+- Consistency critical
+- Can tolerate brief unavailability
+- Cart must be accurate
+
+--> Financial Systems, Inventory Management, Login, Critical Data
+
+
+Payment Processing (CP):
+- Consistency absolutely critical
+- Cannot have inconsistent payment data
+- Availability less important than correctness
+
+
+Example (Social Media Platform)
+
+User Posts (AP):
+- High availability for posting
+- Eventual consistency acceptable
+- Users can post even if some servers are down
+
+Friend Lists (CP):
+- Consistency important
+- Cannot have inconsistent friend relationships
+- Brief unavailability acceptable
+
+Real-time Chat (AP):
+- High availability critical
+- Messages can be delivered out of order
+- Eventually consistent
+
+
+CAP + BASE     ?
+CAP + PACELC   ?
+
 
 
 Content:
