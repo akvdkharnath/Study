@@ -1,3 +1,54 @@
+Vertical Scaling: adding more resources to the existing server 
+like: increasing CPU, Memory ect.,
+
+Horizontal Scaling: adding replicas like new servers 
+
+------------------------------
+
+Redundancy: its the practice of dluplicating critical resources for high availability and fault tolerance
+
+types:
+Hardware Redundancy: Multiple componsnts running, hard start by or cold start (Manual start) by if required 
+Data Redundancy: having data backups, Replications in different servers  (master database having slave database replicas of data )
+Network Redundancy; Failover Mechanisms, load balancers
+Geographic Redundancy: having servers deployed in different servers 
+
+Advantages: high availability, fault tolerance, improved performance
+Disadvantages: high cost, complex to maintain 
+
+Redundancy patterns:
+
+N + 1: N active server componenets and 1 back up 
+2N:  N active  and N backup 
+2N + 1: combines both N+ 1 and 2N 
+
+------------------------------
+
+Fault Tolerance: Ability of system to handle things even some conponents are failed 
+
+Implementation Techniques:
+
+Graceful Degradation: continuous with reduced functionallity (pulling data from cache)
+Fail-Fast: System failed (sending error messages)
+Fail-Safe: System running on default operations (Traffic lights default to red when power fails)
+Fail-Silent: System servers with out using those failed componenets
+
+------------------------------
+
+Content Delivery Networks (CDN): Distributed servers located across the globe cache data and deliver it 
+
+Mainly used for: Images, Video, huge data pages 
+
+Flow:
+user request to CDN server (closest) 
+
+cache hit: will deliver the request resorce
+cache fail: CDN server will call to original server cache the data in CDN and deliver
+
+Advantages: less cost (less bandwidth is used), high availability, less Latency 
+
+------------------------------
+
 Persistence: data stored in away that data is not lost if system goes down or restarted 
 
 Storage devices like Hard disk, SSD, Databases are Persistence  (will have information until curropted)
