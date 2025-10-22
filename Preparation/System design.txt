@@ -316,6 +316,75 @@ Shard by Time:
 
 ------------------------------
 
+https://www.youtube.com/watch?v=E6jgEtj-UjI
+CORS: (Cross-Origin Resource Sharing)
+
+This Mechanisms allowes system to talk with cross  domains 
+
+
+https://www.example.com:443/api/users
+│      │                │   │
+│      │                │   └─ Path
+│      │                └───── Port
+│      └────────────────────── Domain
+└───────────────────────────── Protocol
+
+
+✅ Same Origin:
+https://example.com/page1 → https://example.com/page2
+http://localhost:3000/app → http://localhost:3000/api
+
+❌ Different Origins:
+https://example.com → http://example.com (different protocol)
+https://example.com → https://api.example.com (different subdomain)
+https://example.com → https://example.com:8080 (different port)
+
+
+to check if we are allowed or not will call a Preflight Requests (OPTIONS) request 
+
+
+if we get resposne like all method details and allowed headers 
+
+
+if our request uses customer heraders or  PUT, DELETE,PATCH or a different context type then we need to check the OPTIONS  
+
+------------------------------
+
+CQRS (Command Query Responsibility Segregation)
+
+CQRS is an architectural pattern that separates the responsibility of handling commands (writes) and queries (reads) by using different models for reading and writing data. It's based on the principle that read and write operations have different requirements and can be optimized independently.
+
+Command: Operations that change state (Create, Update, Delete)
+
+Query: Operations that retrieve data (Read operations)
+
+Traditional CRUD:
+Single Model:
+├── User Model
+│   ├── Create User
+│   ├── Read User
+│   ├── Update User
+│   └── Delete User
+└── Single Database
+
+CQRS Architecture:
+
+Command Side (Write):
+├── User Command Model
+│   ├── Create User Command
+│   ├── Update User Command
+│   └── Delete User Command
+└── Write Database
+
+Query Side (Read):
+├── User Query Model
+│   ├── Get User Query
+│   ├── Get Users Query
+│   └── Search Users Query
+└── Read Database
+
+------------------------------
+
 Content:
 1. Memory Allocation
 2. Cloud Computing Services
