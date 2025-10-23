@@ -4,6 +4,8 @@ System Design Shorts: https://youtube.com/playlist?list=PLJq-63ZRPdBveSLgUw2KA2R
 System Design Questions: https://youtube.com/playlist?list=PLJq-63ZRPdBssWTtcUlbngD_O5HaxXu6k&si=r_PczuZhMmq-c0Qq
 System Design Full: https://youtube.com/playlist?list=PLJq-63ZRPdBt423WbyAD1YZO0Ljo1pzvY&si=k1VqTHjIGQx9R2iP
 
+Different API solutions: https://www.youtube.com/watch?v=pBASqUbZgkY
+
 Think need to look into: 
 
 1. SOAP vs REST vs GraphQL

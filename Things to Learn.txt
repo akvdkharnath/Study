@@ -8,13 +8,12 @@
 8. Web API Vs WCF (https://www.interviewbit.com/web-api-interview-questions/)
 9. REST API Vs RESTful API (https://www.interviewbit.com/web-api-interview-questions/)
 10. AWS services (https://allcode.com/top-aws-services/)
-11. CORS and CQRS
 12. Rest Vs Graph API
 13. Websockets Vs WebHooks
 14. Virtualization Vs Containerization
 15. Python3 Vs Python
 16. Different API servers Like Flask
-17. Sharding, Connection pooling
+17. Connection pooling
 18. distributed tracing
 19. OpenTelemetry and LGTM
 20. APM tools like datadog and Grafana
@@ -36,15 +35,10 @@
 System Design Terms, Patterns, and Algorithms (for 7+ years experience):
 
 A. Basic System Design Terms:
-- Scalability
-- Availability
 - Reliability
-- Fault Tolerance
-- Redundancy
 - Load Balancing
-- Caching (Cache Aside, Read-Through, Write-Through, Write-Back)
-- Sharding (Horizontal Partitioning)
-- Replication (Master-Slave, Master-Master)
+
+
 - Consistent Hashing
 - Rate Limiter
 - Circuit Breaker
@@ -52,13 +46,11 @@ A. Basic System Design Terms:
 - Retry Pattern
 - Failover
 - Graceful Degradation
-- Throttling
 - Health Checks/Heartbeats
 - Database Indexing
 - Read/Write Splitting
 - Data Partitioning
 - Event Sourcing
-- CQRS (Command Query Responsibility Segregation)
 - Saga Pattern (Distributed Transactions)
 - Idempotency
 - Distributed Locking
@@ -80,7 +72,6 @@ A. Basic System Design Terms:
 - Blue-Green Deployment
 - Canary Release
 - Shadow Traffic
-- CAP Theorem
 - Eventual Consistency vs Strong Consistency
 - Quorum
 - Leader Election (e.g., using ZooKeeper, etcd)
@@ -189,3 +180,32 @@ Completed:
 - Centralized system, Distributed System
 - Latency
 - Throughput
+- Caching (Cache Aside, Read-Through, Write-Through, Write-Back)
+- Sharding (Horizontal Partitioning)
+- Scalability
+- Availability
+- Fault Tolerance
+- Redundancy
+- Sharding
+- Replication (Master-Slave, Master-Master)
+- CAP Theorem
+- CQRS (Command Query Responsibility Segregation)
+- Read/Write Splitting
+- CORS and CQRS
+- Throttling
+
+
+
+
+DTO pattern 
+Circuit Breaker pattern
+
+
+
+
+Load Balancer: ? 
+
+WebSockets ? 
+
+ASIDC 
+

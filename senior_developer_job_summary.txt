@@ -1,0 +1,13 @@
+Senior Software Developer Job Summary
+
+Experienced Senior Software Developer with 6+ years of expertise in building scalable, high-performance applications across product-based companies ranging from startups to mid-level organizations. Proven track record of delivering robust solutions using Python ecosystem including Flask and FastAPI frameworks, with comprehensive experience in database design and optimization using SQL technologies. 
+
+Possesses strong cloud architecture skills with hands-on experience in AWS and Azure platforms, enabling seamless deployment and scaling of applications. Expert in containerization technologies including Docker, and proficient in caching strategies using Redis for performance optimization. Well-versed in workflow orchestration with Apache Airflow and distributed task processing using Celery for handling complex asynchronous operations.
+
+Demonstrates versatility in architectural patterns, having successfully worked on both monolithic and microservices architectures while implementing event-driven design principles. Known for exceptional problem-solving abilities and solution design expertise, consistently delivering innovative approaches to complex technical challenges. Combines deep technical knowledge with strategic thinking to architect systems that are both scalable and maintainable, making significant contributions to product development and team success.
+
+
+
+Senior Software Developer - Technical Note
+
+Senior Software Developer building scalable applications using Python, Flask, FastAPI, Docker, PostgreSQL, AWS, Airflow, and Celery.
