@@ -54,6 +54,23 @@ Persistence: data stored in away that data is not lost if system goes down or re
 Storage devices like Hard disk, SSD, Databases are Persistence  (will have information until curropted)
 Memory (Non Volatile Storages) like RAM, varibles declared in programs and scripts 
 
+stack memory:
+stack is a LIFO 
+
+------------------------------
+
+Transaction: A singe unit of work if contains one or multiple sql's where one fails trancation is failed and all pass then only its success 
+
+
+ACID
+
+Atomicity: either entair statment is executed or none is executed 
+Consistency: Data consistency
+Isolation: if multiple users using same table to read and write, it makes sure they are not effected and over lapped 
+Durability: changs made are Persistence and no data loss 
+
+
+
 ------------------------------
 
 Centralized system: where all processing, data storage, and control are handled by a single central node (server or mainframe). 
@@ -385,6 +402,17 @@ Query Side (Read):
 
 ------------------------------
 
+Read/Write Splitting
+
+CQRS Implementation:
+├── Command Side → Master Database (Write)
+└── Query Side → Read Replicas (Read)
+
+Read/Write Splitting provides the infrastructure for CQRS
+
+------------------------------
+
+
 Content:
 1. Memory Allocation
 2. Cloud Computing Services
@@ -432,12 +460,6 @@ HMAC (Hash-based Message Authentication Code):
 5. Generate HMAC B key or signature at Server side
 6. compares HMAC A and HMAC B if valid send respons 
 
-
-
-
-
-CA: if particular information cannot be guaranteed to be up to date due to network partitioning
-AC: availability over consistency, the system will always process the query and try to return the most recent available
 
 RDBMS(SQL) choose consistency over availability,
 NoSQL: choose availability over consistency.
