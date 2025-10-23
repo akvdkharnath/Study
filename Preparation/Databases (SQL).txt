@@ -256,3 +256,634 @@ trying to create another PK then Database Engine automatically creates a non clu
 Table can not have multiple PK but we can achive this using composite primary key
 
 composite key: made by the combination of two or more columns in a table that can be used to uniquely identify each row in the table when the columns are combined uniqueness of a row is guaranteed, but when it is taken individually it does not guarantee uniqueness
+
+================================================================================
+COMPREHENSIVE SQL COMMANDS AND CONCEPTS FOR INTERVIEWS
+================================================================================
+
+1. BASIC SQL COMMANDS (DDL - Data Definition Language)
+================================================================================
+
+CREATE DATABASE database_name;
+CREATE TABLE table_name (
+    column1 datatype constraints,
+    column2 datatype constraints,
+    ...
+);
+
+ALTER TABLE table_name ADD column_name datatype;
+ALTER TABLE table_name DROP COLUMN column_name;
+ALTER TABLE table_name MODIFY COLUMN column_name new_datatype;
+ALTER TABLE table_name RENAME TO new_table_name;
+
+DROP TABLE table_name;
+DROP DATABASE database_name;
+TRUNCATE TABLE table_name;  -- Faster than DELETE, resets auto-increment
+
+RENAME TABLE old_name TO new_name;
+
+2. DATA MANIPULATION LANGUAGE (DML)
+================================================================================
+
+INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);
+INSERT INTO table_name VALUES (value1, value2, ...);  -- All columns
+INSERT INTO table_name SELECT * FROM another_table;   -- Bulk insert
+
+UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
+UPDATE table_name SET column1 = value1 WHERE column2 IN (SELECT ...);
+
+DELETE FROM table_name WHERE condition;
+DELETE FROM table_name;  -- Deletes all rows (use TRUNCATE instead)
+
+3. DATA QUERY LANGUAGE (DQL)
+================================================================================
+
+SELECT column1, column2 FROM table_name WHERE condition;
+SELECT * FROM table_name;  -- All columns
+SELECT DISTINCT column_name FROM table_name;  -- Unique values only
+
+-- Advanced SELECT with functions
+SELECT COUNT(*) FROM table_name;
+SELECT COUNT(DISTINCT column_name) FROM table_name;
+SELECT SUM(column_name), AVG(column_name), MIN(column_name), MAX(column_name) FROM table_name;
+
+-- String functions
+SELECT UPPER(column_name), LOWER(column_name), LENGTH(column_name) FROM table_name;
+SELECT SUBSTRING(column_name, start, length) FROM table_name;
+SELECT CONCAT(column1, ' ', column2) AS full_name FROM table_name;
+SELECT REPLACE(column_name, 'old_text', 'new_text') FROM table_name;
+SELECT TRIM(column_name), LTRIM(column_name), RTRIM(column_name) FROM table_name;
+
+-- Date functions
+SELECT NOW(), CURDATE(), CURTIME() FROM table_name;
+SELECT DATE_FORMAT(date_column, '%Y-%m-%d') FROM table_name;
+SELECT DATEDIFF(date1, date2) FROM table_name;
+SELECT DATE_ADD(date_column, INTERVAL 1 DAY) FROM table_name;
+
+4. WHERE CLAUSE CONDITIONS
+================================================================================
+
+-- Comparison operators
+WHERE column = value
+WHERE column != value  or  WHERE column <> value
+WHERE column > value
+WHERE column < value
+WHERE column >= value
+WHERE column <= value
+
+-- Logical operators
+WHERE condition1 AND condition2
+WHERE condition1 OR condition2
+WHERE NOT condition
+
+-- Pattern matching
+WHERE column LIKE 'pattern'
+WHERE column LIKE 'a%'     -- starts with 'a'
+WHERE column LIKE '%a'     -- ends with 'a'
+WHERE column LIKE '%a%'    -- contains 'a'
+WHERE column LIKE 'a_'     -- 'a' followed by exactly one character
+WHERE column LIKE 'a__'    -- 'a' followed by exactly two characters
+
+-- Range and membership
+WHERE column BETWEEN value1 AND value2
+WHERE column IN (value1, value2, value3)
+WHERE column NOT IN (value1, value2, value3)
+
+-- NULL handling
+WHERE column IS NULL
+WHERE column IS NOT NULL
+WHERE column IS NULL OR column = ''
+
+5. AGGREGATION AND GROUPING
+================================================================================
+
+-- GROUP BY
+SELECT column1, COUNT(*) FROM table_name GROUP BY column1;
+SELECT column1, SUM(column2), AVG(column2) FROM table_name GROUP BY column1;
+
+-- HAVING (filtering grouped results)
+SELECT column1, COUNT(*) FROM table_name GROUP BY column1 HAVING COUNT(*) > 1;
+
+-- Common aggregate functions
+COUNT(*)           -- Count all rows
+COUNT(column)      -- Count non-NULL values
+COUNT(DISTINCT column)  -- Count unique values
+SUM(column)        -- Sum of values
+AVG(column)        -- Average of values
+MIN(column)        -- Minimum value
+MAX(column)        -- Maximum value
+GROUP_CONCAT(column)  -- Concatenate values (MySQL)
+
+6. SORTING AND LIMITING RESULTS
+================================================================================
+
+ORDER BY column1 ASC, column2 DESC;
+ORDER BY column1, column2;  -- ASC is default
+
+-- Limiting results
+LIMIT 10;                    -- First 10 rows
+LIMIT 5, 10;                 -- Skip 5, take next 10
+LIMIT 10 OFFSET 5;           -- Same as above
+
+-- Top N queries
+SELECT TOP 10 * FROM table_name ORDER BY column DESC;  -- SQL Server
+SELECT * FROM table_name ORDER BY column DESC LIMIT 10;  -- MySQL/PostgreSQL
+
+7. JOINS - RELATIONSHIPS BETWEEN TABLES
+================================================================================
+
+-- INNER JOIN (only matching records)
+SELECT * FROM table1 INNER JOIN table2 ON table1.id = table2.table1_id;
+SELECT * FROM table1 JOIN table2 ON table1.id = table2.table1_id;  -- Same as INNER
+
+-- LEFT JOIN (all from left table + matching from right)
+SELECT * FROM table1 LEFT JOIN table2 ON table1.id = table2.table1_id;
+
+-- RIGHT JOIN (all from right table + matching from left)
+SELECT * FROM table1 RIGHT JOIN table2 ON table1.id = table2.table1_id;
+
+-- FULL OUTER JOIN (all records from both tables)
+SELECT * FROM table1 FULL OUTER JOIN table2 ON table1.id = table2.table1_id;
+
+-- CROSS JOIN (Cartesian product)
+SELECT * FROM table1 CROSS JOIN table2;
+
+-- SELF JOIN (joining table with itself)
+SELECT a.column1, b.column2 FROM table1 a, table1 b WHERE a.id = b.parent_id;
+
+-- Multiple table joins
+SELECT * FROM table1 
+JOIN table2 ON table1.id = table2.table1_id 
+JOIN table3 ON table2.id = table3.table2_id;
+
+8. SUBQUERIES AND NESTED QUERIES
+================================================================================
+
+-- Subquery in WHERE clause
+SELECT * FROM table1 WHERE column1 IN (SELECT column1 FROM table2);
+SELECT * FROM table1 WHERE column1 = (SELECT MAX(column1) FROM table2);
+
+-- Subquery in SELECT clause
+SELECT column1, (SELECT COUNT(*) FROM table2 WHERE table2.id = table1.id) AS count 
+FROM table1;
+
+-- Subquery in FROM clause (derived table)
+SELECT * FROM (SELECT * FROM table1 WHERE condition) AS derived_table;
+
+-- EXISTS and NOT EXISTS
+SELECT * FROM table1 WHERE EXISTS (SELECT 1 FROM table2 WHERE table2.id = table1.id);
+SELECT * FROM table1 WHERE NOT EXISTS (SELECT 1 FROM table2 WHERE table2.id = table1.id);
+
+-- ANY and ALL
+SELECT * FROM table1 WHERE column1 > ANY (SELECT column1 FROM table2);
+SELECT * FROM table1 WHERE column1 > ALL (SELECT column1 FROM table2);
+
+9. SET OPERATIONS
+================================================================================
+
+-- UNION (combines results, removes duplicates)
+SELECT column1 FROM table1 UNION SELECT column1 FROM table2;
+
+-- UNION ALL (combines results, keeps duplicates)
+SELECT column1 FROM table1 UNION ALL SELECT column1 FROM table2;
+
+-- INTERSECT (common records)
+SELECT column1 FROM table1 INTERSECT SELECT column1 FROM table2;
+
+-- EXCEPT/MINUS (records in first but not in second)
+SELECT column1 FROM table1 EXCEPT SELECT column1 FROM table2;  -- SQL Server
+SELECT column1 FROM table1 MINUS SELECT column1 FROM table2;   -- Oracle
+
+10. WINDOW FUNCTIONS (Advanced Analytics)
+================================================================================
+
+-- ROW_NUMBER() - assigns unique number to each row
+SELECT *, ROW_NUMBER() OVER (ORDER BY column1) AS row_num FROM table_name;
+
+-- RANK() - assigns rank with gaps for ties
+SELECT *, RANK() OVER (ORDER BY column1 DESC) AS rank FROM table_name;
+
+-- DENSE_RANK() - assigns rank without gaps for ties
+SELECT *, DENSE_RANK() OVER (ORDER BY column1 DESC) AS dense_rank FROM table_name;
+
+-- PARTITION BY - groups within window function
+SELECT *, ROW_NUMBER() OVER (PARTITION BY column1 ORDER BY column2) AS row_num 
+FROM table_name;
+
+-- LAG() and LEAD() - access previous/next row
+SELECT *, LAG(column1) OVER (ORDER BY id) AS prev_value FROM table_name;
+SELECT *, LEAD(column1) OVER (ORDER BY id) AS next_value FROM table_name;
+
+-- Running totals and averages
+SELECT *, SUM(column1) OVER (ORDER BY id) AS running_total FROM table_name;
+SELECT *, AVG(column1) OVER (ORDER BY id ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) 
+AS moving_avg FROM table_name;
+
+11. COMMON TABLE EXPRESSIONS (CTEs)
+================================================================================
+
+-- Simple CTE
+WITH cte_name AS (
+    SELECT * FROM table_name WHERE condition
+)
+SELECT * FROM cte_name;
+
+-- Recursive CTE (for hierarchical data)
+WITH RECURSIVE hierarchy AS (
+    SELECT id, name, parent_id, 1 AS level FROM table_name WHERE parent_id IS NULL
+    UNION ALL
+    SELECT t.id, t.name, t.parent_id, h.level + 1 
+    FROM table_name t 
+    JOIN hierarchy h ON t.parent_id = h.id
+)
+SELECT * FROM hierarchy;
+
+12. CASE STATEMENTS AND CONDITIONAL LOGIC
+================================================================================
+
+-- Simple CASE
+SELECT column1,
+CASE column1
+    WHEN 'A' THEN 'Excellent'
+    WHEN 'B' THEN 'Good'
+    WHEN 'C' THEN 'Average'
+    ELSE 'Poor'
+END AS grade
+FROM table_name;
+
+-- Searched CASE
+SELECT column1,
+CASE 
+    WHEN column1 >= 90 THEN 'A'
+    WHEN column1 >= 80 THEN 'B'
+    WHEN column1 >= 70 THEN 'C'
+    ELSE 'F'
+END AS grade
+FROM table_name;
+
+-- CASE in WHERE clause
+SELECT * FROM table_name 
+WHERE CASE 
+    WHEN column1 = 'A' THEN column2 > 100
+    WHEN column1 = 'B' THEN column2 > 50
+    ELSE column2 > 0
+END;
+
+13. DATA TYPES AND CONSTRAINTS
+================================================================================
+
+-- Common data types
+INT, INTEGER          -- Whole numbers
+BIGINT                -- Large whole numbers
+DECIMAL(10,2)         -- Fixed-point decimal
+FLOAT, DOUBLE         -- Floating-point numbers
+VARCHAR(255)          -- Variable-length string
+CHAR(10)              -- Fixed-length string
+TEXT                  -- Large text
+DATE                  -- Date only
+DATETIME              -- Date and time
+TIMESTAMP             -- Date and time with timezone
+BOOLEAN, BOOL         -- True/False
+JSON                  -- JSON data (MySQL 5.7+, PostgreSQL)
+
+-- Constraints
+PRIMARY KEY           -- Unique identifier, not null
+FOREIGN KEY           -- References another table
+UNIQUE                -- Unique values
+NOT NULL              -- Cannot be null
+DEFAULT value         -- Default value
+CHECK (condition)     -- Custom validation
+AUTO_INCREMENT        -- Auto-incrementing (MySQL)
+SERIAL                -- Auto-incrementing (PostgreSQL)
+
+-- Example table with constraints
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    age INT CHECK (age >= 18),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (department_id) REFERENCES departments(id)
+);
+
+14. INDEXES AND PERFORMANCE
+================================================================================
+
+-- Create indexes
+CREATE INDEX idx_column ON table_name (column_name);
+CREATE INDEX idx_multi ON table_name (column1, column2);
+CREATE UNIQUE INDEX idx_unique ON table_name (column_name);
+
+-- Drop indexes
+DROP INDEX idx_column ON table_name;
+
+-- Show indexes
+SHOW INDEX FROM table_name;  -- MySQL
+SELECT * FROM pg_indexes WHERE tablename = 'table_name';  -- PostgreSQL
+
+-- Types of indexes
+-- Clustered Index: Data is physically sorted (Primary Key)
+-- Non-clustered Index: Separate structure pointing to data
+-- Composite Index: Multiple columns
+-- Covering Index: Includes all columns needed for query
+
+15. TRANSACTIONS AND ACID PROPERTIES
+================================================================================
+
+-- Transaction control
+START TRANSACTION;
+-- or
+BEGIN;
+
+-- Transaction operations
+INSERT INTO table1 VALUES (1, 'value1');
+UPDATE table2 SET column1 = 'new_value' WHERE id = 1;
+DELETE FROM table3 WHERE id = 1;
+
+-- Commit or rollback
+COMMIT;     -- Save changes permanently
+ROLLBACK;   -- Undo all changes since transaction started
+
+-- Savepoints
+SAVEPOINT savepoint_name;
+-- ... some operations ...
+ROLLBACK TO savepoint_name;  -- Rollback to specific point
+RELEASE SAVEPOINT savepoint_name;
+
+-- ACID Properties:
+-- Atomicity: All operations succeed or all fail
+-- Consistency: Database remains in valid state
+-- Isolation: Concurrent transactions don't interfere
+-- Durability: Committed changes persist
+
+16. STORED PROCEDURES AND FUNCTIONS
+================================================================================
+
+-- Stored procedure
+DELIMITER //
+CREATE PROCEDURE GetUserById(IN user_id INT)
+BEGIN
+    SELECT * FROM users WHERE id = user_id;
+END //
+DELIMITER ;
+
+-- Call procedure
+CALL GetUserById(123);
+
+-- Function
+DELIMITER //
+CREATE FUNCTION CalculateAge(birth_date DATE) 
+RETURNS INT
+READS SQL DATA
+DETERMINISTIC
+BEGIN
+    RETURN YEAR(CURDATE()) - YEAR(birth_date);
+END //
+DELIMITER ;
+
+-- Use function
+SELECT name, CalculateAge(birth_date) AS age FROM users;
+
+17. TRIGGERS
+================================================================================
+
+-- Before insert trigger
+DELIMITER //
+CREATE TRIGGER before_user_insert
+BEFORE INSERT ON users
+FOR EACH ROW
+BEGIN
+    SET NEW.created_at = NOW();
+END //
+DELIMITER ;
+
+-- After update trigger
+DELIMITER //
+CREATE TRIGGER after_user_update
+AFTER UPDATE ON users
+FOR EACH ROW
+BEGIN
+    INSERT INTO user_audit (user_id, action, timestamp) 
+    VALUES (NEW.id, 'UPDATE', NOW());
+END //
+DELIMITER ;
+
+18. VIEWS
+================================================================================
+
+-- Create view
+CREATE VIEW user_summary AS
+SELECT u.id, u.name, u.email, d.name AS department
+FROM users u
+JOIN departments d ON u.department_id = d.id;
+
+-- Use view
+SELECT * FROM user_summary WHERE department = 'IT';
+
+-- Update view
+CREATE OR REPLACE VIEW user_summary AS
+SELECT u.id, u.name, u.email, u.salary, d.name AS department
+FROM users u
+JOIN departments d ON u.department_id = d.id;
+
+-- Drop view
+DROP VIEW user_summary;
+
+19. COMMON INTERVIEW QUESTIONS AND SOLUTIONS
+================================================================================
+
+-- Find second highest salary
+SELECT MAX(salary) FROM employees WHERE salary < (SELECT MAX(salary) FROM employees);
+
+-- Find duplicate records
+SELECT column1, COUNT(*) FROM table_name GROUP BY column1 HAVING COUNT(*) > 1;
+
+-- Delete duplicates (keep one)
+DELETE t1 FROM table_name t1
+INNER JOIN table_name t2 
+WHERE t1.id > t2.id AND t1.column1 = t2.column1;
+
+-- Find employees earning more than their manager
+SELECT e.name, e.salary, m.name AS manager, m.salary AS manager_salary
+FROM employees e
+JOIN employees m ON e.manager_id = m.id
+WHERE e.salary > m.salary;
+
+-- Running total
+SELECT id, amount, SUM(amount) OVER (ORDER BY id) AS running_total
+FROM transactions;
+
+-- Top N per group
+SELECT * FROM (
+    SELECT *, ROW_NUMBER() OVER (PARTITION BY department ORDER BY salary DESC) AS rn
+    FROM employees
+) ranked
+WHERE rn <= 3;
+
+-- Pivot table (convert rows to columns)
+SELECT 
+    department,
+    SUM(CASE WHEN gender = 'M' THEN 1 ELSE 0 END) AS male_count,
+    SUM(CASE WHEN gender = 'F' THEN 1 ELSE 0 END) AS female_count
+FROM employees
+GROUP BY department;
+
+20. PERFORMANCE OPTIMIZATION TIPS
+================================================================================
+
+-- Use appropriate indexes
+CREATE INDEX idx_email ON users(email);
+
+-- Avoid SELECT *
+SELECT id, name, email FROM users;  -- Instead of SELECT *
+
+-- Use LIMIT for large result sets
+SELECT * FROM large_table LIMIT 1000;
+
+-- Use EXISTS instead of IN for subqueries
+SELECT * FROM table1 WHERE EXISTS (SELECT 1 FROM table2 WHERE table2.id = table1.id);
+
+-- Use JOIN instead of subqueries when possible
+SELECT * FROM table1 JOIN table2 ON table1.id = table2.table1_id;  -- Better
+-- Instead of: SELECT * FROM table1 WHERE id IN (SELECT table1_id FROM table2);
+
+-- Use appropriate data types
+-- Use INT instead of VARCHAR for IDs
+-- Use DECIMAL instead of FLOAT for money
+
+-- Analyze query execution plans
+EXPLAIN SELECT * FROM users WHERE email = 'test@example.com';
+
+21. COMMON SQL FUNCTIONS BY CATEGORY
+================================================================================
+
+-- String Functions
+CONCAT(str1, str2, ...)     -- Concatenate strings
+SUBSTRING(str, pos, len)     -- Extract substring
+LENGTH(str)                  -- String length
+UPPER(str), LOWER(str)       -- Case conversion
+TRIM(str)                    -- Remove leading/trailing spaces
+REPLACE(str, from, to)       -- Replace substring
+INSTR(str, substr)           -- Find substring position
+
+-- Numeric Functions
+ROUND(num, decimals)         -- Round number
+CEIL(num), FLOOR(num)        -- Ceiling and floor
+ABS(num)                     -- Absolute value
+MOD(num, divisor)            -- Modulo operation
+POWER(base, exponent)         -- Exponentiation
+
+-- Date Functions
+NOW(), CURDATE(), CURTIME()  -- Current date/time
+DATE_FORMAT(date, format)    -- Format date
+DATEDIFF(date1, date2)       -- Date difference
+DATE_ADD(date, INTERVAL)     -- Add to date
+YEAR(date), MONTH(date), DAY(date)  -- Extract date parts
+
+-- Conditional Functions
+IF(condition, true_val, false_val)  -- Simple if
+COALESCE(val1, val2, ...)           -- First non-null value
+NULLIF(val1, val2)                  -- Return null if equal
+CASE WHEN ... THEN ... END          -- Complex conditions
+
+22. DATABASE DESIGN CONCEPTS
+================================================================================
+
+-- Normalization Forms:
+-- 1NF: Atomic values, no repeating groups
+-- 2NF: 1NF + no partial dependencies
+-- 3NF: 2NF + no transitive dependencies
+-- BCNF: 3NF + every determinant is a candidate key
+
+-- Relationships:
+-- One-to-One: Each record in Table A relates to one record in Table B
+-- One-to-Many: Each record in Table A relates to many records in Table B
+-- Many-to-Many: Requires junction table
+
+-- Keys:
+-- Primary Key: Unique identifier for each row
+-- Foreign Key: References primary key in another table
+-- Composite Key: Combination of multiple columns
+-- Candidate Key: Column(s) that could be primary key
+-- Super Key: Set of columns that uniquely identify rows
+
+23. SECURITY AND PERMISSIONS (DCL)
+================================================================================
+
+-- Grant permissions
+GRANT SELECT, INSERT ON database.table TO 'username'@'host';
+GRANT ALL PRIVILEGES ON database.* TO 'username'@'localhost';
+
+-- Revoke permissions
+REVOKE SELECT ON database.table FROM 'username'@'host';
+
+-- Create user
+CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+
+-- Change password
+ALTER USER 'username'@'localhost' IDENTIFIED BY 'newpassword';
+
+-- Show grants
+SHOW GRANTS FOR 'username'@'localhost';
+
+24. BACKUP AND RECOVERY
+================================================================================
+
+-- MySQL backup
+mysqldump -u username -p database_name > backup.sql
+
+-- MySQL restore
+mysql -u username -p database_name < backup.sql
+
+-- PostgreSQL backup
+pg_dump -U username database_name > backup.sql
+
+-- PostgreSQL restore
+psql -U username database_name < backup.sql
+
+25. COMMON SQL INTERVIEW SCENARIOS
+================================================================================
+
+-- Scenario 1: E-commerce orders
+-- Find top 10 customers by total order value
+SELECT customer_id, SUM(order_total) as total_spent
+FROM orders 
+GROUP BY customer_id 
+ORDER BY total_spent DESC 
+LIMIT 10;
+
+-- Scenario 2: Employee hierarchy
+-- Find all employees reporting to a specific manager (recursive)
+WITH RECURSIVE employee_hierarchy AS (
+    SELECT id, name, manager_id, 1 as level
+    FROM employees WHERE manager_id = 1
+    UNION ALL
+    SELECT e.id, e.name, e.manager_id, eh.level + 1
+    FROM employees e
+    JOIN employee_hierarchy eh ON e.manager_id = eh.id
+)
+SELECT * FROM employee_hierarchy;
+
+-- Scenario 3: Sales analysis
+-- Monthly sales comparison (current vs previous year)
+SELECT 
+    MONTH(order_date) as month,
+    SUM(CASE WHEN YEAR(order_date) = 2023 THEN amount ELSE 0 END) as current_year,
+    SUM(CASE WHEN YEAR(order_date) = 2022 THEN amount ELSE 0 END) as previous_year,
+    SUM(CASE WHEN YEAR(order_date) = 2023 THEN amount ELSE 0 END) - 
+    SUM(CASE WHEN YEAR(order_date) = 2022 THEN amount ELSE 0 END) as difference
+FROM orders
+GROUP BY MONTH(order_date)
+ORDER BY month;
+
+-- Scenario 4: Data quality check
+-- Find records with missing or invalid data
+SELECT 'Missing Email' as issue, COUNT(*) as count FROM users WHERE email IS NULL
+UNION ALL
+SELECT 'Invalid Email Format', COUNT(*) FROM users WHERE email NOT LIKE '%@%.%'
+UNION ALL
+SELECT 'Negative Age', COUNT(*) FROM users WHERE age < 0;
+
+================================================================================
+END OF COMPREHENSIVE SQL REFERENCE
+================================================================================
