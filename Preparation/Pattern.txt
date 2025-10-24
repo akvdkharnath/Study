@@ -104,3 +104,19 @@ application
         view.go
 
 ------------------------------------------------------------------------------------------------------------
+
+
+
+
+Singleton Pattern --> single instance  at a time 
+
+Facetory pattern --> multiple calles deals with multiple products of same tipe with same methodes 
+ex: lungagae converter where each lungagae is one class or Ola application where each vechical type is a diferent class
+
+Decorator Pattern --> same like factory pattern but change here class are extended 
+
+Observer Pattern --> 
+ 
+
+ MVC Model view controller
+ 
