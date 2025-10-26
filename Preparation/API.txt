@@ -83,12 +83,6 @@ principles:
 
 -----------------------------------------------------------
 
-RESTFul:
-services that allow rest architectuer are called RESTFul applications
-1. easy to test 
-2. Communication is easy 
-3. light weight and easy maintained
-
 
 Addressing:
 processing of locating resources in server 
@@ -115,8 +109,6 @@ while we deail with POST and PATCH we need to take care of idempotent
 
 Eg: while creating an order page we need to mak sure an unique key is passwed to so if people click on buttons multiple times based on ubiqueu key we can track and eleniminate the dluplicate entrys 
 
-cache-control Headers:
-helps to control ability of cache data 
 
 public: where both client and server can  cache
 private: only client can cache 
@@ -131,11 +123,6 @@ JSON -> used to transfer data its like dic
 SOP -> Same origin policy 
 CORS -> Cross - Origin resorce sharing 
 
-by default application will not allow ajax request from different origin so we need to config cors to over come SOP
-
-ajax -> tech to call API asyncio using JS
-
-
 1xx - represents informational responses
 2xx - represents successful responses
 3xx - represents redirects
@@ -143,121 +130,189 @@ ajax -> tech to call API asyncio using JS
 5xx - represents server errors
 
 Most commonly used status codes are:
-200 - success/OK
-201 - CREATED - used in POST or PUT methods.
-202 - ACCEPTED - request has been accepted for processing but processing is not complete
-204 - NO CONTENT - server successfully processed the request but there is no content to return
-304 - NOT MODIFIED - used in conditional GET requests to reduce the bandwidth use of the network. Here, the body of the response sent should be empty.
-400 - BAD REQUEST - This can be due to validation errors or missing input data.
-401 - UNAUTHORIZED - This is returned when there is no valid authentication credentials sent along with the request.
-403 - FORBIDDEN - sent when the user does not have access (or is forbidden) to the resource.
-404 - NOT FOUND - Resource method is not available.
-422 - UNPROCESSABLE ENTITY - request was well-formed but contains semantic errors
-429 - TOO MANY REQUESTS - rate limit exceeded
-500 - INTERNAL SERVER ERROR - server threw some exceptions while running the method.
-502 - BAD GATEWAY - Server was not able to get the response from another upstream server.
-503 - SERVICE UNAVAILABLE - server was unable to process the request due to maintenance, overloading, or another temporary interference.
-504 - GATEWAY TIMEOUT - server acting as a gateway did not receive a timely response
+200 - OK - The request has succeeded.
+201 - CREATED - Resource successfully created (used in POST or PUT methods).
+202 - ACCEPTED - The request has been accepted for processing, but processing is not complete.
+204 - NO CONTENT - The server successfully processed the request but there is no content to return.
+
+301 - MOVED PERMANENTLY - The URL of the requested resource has been changed permanently.
+302 - FOUND - The resource resides temporarily under a different URI (commonly used for temporary redirects).
+304 - NOT MODIFIED - Used in conditional GET requests to reduce bandwidth; no content is returned.
+307 - TEMPORARY REDIRECT - The request should be repeated elsewhere, method unchanged.
+308 - PERMANENT REDIRECT - The request, and all future requests, should be repeated using another URI.
+
+400 - BAD REQUEST - The server cannot or will not process the request due to client error (validation, missing data, etc.).
+401 - UNAUTHORIZED - Returned when there are no valid authentication credentials sent with the request.
+403 - FORBIDDEN - User does not have access (or is forbidden) to the resource.
+404 - NOT FOUND - Resource/method is not available.
+405 - METHOD NOT ALLOWED - The method is not allowed for the requested URL.
+409 - CONFLICT - Request could not be processed because of conflict in the current state of the resource.
+410 - GONE - Resource requested is no longer available and will not be available again.
+415 - UNSUPPORTED MEDIA TYPE - The server does not support the media type transmitted in the request.
+422 - UNPROCESSABLE ENTITY - The request was well-formed but contains semantic errors.
+429 - TOO MANY REQUESTS - Rate limit exceeded.
+
+500 - INTERNAL SERVER ERROR - Server encountered an unexpected condition.
+501 - NOT IMPLEMENTED - The server does not support the functionality required.
+502 - BAD GATEWAY - Server received an invalid response from an upstream server.
+503 - SERVICE UNAVAILABLE - Server is currently unable to process the request due to maintenance, overload, or temporary issues.
+504 - GATEWAY TIMEOUT - Server acting as a gateway did not receive a timely response from the upstream server.
 
 
 HTTP Methods:
-GET: This is used for fetching details from the server and is basically a read-only operation.
-POST: This method is used for the creation of new resources on the server.
-PUT: This method is used to update the old/existing resource on the server or to replace the resource.
-DELETE: This method is used to delete the resource on the server.
-PATCH: This is used for modifying the resource on the server.
-OPTIONS: This method fetches all the various HTTP methods that are supported.
-HEAD: This method is similar to GET but returns only the headers without the response body.
-TRACE: This method is used for debugging and returns the received request back to the client.
 
-PUT VS POST VS PATCH
-
-PUT:
-1. UPDATE operations
-2. updates whole resource
-3. idempotent
-4. High Bandwidth 
-
-PATCH:
-1. UPDATE operations
-2. updates part of the resource
-3. not idempotent
-4. Less Bandwidth 
+GET:
+- fetch/read data from server.
+- Should not modify data (safe, read-only).
+- Parameters may be sent via URL (query string).
+- Idempotent (multiple identical requests have same effect).
 
 POST:
-1. CREATE operations
-2. create new resource
-3. not idempotent
-4. High Bandwidth 
+- create a new resource on the server.
+- Not idempotent (multiple identical requests may create multiple resources).
+
+PUT:
+- create or fully update/replace a resource at a specific URI.
+
+DELETE:
+- Used to delete the specified resource from the server.
+- Idempotent (deleting a resource multiple times has same effect: resource gone).
+
+PATCH:
+- partially update/modify an existing resource.
+- Only the specified changes are sent (not the whole resource).
+- Not always idempotent (depends on server implementation).
+- Preferred when only small changes are needed.
+
+OPTIONS:
+- Used in CORS preflight requests.
+- Returns a list of supported HTTP methods for the endpoint (via Allow header).
+
+HEAD:
+- Same as GET but only fetches HTTP headers (no response body).
+- Check existence or metadata of a resource (e.g., Content-Length, Last-Modified).
+- Safe and idempotent.
+
+PUT vs POST vs PATCH
+
+PUT: Update full resource, idempotent, high bandwidth.
+PATCH: Update partial resource, often not idempotent, low bandwidth.
+POST: Create new resource, not idempotent, high bandwidth.
 
 ---------------------------------------------------------------------------
 https://www.youtube.com/watch?v=LtpJup6vcS4
 https://www.youtube.com/watch?v=uRcnaI8Hnzg
 https://www.youtube.com/playlist?list=PLLz6Bi1mIXhEE3NEaLz3xNn7JHBHNb34I
 
-python own server it self is not supported for prod and can only process single request at a time 
-to over come this we use WSGI or ASGI they will provide Workers and each worker can process a request at a time 
+-----------------------------------------------------------
 
-WSGI: Web Server Gateway Interface 
-PEP 3333
-framework: Django, Flask, bottle
-Eg: Gunicorn, uWSGI, apache (mod_wsgi, mod_python)
-No async and await 
+FLASK PRODUCTION LIMITATIONS & ALTERNATIVES
 
-Gunicorn:
-Easy Setup
-Reliable
-Easy Config
-Light weight
-Fast
-Simple
-Don't run on windows
-no need to proxy
-good for better loads
+Why Flask Cannot Be Deployed Directly in Production:
 
+1. DEVELOPMENT SERVER LIMITATIONS:
+   - Flask's built-in server is single-threaded
+   - Can only handle one request at a time
+   - Not designed for concurrent requests
+   - No process management or auto-restart
+   - No load balancing capabilities
+   - Security vulnerabilities in production
 
-uWSGI:
-Easy Setup
-Faster
-Complex Config
-runs separately from your web server (so as not to overload your web server processes)
-overhead
-Don't run on windows
-need to proxy from your main web server to uWSGI
-mostely used while using NGINX, Apache, Cherokee
+2. PERFORMANCE ISSUES:
+   - Synchronous request handling
+   - No async/await support natively
+   - Limited scalability
+   - Memory leaks over time
+   - No connection pooling by default
 
+3. SECURITY CONCERNS:
+   - Debug mode exposes sensitive information
+   - No built-in security headers
+   - Vulnerable to common web attacks
+   - No rate limiting or throttling
 
-mod_wsgi:
-run on windows 
-mostely used while using apache server 
+4. MONITORING & LOGGING:
+   - Basic logging capabilities
+   - No built-in metrics collection
+   - Limited error tracking
+   - No health check endpoints
 
+WSGI SERVERS FOR FLASK (Production Solutions):
 
+1. GUNICORN:
+   - Pre-fork worker model
+   - Multiple worker processes
+   - Easy configuration
+   - Good for CPU-bound tasks
+   - Command: gunicorn -w 4 -b 0.0.0.0:8000 app:app
+   - Workers = (2 * CPU cores) + 1
 
-
-ASGI: Asynchronous Server Gateway Interface
-framework: FastAPI
-Eg: uvicorn, hypercorn, daphne
-process lot more request than WSGI
-I/o operations faster
-
-Workers = (2 * CPU cores) + 1
-
-uvicorn:
-Fastest
-its top of UVLoop
-supports WebSockets (HTTP/1.1)
-3w - 2.5k RPS
-
-hypercorn:
-its top of Quart but can use UVLoop
-supports WebSockets (HTTP/2.0, HTTP/1.0)
-3w - 1.7k RPS
+2. uWSGI:
+   - High performance
+   - Supports multiple protocols
+   - Complex configuration
+   - Good for high-traffic applications
+   - Can run behind Nginx/Apache
 
 
-daphne:
-its top of Twisted
-supports WebSockets (HTTP/2.0)
-3w - 1.7k RPS
+4. MOD_WSGI (Apache):
+   - Apache module
+   - Good integration with Apache
+   - Windows support
+   - Enterprise-grade
 
+FLASK ALTERNATIVES FOR PRODUCTION:
 
-Uvicorn achieved roughly 40% more throughput
+1. FASTAPI:
+   - Modern, fast web framework
+   - Built-in async support
+   - Automatic API documentation
+   - Type hints and validation
+   - High performance (comparable to Node.js)
+   - Native WebSocket support
+   - Better for microservices
+
+2. DJANGO:
+   - Full-featured web framework
+   - Built-in admin panel
+   - ORM included
+   - Security features built-in
+   - Good for large applications
+   - Production-ready out of the box
+
+WHEN TO USE FLASK vs ALTERNATIVES:
+
+Use Flask when:
+- Building simple APIs
+- Prototyping quickly
+- Small to medium applications
+- Team familiar with Flask
+- Need flexibility and minimalism
+
+Use FastAPI when:
+- Building modern APIs
+- Need high performance
+- Want automatic documentation
+- Working with async operations
+- Building microservices
+
+Use Django when:
+- Building full web applications
+- Need admin panel
+- Complex data models
+- Team productivity is priority
+- Enterprise applications
+
+PERFORMANCE COMPARISON (Requests per second):
+
+Standalone servers (no Gunicorn/Uvicorn):
+
+- Flask (built-in dev server): ~300 RPS
+- FastAPI (with built-in Uvicorn): ~3,000 RPS
+
+With production servers:
+
+- Flask + Gunicorn: ~2,000 RPS
+- FastAPI + Uvicorn: ~8,000 RPS
+- Django + Gunicorn: ~1,500 RPS
+- Quart + Hypercorn: ~3,000 RPS
