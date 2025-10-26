@@ -19,20 +19,7 @@
 19. fault-tolerant, and data durable use Data Replication (copies of data in multiple sources) 
 20. user-to-user communication (bi-directional) use Websockets
 21. detect failures use Heartbeat 
-22. 
-23. 
-24. 
 25. deal with a location like maps, nearby resources, we should consider using Quadtree, Geohash
-
-
-latency: henever you have given input to the system and the total time period it takes to give output so that particular time period/interval is known as latency.
-
-Ping: ping is nothing just a concept or a solution to check the value of latency generating there in the connection between the systems. Ping checks the value of latency by just sending 4 packets of data to the address provided by the user to check
-
-Throughput:
-
-Scaling:
-
 
 How to reduce latency:
 https://www.geeksforgeeks.org/what-is-latency/

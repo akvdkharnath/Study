@@ -12,16 +12,11 @@ Think need to look into:
 2. Protocols: HTTP/HTTPS, WebSocket, gRPC
 3. Authentication: OAuth 2.0, JWT, API Keys, Basic Auth
 4. Authorization: RBAC, ABAC, Scopes
-5. HTTP Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD
-6. Status Codes: 2xx, 3xx, 4xx, 5xx series
 7. REST Principles: Stateless, Cacheable, Uniform Interface
-8. (Done) Idempotency: Safe vs Unsafe operations
 9. API Versioning: URL, Header, Content-Type
 10. Rate Limiting: Throttling, Quotas, Burst limits
-11. Caching: HTTP Cache Headers, CDN, Redis
 12. Pagination: Offset, Cursor-based, Page-based
 13. Filtering & Sorting: Query parameters, Search
-14. CORS: Cross-Origin Resource Sharing
 15. gRPC: Protocol Buffers, Streaming
 16. WebSockets: Real-time communication
 

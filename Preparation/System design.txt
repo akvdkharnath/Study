@@ -1,3 +1,11 @@
+Ping: "Ping" is a network utility used to test the reachability and responsiveness of a server.
+
+Key aspects of ping:
+- Verifies if a host is reachable over the network.
+- Measures network latency 
+
+------------------------------
+
 Vertical Scaling: adding more resources to the existing server 
 like: increasing CPU, Memory ect., SQL DB
 
@@ -94,6 +102,7 @@ Low Throughput: Eg: Personal applications, HR applications in small scale, small
 
 High Throughput: Eg: Payment gateways, Social system platforms, search engines, 
 
+Latency Metrics: P50, P95, P99, etc.
 ------------------------------
 
 Hashing: Process of comverting data to a fixed side of value (usually into int) out put is called hash value or hash code

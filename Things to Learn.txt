@@ -29,6 +29,10 @@
 30. sys.getsizeof(), tracemalloc, memory_profiler, objgraph, psutil for monitoring and profiling memory usage
 31. Memory Leak, Garbage Collection (gc package), Weak References (weakref module allows referencing objects without increasing their reference count)
 32. ELK (elasticsearch logstash kibana) and EFK (Fluentd)
+33. AWS Buffers 
+34. Security loops in logging 
+35. URL Shortening 
+36. 2 Phase Commit (2PC)
 
 ---
 
