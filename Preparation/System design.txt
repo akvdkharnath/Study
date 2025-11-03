@@ -77,7 +77,16 @@ Consistency: Data consistency
 Isolation: if multiple users using same table to read and write, it makes sure they are not effected and over lapped 
 Durability: changs made are Persistence and no data loss 
 
+------------------------------
 
+Connection pooling: Reuses pre-established DB connections instead of creating new ones per request.
+
+Advantages: Saves time per request (no TCP/auth overhead).
+Disadvantages: Memory overhead for idle connections, config complexity.
+
+API lifecycle 
+without pooling: Request → Create connection → Query → Close connection → Response.
+with pooling: Request → Borrow from pool → Query → Return to pool → Response.
 
 ------------------------------
 
@@ -167,6 +176,7 @@ login it you re connect to another server if it is able to connect from session 
 good Scalability, Reliability, CI/CD
 
 ------------------------------
+https://www.geeksforgeeks.org/system-design/rate-limiting-in-system-design/
 
 Rate Limiting: Cap on number of request user can make in a specific window 
 Patterns:
@@ -176,12 +186,41 @@ Patterns:
 
 Throttling: Control how fast requests sre processed 
 
-1. Token Bucket Pattern
-2. Leaky Bucket Pattern
-3. Sliding Window Pattern
-4. Priority Queue Pattern
-5. Adaptive Throttling Pattern
-6. Circuit Breaker Pattern
+1. Token Bucket Pattern (https://www.youtube.com/watch?v=my5dGtncxfw)
+    A bucket fills with tokens at a constant rate (e.g., 10 tokens/second), 
+    and each request consumes one token - if bucket is empty, request must wait or is rejected.
+    When tokens accumulate up to maximum capacity, bucket stops filling until some tokens are consumed.
+
+    Advantages: Handles burst traffic when tokens accumulate, simple to implement, flexible rate limiting.
+    Disadvantages: Can overwhelm system with sudden bursts, needs memory to track tokens, not good for strict even distribution. 
+
+2. Leaky Bucket Pattern  (https://www.youtube.com/watch?v=mQCJJqUfn9Y&t=25s)
+    Requests flow into bucket at any rate, but exit at fixed constant rate (like water leaking from bucket).
+    If bucket is full, new requests are rejected or dropped until space is available.
+    Ensures smooth, evenly distributed output rate regardless of input burst traffic.
+
+    Advantages: Prevents traffic bursts from overwhelming system, ensures constant output rate, simple to implement with queue.
+    Disadvantages: No burst allowance (strict rate limiting), requests may be dropped when bucket is full, less flexible than token bucket.
+
+3. Fixed Window Pattern 
+    Time is divided into fixed windows (e.g., every minute), each window has limit of allowed requests (e.g., 100 requests per minute).
+    Counter resets to zero at start of each new window, allowing fresh quota for requests.
+    Simple counting mechanism: increment counter for each request, reject requests when counter exceeds window limit.
+
+    Advantages: Very simple to implement with counter and timestamp, easy to understand, memory efficient.
+    Disadvantages: Allows burst at window boundary (all requests in last second of window + first second of next), not accurate for precise rate limiting, unfair distribution.
+
+4. Sliding Window Patterns
+    Uses a rolling time window that continuously moves forward, tracking requests within current time period (e.g., last 60 seconds).
+    Old requests outside the window are discarded, only requests within window count toward the limit.
+    More accurate than fixed window because it doesn't allow burst at window boundaries, provides smoother rate limiting.
+
+    Advantages: More accurate rate limiting with no boundary burst problem, better distribution of requests, prevents abuse better than fixed window.
+    Disadvantages: More complex to implement (needs timestamp tracking), uses more memory to store request timestamps, computationally expensive to calculate window.
+
+5. Praority Queue pattern
+6. Adaptive Throttling Pattern
+7. Circuit Breaker Pattern (Resilience4J)
 
 ------------------------------
 
@@ -421,6 +460,42 @@ Read/Write Splitting provides the infrastructure for CQRS
 
 ------------------------------
 
+Polling: where client periodically send request to server
+
+Short Polling: where clients periodically send request and servers will respond if new data is avaliable if not will respond with empty response (response is immediate) 
+
+Long Polling: where clients periodically send request and servers will respond if new data is avaliable if not will wait for a given timeout and then responds back 
+
+
+Disadvantages for both:
+high resorce
+data latency
+High Server Load 
+
+Server Send Events (Streaming): Client created a connect to server for a long time, only server can send data , client can not send data (Eg: Chat gpt)
+
+WebSockets: Client created a connect to server for a long time, its a bi directions where server and client can send data (Eg: Chats)
+it will upgrade system from HTTP:// to WS:// and HTTPS:// to WSS://
+
+WebHooks: Server will send events to pre-defined URLS
+
+------------------------------
+
+Race Conditions: When multiple threads/processes access shared resources simultaneously, causing unpredictable results dependent on execution order.
+Fix: Use locks (mutex), semaphores, atomic operations, or synchronization primitives to ensure only one thread accesses critical section at a time.
+
+------------------------------
+
+
+
+
+
+
+
+
+
+
+------------------------------
 
 Content:
 1. Memory Allocation

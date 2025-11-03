@@ -4,16 +4,12 @@
 4. concurrency vs parallel programming
 5. concurrency vs multithreading
 6. AJAX Vs REST
-7. concept of statelessness in REST?
 8. Web API Vs WCF (https://www.interviewbit.com/web-api-interview-questions/)
 9. REST API Vs RESTful API (https://www.interviewbit.com/web-api-interview-questions/)
 10. AWS services (https://allcode.com/top-aws-services/)
 12. Rest Vs Graph API
-13. Websockets Vs WebHooks
 14. Virtualization Vs Containerization
 15. Python3 Vs Python
-16. Different API servers Like Flask
-17. Connection pooling
 18. distributed tracing
 19. OpenTelemetry and LGTM
 20. APM tools like datadog and Grafana
@@ -23,7 +19,7 @@
 24. how would you handle shared data between multiple micro services
 25. PUB/SUB communication with workers (Publish/Subscribe)
 26. webflex for multi processing
-27. Circuit Breaker pattern and Bulkhead pattern
+27. Bulkhead pattern
 28. Keycloak, Auth0, Okta, AWS Cognito (Identity Providers)
 29. API Security (custom serializers, jackson annotation and Mixins)
 30. sys.getsizeof(), tracemalloc, memory_profiler, objgraph, psutil for monitoring and profiling memory usage
@@ -33,6 +29,7 @@
 34. Security loops in logging 
 35. URL Shortening 
 36. 2 Phase Commit (2PC)
+37. over head 
 
 ---
 
@@ -45,18 +42,14 @@ A. Basic System Design Terms:
 
 - Consistent Hashing
 - Rate Limiter
-- Circuit Breaker
 - Bulkhead
 - Retry Pattern
 - Failover
 - Graceful Degradation
 - Health Checks/Heartbeats
 - Database Indexing
-- Read/Write Splitting
-- Data Partitioning
 - Event Sourcing
 - Saga Pattern (Distributed Transactions)
-- Idempotency
 - Distributed Locking
 - Dead Letter Queue
 - Bottleneck
@@ -100,6 +93,14 @@ A. Basic System Design Terms:
 
 
 
+Rabbit MQ 
+Priority Queue 
+Delayed Queue
+lazy Queue
+Dead letter Queue 
+
+
+
 B. System Design Algorithms & Patterns:
 - Sliding Window
 - Two Pointer Technique
@@ -133,7 +134,6 @@ B. System Design Algorithms & Patterns:
 - Heap / Priority Queue Patterns
 - Producer-Consumer Pattern
 - Service-Oriented Architecture (SOA)
-- Server side events (SSE)
 - Race Condations 
 - Heap 
 - Solid Principles 
@@ -202,7 +202,6 @@ Completed:
 
 
 DTO pattern 
-Circuit Breaker pattern
 
 
 
