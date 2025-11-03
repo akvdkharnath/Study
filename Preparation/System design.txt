@@ -218,7 +218,13 @@ Throttling: Control how fast requests sre processed
     Advantages: More accurate rate limiting with no boundary burst problem, better distribution of requests, prevents abuse better than fixed window.
     Disadvantages: More complex to implement (needs timestamp tracking), uses more memory to store request timestamps, computationally expensive to calculate window.
 
-5. Praority Queue pattern
+5. Priority Queue Pattern
+    Requests are assigned priority levels (high, medium, low), and higher priority requests are processed first regardless of arrival time.
+    Uses a priority queue data structure where elements are ordered by priority, not by arrival order.
+    Important requests (VIP users, critical operations) get faster service even during high traffic.
+
+    Advantages: Ensures critical requests are handled first, better user experience for priority users, prevents important tasks from being delayed.
+    Disadvantages: Lower priority requests may starve (wait indefinitely), more complex to implement, requires defining priority rules.
 6. Adaptive Throttling Pattern
 7. Circuit Breaker Pattern (Resilience4J)
 
@@ -457,6 +463,25 @@ CQRS Implementation:
 └── Query Side → Read Replicas (Read)
 
 Read/Write Splitting provides the infrastructure for CQRS
+
+------------------------------
+
+
+Master - Slave 
+    Database replication pattern where one master database handles all write operations, and multiple slave databases replicate data and handle read operations.
+    Master sends updates to slaves asynchronously, slaves can be used for read scaling and backup purposes.
+    If master fails, one slave can be promoted to become new master (with manual intervention or automatic failover).
+
+    Advantages: Simple to implement with clear read/write separation, improves read performance with multiple slaves, provides data redundancy for backup.
+    Disadvantages: Single point of failure (master), write bottleneck on master, replication lag can cause stale reads on slaves.
+
+Master - Master 
+    Database replication pattern where multiple master databases can handle both read and write operations simultaneously.
+    All masters can accept writes and replicate changes to each other, providing high availability and load distribution.
+    Requires conflict resolution when same data is modified on different masters at same time.
+
+    Advantages: No single point of failure, writes can be distributed across masters, better availability than master-slave.
+    Disadvantages: Complex conflict resolution needed, potential data inconsistency, more complex to implement and maintain. 
 
 ------------------------------
 
