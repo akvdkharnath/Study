@@ -101,6 +101,35 @@ hard to manage, easy to scale up and down, Fault tolerance (if one failes other 
 
 ------------------------------
 
+
+https://www.geeksforgeeks.org/system-design/quorum-in-system-design/
+
+quorum: minimum number of nodes in a distributed system to keep it online and working, if we have 6 nodes in the system then (N/2) + 1 =  4 nodes are  the quorem for that system 
+
+Read Quorum: number of nodes that must agree on the reading process for it to be valid (distributed database with 5 nodes. The Read Quorum is set to 3. When a read request is made, the system must read from at least 3 nodes and collect their responses to fulfill the request. This ensures that the data read is consistent across the majority of nodes.)
+
+Write Quorum: group of nodes in a distributed system that all have to agree on a write action for it to be valid (distributed database with 5 nodes, the Write Quorum is set to 3. When a write request is made, the system must receive acknowledgments from at least 3 nodes confirming the write operation. This ensures that the data is written to a majority of nodes, maintaining consistency.)
+
+Strong Consistency: All nodes see the same data at the same time; reads always return the latest write. (banking, inventory counts)
+
+Eventual Consistency: Nodes may temporarily differ, but will converge to the same state over time without new writes. (Social media feeds, likes, comments)
+
+Quorum Consensus Algorithms: Paxos, Raft algorithm, Zab
+
+------------------------------
+
+Shadow Traffic (Dark Traffic/Mirror Traffic): dluplicating the original request to a new server as well, where client will be given response from Production server only (User mainly for Critical code lift testing)
+
+
+
+Deployment Types: https://www.youtube.com/watch?v=AWVTKBUnoIg()
+1. Big Bang: All changes deployed at once (easy, hogh risk of failure, down time is required)
+2. Rolling out: Will update pod by pod gradually (mid complex, still risk of failure, No downtime required)
+3. Blue-Green: Two production environments run in parallel; switching traffic from old (blue) to new (green) ensures a seamless, instant update with easy rollback
+4. Canary: Changes are released to a small group of users first; if no major issues occur, the deployment incrementally expands to everyone (No risk and no downs)
+
+------------------------------
+
 Latency: Time take to for data to go  from one point to another point of system 
 Low  Latency (need to be fast):  Eg: Online Gamming, Live Trading, Video conferance, Bidding application
 High Latency (ok to be slow): Email, Reports tools (SAP, Tableau), Background processing tasks (Updates, batch processing)
@@ -227,6 +256,18 @@ Throttling: Control how fast requests sre processed
     Disadvantages: Lower priority requests may starve (wait indefinitely), more complex to implement, requires defining priority rules.
 6. Adaptive Throttling Pattern
 7. Circuit Breaker Pattern (Resilience4J)
+
+------------------------------
+
+Queue Types :
+
+Priority Queue: Messages processed by priority order not the arrivial order 
+
+Delayed Queue: Messages processed by after a given delayed time (mainly for grouping the tasks)
+
+Lazy Queue: Where messages will be stored in disk not the memory (Mainly used to store the backlog)
+
+Dead Letter Queue: Queue that recive the messages that where fauled in processing 
 
 ------------------------------
 
