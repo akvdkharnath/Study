@@ -70,12 +70,287 @@ stack is a LIFO
 Transaction: A singe unit of work if contains one or multiple sql's where one fails trancation is failed and all pass then only its success 
 
 
-ACID
+ACID (Atomicity, Consistency, Isolation, Durability)
 
-Atomicity: either entair statment is executed or none is executed 
-Consistency: Data consistency
-Isolation: if multiple users using same table to read and write, it makes sure they are not effected and over lapped 
-Durability: changs made are Persistence and no data loss 
+ACID is a set of properties that guarantee reliable database transactions. It ensures data integrity and reliability in database systems, particularly in relational databases (SQL).
+
+1. Atomicity:
+   - "All or Nothing" principle
+   - Either the entire transaction succeeds, or all changes are rolled back
+   - No partial transactions - if any part fails, entire transaction is undone
+   - Ensures database never has incomplete or corrupted data
+   
+   Example:
+   - Transfer $100 from Account A to Account B
+   - Step 1: Deduct $100 from Account A
+   - Step 2: Add $100 to Account B
+   - If Step 2 fails, Step 1 is automatically rolled back
+   - Result: Either both succeed or both fail (no money lost)
+
+   Real-world: Bank transfer, order processing, booking systems
+
+2. Consistency:
+   - Database remains in a valid state before and after transaction
+   - All data integrity rules, constraints, and validations are maintained
+   - Invalid transactions are rejected, preventing data corruption
+   - Referential integrity, foreign keys, check constraints are enforced
+   
+   Example:
+   - Rule: Account balance cannot be negative
+   - Transaction tries to withdraw $200 from account with $100
+   - Transaction is rejected (consistency violation)
+   - Database remains in consistent state
+
+   Real-world: Enforcing business rules, data validation, constraint checking
+
+3. Isolation:
+   - Concurrent transactions don't interfere with each other
+   - Each transaction sees a consistent snapshot of data
+   - Prevents dirty reads, non-repeatable reads, and phantom reads
+   - Multiple users can work simultaneously without conflicts
+   
+   Isolation Levels (from weakest to strongest):
+   
+   a) Read Uncommitted:
+      - Lowest isolation, allows dirty reads
+      - Can read uncommitted data from other transactions
+      - Rarely used, not recommended
+   
+   b) Read Committed:
+      - Prevents dirty reads
+      - Can read only committed data
+      - Most common default level
+      - May have non-repeatable reads
+   
+   c) Repeatable Read:
+      - Prevents dirty reads and non-repeatable reads
+      - Same query returns same results within transaction
+      - May still have phantom reads
+   
+   d) Serializable:
+      - Highest isolation level
+      - Complete isolation, no interference
+      - Transactions execute as if sequentially
+      - Prevents all concurrency issues
+      - Slower performance due to locking
+   
+   Example:
+   - User A reads account balance: $1000
+   - User B transfers $500 (transaction in progress)
+   - User A reads again: Still sees $1000 (isolated view)
+   - User B commits
+   - User A's transaction completes with consistent view
+
+   Real-world: Multi-user systems, concurrent booking, inventory management
+
+4. Durability:
+   - Once a transaction is committed, changes are permanent
+   - Data survives system crashes, power failures, and restarts
+   - Changes are written to persistent storage (disk)
+   - No data loss even if system fails immediately after commit
+   
+   Implementation:
+   - Write-Ahead Logging (WAL): Changes logged before commit
+   - Transaction logs stored on disk
+   - Database recovery uses logs to restore committed transactions
+   
+   Example:
+   - User completes payment transaction
+   - Transaction is committed
+   - System crashes 1 second later
+   - After restart, payment is still recorded (durable)
+   - No need to redo the transaction
+
+   Real-world: Financial records, critical data, audit logs
+
+ACID Transaction Example:
+
+BEGIN TRANSACTION;
+  UPDATE accounts SET balance = balance - 100 WHERE id = 'A';
+  UPDATE accounts SET balance = balance + 100 WHERE id = 'B';
+  INSERT INTO transaction_log (from_account, to_account, amount) 
+  VALUES ('A', 'B', 100);
+COMMIT;
+
+If any step fails:
+- All changes are rolled back (Atomicity)
+- Database remains in valid state (Consistency)
+- Other transactions unaffected (Isolation)
+- No partial changes saved (Durability)
+
+ACID vs BASE Comparison:
+
+ACID (Traditional SQL Databases):
+- Strong consistency: Data is always consistent
+- Immediate consistency: Changes are visible immediately
+- Best for: Financial transactions, critical data, where accuracy is paramount
+- Examples: MySQL, PostgreSQL, Oracle, SQL Server
+- Guarantees: Data integrity, reliability, correctness
+
+BASE (NoSQL/Distributed Systems):
+- Eventual consistency: Data becomes consistent over time
+- High availability: System always responds
+- Best for: Large-scale systems, social media, analytics, where availability > immediate consistency
+- Examples: Cassandra, DynamoDB, MongoDB (in some configurations)
+- Trade-offs: May have stale data, but highly available
+
+When to use ACID:
+- Financial transactions (banking, payments)
+- Critical data integrity required
+- Immediate consistency is mandatory
+- Write-heavy with complex relationships
+- Banking, healthcare records, inventory management
+- E-commerce checkout, booking systems
+- Systems where data accuracy > availability
+
+ACID + CAP Theorem Relationship:
+- ACID aligns with CP (Consistency + Partition Tolerance) from CAP theorem
+- Prioritizes consistency over availability
+- During network partitions, system may become unavailable to maintain consistency
+- SQL databases typically choose CP: Consistency + Partition Tolerance
+
+ACID Advantages:
+- Data integrity guaranteed
+- Reliable transactions
+- No data corruption
+- Predictable behavior
+- Strong consistency
+- Suitable for critical systems
+
+ACID Disadvantages:
+- Harder to scale horizontally
+- Potential availability issues during partitions
+- Performance overhead (locking, logging)
+- Complex distributed transactions
+- May block operations for consistency
+- Not ideal for high-scale distributed systems
+
+Real-World ACID Examples:
+
+1. Banking System:
+   - Money transfer must be atomic (all or nothing)
+   - Balance must be consistent (no negative balances)
+   - Concurrent transfers must be isolated
+   - Transactions must be durable (survive crashes)
+
+2. E-commerce Checkout:
+   - Order creation, payment, inventory update must be atomic
+   - Stock levels must be consistent
+   - Multiple users buying same item must be isolated
+   - Orders must be durable
+
+3. Booking System (Airlines, Hotels):
+   - Seat/room booking must be atomic
+   - Availability must be consistent
+   - Concurrent bookings must be isolated
+   - Reservations must be durable
+
+4. Healthcare Records:
+   - Patient data updates must be atomic
+   - Medical records must be consistent
+   - Multiple doctors accessing records must be isolated
+   - Records must be durable (legal requirement)
+
+Transaction States:
+- Active: Transaction is executing
+- Partially Committed: All operations completed, but not yet committed
+- Committed: Transaction completed successfully, changes are permanent
+- Failed: Transaction cannot proceed (error occurred)
+- Aborted: Transaction rolled back, database restored to previous state
+
+BASE (Basically Available, Soft state, Eventual consistency)
+
+BASE is a design philosophy used in distributed systems, particularly NoSQL databases, that prioritizes availability and scalability over strict consistency. It's the opposite approach to ACID.
+
+1. Basically Available:
+   - System remains available and operational most of the time
+   - System responds to every request (even if it's an error or stale data)
+   - No single point of failure - if one node fails, others continue working
+   - Graceful degradation: system works with reduced functionality during failures
+   
+   Example: E-commerce site shows cached product prices even if database is temporarily unavailable
+
+2. Soft State:
+   - System state can change over time without new input
+   - Data can be inconsistent temporarily
+   - State is "soft" because it may not be immediately consistent across all nodes
+   - State changes propagate asynchronously
+   
+   Example: User's friend count on social media may show different numbers on different servers temporarily
+
+3. Eventual Consistency:
+   - System will become consistent eventually, but not immediately
+   - Given enough time, all nodes will have the same data
+   - No guarantee of immediate consistency after a write
+   - Consistency is achieved over time through replication and synchronization
+   
+   Example: When you update your profile, it may take a few seconds to appear on all servers
+
+BASE vs ACID Comparison:
+
+ACID (Traditional SQL Databases):
+- Strong consistency: Data is always consistent
+- Immediate consistency: Changes are visible immediately
+- Best for: Financial transactions, critical data, where accuracy is paramount
+- Examples: MySQL, PostgreSQL, Oracle
+
+BASE (NoSQL/Distributed Systems):
+- Eventual consistency: Data becomes consistent over time
+- High availability: System always responds
+- Best for: Large-scale systems, social media, analytics, where availability > immediate consistency
+- Examples: Cassandra, DynamoDB, MongoDB (in some configurations)
+
+When to use BASE:
+- High availability is critical
+- System needs to scale horizontally
+- Temporary inconsistencies are acceptable
+- Read-heavy workloads
+- Large-scale distributed systems
+- Real-time analytics, social media, content delivery
+
+When to use ACID:
+- Financial transactions
+- Critical data integrity required
+- Immediate consistency is mandatory
+- Write-heavy with complex relationships
+- Banking, healthcare records, inventory management
+
+BASE + CAP Theorem Relationship:
+- BASE aligns with AP (Availability + Partition Tolerance) from CAP theorem
+- Sacrifices immediate consistency (C) for availability (A) and partition tolerance (P)
+- BASE systems are eventually consistent, which is acceptable for many modern applications
+
+Real-World Examples:
+
+1. Social Media (BASE):
+   - User posts appear on different servers at different times
+   - Friend count may vary temporarily
+   - High availability is more important than immediate consistency
+
+2. E-commerce Product Catalog (BASE):
+   - Product prices may be cached differently
+   - Inventory counts may be slightly inconsistent
+   - System remains available even during database issues
+
+3. Banking System (ACID):
+   - Account balance must be immediately consistent
+   - Transaction must be atomic and durable
+   - Cannot tolerate inconsistencies
+
+4. Content Delivery (BASE):
+   - CDN serves cached content
+   - Updates propagate eventually
+   - High availability for global users
+
+Trade-offs:
+- BASE: Better scalability, availability, but may have stale data
+- ACID: Strong consistency, but harder to scale, potential availability issues
+
+Modern Approach:
+- Many systems use hybrid approach: ACID for critical operations, BASE for non-critical
+- Microservices: Each service chooses ACID or BASE based on requirements
+- Eventual consistency patterns: Read-your-writes, Monotonic reads, Causal consistency
+
 
 ------------------------------
 
@@ -120,8 +395,6 @@ Quorum Consensus Algorithms: Paxos, Raft algorithm, Zab
 
 Shadow Traffic (Dark Traffic/Mirror Traffic): dluplicating the original request to a new server as well, where client will be given response from Production server only (User mainly for Critical code lift testing)
 
-
-
 Deployment Types: https://www.youtube.com/watch?v=AWVTKBUnoIg()
 1. Big Bang: All changes deployed at once (easy, hogh risk of failure, down time is required)
 2. Rolling out: Will update pod by pod gradually (mid complex, still risk of failure, No downtime required)
@@ -133,6 +406,15 @@ Deployment Types: https://www.youtube.com/watch?v=AWVTKBUnoIg()
 Latency: Time take to for data to go  from one point to another point of system 
 Low  Latency (need to be fast):  Eg: Online Gamming, Live Trading, Video conferance, Bidding application
 High Latency (ok to be slow): Email, Reports tools (SAP, Tableau), Background processing tasks (Updates, batch processing)
+
+Mean Latency: Mean latency is like the average response time of a system. It’s calculated by adding up all the response times for requests made to the system and then dividing that total by the number of requests
+Ex: Imagine you have data on the time it took for 5 users to load the website: 2 seconds, 3 seconds, 4 seconds, 5 seconds, and 6 seconds.
+Add up all the response times: 2 + 3 + 4 + 5 + 6 = 20.
+Divide the total by the number of users (which is 5 in this case): 20 ÷ 5 = 4.
+So, the mean latency for this example is 4 seconds. It means, on average, it takes 4 seconds for the website to load for these users.
+
+Max latency: is the longest amount of time it takes for a system to respond to a request.
+Ex: If the video starts playing for most users within a few seconds, but there’s one user who experiences a delay of 20 seconds before the video starts, then the max latency in this case would be 20 seconds. 
 
 Throughput: Amount of data can be processing in given time 
 
@@ -341,9 +623,68 @@ Real-time Chat (AP):
 - Eventually consistent
 
 
-CAP + BASE     ?
-CAP + PACELC   ?
+CAP + BASE Relationship:
 
+CAP Theorem defines what a distributed system CAN achieve (2 out of 3 properties).
+BASE defines HOW a system behaves when choosing Availability + Partition Tolerance (AP).
+
+Connection:
+- BASE is the practical implementation of AP (Availability + Partition Tolerance) from CAP
+- When you choose AP in CAP, you're essentially choosing a BASE system
+- BASE systems sacrifice immediate Consistency (C) for Availability (A) and Partition Tolerance (P)
+
+Mapping:
+- CAP: AP (Availability + Partition Tolerance) → BASE philosophy
+- CAP: CP (Consistency + Partition Tolerance) → ACID philosophy
+- CAP: CA (Consistency + Availability) → Not possible in distributed systems
+
+Example:
+- NoSQL databases (Cassandra, DynamoDB) = AP from CAP = BASE approach
+- SQL databases (PostgreSQL, MySQL) = CP from CAP = ACID approach
+
+CAP + PACELC Relationship:
+
+PACELC is an extension of CAP theorem that adds more nuance.
+
+PACELC = Partition (P) + Availability (A) vs Consistency (C) + Else (E) + Latency (L) vs Consistency (C)
+
+When there's a Partition (network failure):
+- PAC: Same as CAP theorem
+- Choose between Availability (A) and Consistency (C)
+
+When there's NO Partition (normal operation):
+- ELC: Choose between Latency (L) and Consistency (C)
+- Low Latency: Fast responses, eventual consistency (BASE-like)
+- High Consistency: Slower responses, immediate consistency (ACID-like)
+
+Key Insight:
+- CAP only considers what happens during network partitions
+- PACELC also considers normal operation scenarios
+- Even without partitions, you must choose between speed (latency) and consistency
+
+Examples:
+
+1. Cassandra (PACELC: PA/EL):
+   - Partition: Availability over Consistency (PA)
+   - No Partition: Low Latency over Consistency (EL)
+   - Fast reads/writes, eventual consistency
+
+2. MongoDB (PACELC: PA/EC):
+   - Partition: Availability over Consistency (PA)
+   - No Partition: Consistency over Latency (EC)
+   - Can be configured for stronger consistency when no partition
+
+3. PostgreSQL (PACELC: PC/EC):
+   - Partition: Consistency over Availability (PC)
+   - No Partition: Consistency over Latency (EC)
+   - Strong consistency, may be slower
+
+Summary:
+- CAP: What happens during network failures (2 out of 3)
+- BASE: How AP systems behave (Basically Available, Soft state, Eventual consistency)
+- PACELC: Extends CAP to also consider normal operation (Latency vs Consistency)
+
+All three help understand trade-offs in distributed systems design.
 
 
 ------------------------------
