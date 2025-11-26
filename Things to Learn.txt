@@ -1,9 +1,10 @@
-1. https://refactoring.guru/design-patterns/go    (Design patterns)
+1. https://refactoring.guru/design-patterns/go 
 2. difference between CI and CD (https://www.guru99.com/continuous-integration-vs-delivery-vs-deployment.html)
 3. Waterfall, Feature-Driven Development, Agile, Scrum, Extreme Programming (XP), Lean
 4. concurrency vs parallel programming
 5. concurrency vs multithreading
 6. AJAX Vs REST
+7. DRY and DIE 
 8. Web API Vs WCF (https://www.interviewbit.com/web-api-interview-questions/)
 9. REST API Vs RESTful API (https://www.interviewbit.com/web-api-interview-questions/)
 10. AWS services (https://allcode.com/top-aws-services/)
@@ -41,11 +42,8 @@ A. Basic System Design Terms:
 
 
 - Consistent Hashing
-- Rate Limiter
 - Bulkhead
-- Retry Pattern
 - Failover
-- Graceful Degradation
 - Health Checks/Heartbeats
 - Database Indexing
 - Event Sourcing
@@ -58,7 +56,6 @@ A. Basic System Design Terms:
 - Message Queue (Pub/Sub, Point-to-Point)
 - Observer Pattern
 - Publish-Subscribe Pattern
-- Webhooks
 - Request-Reply
 - Fan-out/Fan-in
 - Microservices vs Monolith
@@ -66,15 +63,9 @@ A. Basic System Design Terms:
 - Sidecar Pattern
 - Strangler Fig Pattern
 - Backend for Frontend (BFF)
-- Blue-Green Deployment
-- Canary Release
-- Shadow Traffic
-- Eventual Consistency vs Strong Consistency
-- Quorum
 - Leader Election (e.g., using ZooKeeper, etcd)
 - Paxos/Raft (Consensus Algorithms)
 - OAuth/JWT
-- API Rate Limiting
 - Zero Trust Architecture
 - Encryption at Rest/In Transit
 - Audit Logging
@@ -84,20 +75,21 @@ A. Basic System Design Terms:
 - Alerting
 - Auto-scaling
 - Proxy (Reverse Proxy, Forward Proxy)
-- Federation
-- Master-Slave Replication, Master-Master Replication
 - SSO (Single Sign On)
 - DRY (Don't Repeat Yourself), DIE (Duplication Is Evil)
 - Dead lock
 - Lazy Loading
+- Orchestration
+- Choreography
+- OLAP and OLTP
 
 
+Messaged protocals:
+1. AMQP
+2. MQTT 
+3. STOMP
+4. NATS PAtterns 
 
-Rabbit MQ 
-Priority Queue 
-Delayed Queue
-lazy Queue
-Dead letter Queue 
 
 
 
@@ -123,7 +115,7 @@ B. System Design Algorithms & Patterns:
 - KMP Algorithm (String Matching)
 - Trie (Prefix Tree)
 - Bloom Filter
-- LRU/LFU Cache
+- LRU/LFU redis Cache code impl 
 - Minimax Algorithm (Game Trees)
 - Segment Tree / Fenwick Tree (Binary Indexed Tree)
 - Suffix Array / Suffix Tree
@@ -197,7 +189,26 @@ Completed:
 - Read/Write Splitting
 - CORS and CQRS
 - Throttling
+- Rate Limiter
+- Retry Pattern
+- Graceful Degradation
+- Webhooks
+- Blue-Green Deployment
+- Canary Release
+- Shadow Traffic
+- Eventual Consistency vs Strong Consistency
+- Quorum
+- API Rate Limiting
+- Master-Slave Replication, Master-Master Replication
 
+
+
+
+Concurrency https://www.youtube.com/watch?v=RlM9AfWf1WU 
+single core serving multiple request at a time but all will have some progress 
+
+Parallelism 
+Heavy Compunational power 
 
 
 
@@ -207,8 +218,4 @@ DTO pattern
 
 
 Load Balancer: ? 
-
-WebSockets ? 
-
-ASIDC 
 
