@@ -178,6 +178,35 @@ If any step fails:
 - Other transactions unaffected (Isolation)
 - No partial changes saved (Durability)
 
+BASE (Basically Available, Soft state, Eventual consistency)
+
+BASE is a design philosophy used in distributed systems, particularly NoSQL databases, that prioritizes availability and scalability over strict consistency. It's the opposite approach to ACID.
+
+1. Basically Available:
+   - System remains available and operational most of the time
+   - System responds to every request (even if it's an error or stale data)
+   - No single point of failure - if one node fails, others continue working
+   - Graceful degradation: system works with reduced functionality during failures
+   
+   Example: E-commerce site shows cached product prices even if database is temporarily unavailable
+
+2. Soft State:
+   - System state can change over time without new input
+   - Data can be inconsistent temporarily
+   - State is "soft" because it may not be immediately consistent across all nodes
+   - State changes propagate asynchronously
+   
+   Example: User's friend count on social media may show different numbers on different servers temporarily
+
+3. Eventual Consistency:
+   - System will become consistent eventually, but not immediately
+   - Given enough time, all nodes will have the same data
+   - No guarantee of immediate consistency after a write
+   - Consistency is achieved over time through replication and synchronization
+   
+   Example: When you update your profile, it may take a few seconds to appear on all servers
+
+
 ACID vs BASE Comparison:
 
 ACID (Traditional SQL Databases):
@@ -225,95 +254,6 @@ ACID Disadvantages:
 - May block operations for consistency
 - Not ideal for high-scale distributed systems
 
-Real-World ACID Examples:
-
-1. Banking System:
-   - Money transfer must be atomic (all or nothing)
-   - Balance must be consistent (no negative balances)
-   - Concurrent transfers must be isolated
-   - Transactions must be durable (survive crashes)
-
-2. E-commerce Checkout:
-   - Order creation, payment, inventory update must be atomic
-   - Stock levels must be consistent
-   - Multiple users buying same item must be isolated
-   - Orders must be durable
-
-3. Booking System (Airlines, Hotels):
-   - Seat/room booking must be atomic
-   - Availability must be consistent
-   - Concurrent bookings must be isolated
-   - Reservations must be durable
-
-4. Healthcare Records:
-   - Patient data updates must be atomic
-   - Medical records must be consistent
-   - Multiple doctors accessing records must be isolated
-   - Records must be durable (legal requirement)
-
-Transaction States:
-- Active: Transaction is executing
-- Partially Committed: All operations completed, but not yet committed
-- Committed: Transaction completed successfully, changes are permanent
-- Failed: Transaction cannot proceed (error occurred)
-- Aborted: Transaction rolled back, database restored to previous state
-
-BASE (Basically Available, Soft state, Eventual consistency)
-
-BASE is a design philosophy used in distributed systems, particularly NoSQL databases, that prioritizes availability and scalability over strict consistency. It's the opposite approach to ACID.
-
-1. Basically Available:
-   - System remains available and operational most of the time
-   - System responds to every request (even if it's an error or stale data)
-   - No single point of failure - if one node fails, others continue working
-   - Graceful degradation: system works with reduced functionality during failures
-   
-   Example: E-commerce site shows cached product prices even if database is temporarily unavailable
-
-2. Soft State:
-   - System state can change over time without new input
-   - Data can be inconsistent temporarily
-   - State is "soft" because it may not be immediately consistent across all nodes
-   - State changes propagate asynchronously
-   
-   Example: User's friend count on social media may show different numbers on different servers temporarily
-
-3. Eventual Consistency:
-   - System will become consistent eventually, but not immediately
-   - Given enough time, all nodes will have the same data
-   - No guarantee of immediate consistency after a write
-   - Consistency is achieved over time through replication and synchronization
-   
-   Example: When you update your profile, it may take a few seconds to appear on all servers
-
-BASE vs ACID Comparison:
-
-ACID (Traditional SQL Databases):
-- Strong consistency: Data is always consistent
-- Immediate consistency: Changes are visible immediately
-- Best for: Financial transactions, critical data, where accuracy is paramount
-- Examples: MySQL, PostgreSQL, Oracle
-
-BASE (NoSQL/Distributed Systems):
-- Eventual consistency: Data becomes consistent over time
-- High availability: System always responds
-- Best for: Large-scale systems, social media, analytics, where availability > immediate consistency
-- Examples: Cassandra, DynamoDB, MongoDB (in some configurations)
-
-When to use BASE:
-- High availability is critical
-- System needs to scale horizontally
-- Temporary inconsistencies are acceptable
-- Read-heavy workloads
-- Large-scale distributed systems
-- Real-time analytics, social media, content delivery
-
-When to use ACID:
-- Financial transactions
-- Critical data integrity required
-- Immediate consistency is mandatory
-- Write-heavy with complex relationships
-- Banking, healthcare records, inventory management
 
 BASE + CAP Theorem Relationship:
 - BASE aligns with AP (Availability + Partition Tolerance) from CAP theorem
@@ -350,7 +290,6 @@ Modern Approach:
 - Many systems use hybrid approach: ACID for critical operations, BASE for non-critical
 - Microservices: Each service chooses ACID or BASE based on requirements
 - Eventual consistency patterns: Read-your-writes, Monotonic reads, Causal consistency
-
 
 ------------------------------
 
@@ -622,16 +561,7 @@ Real-time Chat (AP):
 - Messages can be delivered out of order
 - Eventually consistent
 
-
-CAP + BASE Relationship:
-
 CAP Theorem defines what a distributed system CAN achieve (2 out of 3 properties).
-BASE defines HOW a system behaves when choosing Availability + Partition Tolerance (AP).
-
-Connection:
-- BASE is the practical implementation of AP (Availability + Partition Tolerance) from CAP
-- When you choose AP in CAP, you're essentially choosing a BASE system
-- BASE systems sacrifice immediate Consistency (C) for Availability (A) and Partition Tolerance (P)
 
 Mapping:
 - CAP: AP (Availability + Partition Tolerance) → BASE philosophy
@@ -685,7 +615,6 @@ Summary:
 - PACELC: Extends CAP to also consider normal operation (Latency vs Consistency)
 
 All three help understand trade-offs in distributed systems design.
-
 
 ------------------------------
 
@@ -795,9 +724,7 @@ https://example.com → https://example.com:8080 (different port)
 
 to check if we are allowed or not will call a Preflight Requests (OPTIONS) request 
 
-
 if we get resposne like all method details and allowed headers 
-
 
 if our request uses customer heraders or  PUT, DELETE,PATCH or a different context type then we need to check the OPTIONS  
 
@@ -893,11 +820,52 @@ Fix: Use locks (mutex), semaphores, atomic operations, or synchronization primit
 
 ------------------------------
 
+Python design Pattern:
+
+1. Creational Patterns: (Main gole is how we create objects)
+2. Structural Patterns: (How we structure those objects or class)
+3. Behavioral Patterns: (How objects intract between them self)
+
+
+1. Strategy (BP)  https://www.youtube.com/watch?v=hVLb3-OE3pM (
+   if our code have many if else condations which will address same solution with different intigrations then its good to implement this 
+   One parent class 
+   For each condation one child class 
+   Child class will have same methods 
+   Ex: Payment Gateway 
+
+2. Observer (BP) https://www.youtube.com/watch?v=7B1DFe0VBxI
+   we use this for one to many mapping like where when one object is updated then many assocated objected required to be notified automatically
+   Ex: One to many Notification system 
 
 
 
 
 
+3. Decorator (SP)
+   Allowes us to add new functionality with out modification to the existing 
+   if you code need to do lot of opearations dinamically on base out pust where you need apply one or multiple things on it based on requirement 
+   One parent class 
+   multiple decorators calss with same methods where
+   Ex: Adding rappers on top of text like bold, Italik, 
+   Ex2: Cofee shope with multiple combinations 
+
+5. Facade (SP)
+   Allowes us to add Unified interface to  intract with sub systems where each subsystem has there own complex logies 
+
+
+
+
+4. Singleton (CP)
+   Allowes only one instance of object at any point of time 
+   Multiprocessing Multithreading etc.,
+
+5. Factory(CP)
+   if our code have many if else condations which will address same solution with different intigrations then its good to implement this 
+   One parent class 
+   For each condation one child class 
+   Child class will have same methods 
+   Ex: Cars
 
 
 
@@ -960,3 +928,21 @@ scle + micro service we can not achibe CAP at a time
 
 
 https://www.linkedin.com/in/%F0%9F%90%8Dharnath-atmakuri-67b948124/
+
+
+------------------------------
+
+SOLID Principles:
+
+S - Single Responsibility Principle: A class should have only one reason to change (one responsibility).
+
+O - Open/Closed Principle: Software entities should be open for extension but closed for modification.
+
+L - Liskov Substitution Principle: Subtypes must be substitutable for their base types without breaking the program.
+
+I - Interface Segregation Principle: Clients should not be forced to depend on interfaces they don't use.
+
+D - Dependency Inversion Principle: High-level modules should not depend on low-level modules; both should depend on abstractions.
+
+------------------------------------------
+

@@ -1,0 +1,103 @@
+TOP 20 AWS SERVICES FOR SENIOR SOFTWARE DEVELOPERS
+====================================================
+
+1. EC2 (Elastic Compute Cloud)
+   - Virtual servers in the cloud with scalable compute capacity and full control over operating systems.
+   - Supports multiple instance types (compute-optimized, memory-optimized, storage-optimized) for different workload requirements.
+   - Auto Scaling groups automatically adjust capacity based on demand to maintain performance and cost efficiency.
+
+2. S3 (Simple Storage Service)
+   - Object storage service with 99.999999999% durability, storing any amount of data at any time.
+   - Supports lifecycle policies for automatic data archival to cheaper storage classes (Standard, IA, Glacier, Deep Archive).
+   - Fine-grained access control via bucket policies, ACLs, and IAM for secure data management.
+
+3. RDS (Relational Database Service)
+   - Managed relational database service supporting MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server.
+   - Automated backups, patch management, and high availability with Multi-AZ deployments and read replicas.
+   - Handles database administration tasks, allowing developers to focus on application logic.
+
+4. Lambda
+   - Serverless compute service that runs code in response to events without managing servers.
+   - Pay-per-request pricing model with automatic scaling from zero to thousands of concurrent executions.
+   - Integrates with 200+ AWS services and supports multiple programming languages (Python, Node.js, Java, etc.).
+
+5. VPC (Virtual Private Cloud)
+   - Isolated network environment in AWS cloud with complete control over IP address ranges, subnets, and routing.
+   - Security groups act as virtual firewalls controlling inbound and outbound traffic at instance level.
+   - Enables hybrid cloud connectivity via VPN or AWS Direct Connect for secure on-premises integration.
+
+6. IAM (Identity and Access Management)
+   - Centralized access control managing users, groups, roles, and permissions for AWS resources.
+   - Principle of least privilege through fine-grained policies defining who can do what on which resources.
+   - Multi-factor authentication (MFA) and access key rotation enhance security posture.
+
+7. CloudFormation
+   - Infrastructure as Code service that models and provisions AWS resources using JSON or YAML templates.
+   - Enables version control, repeatable deployments, and automated resource management across environments.
+   - Stack updates handle dependencies and rollback capabilities ensure safe infrastructure changes.
+
+8. CloudWatch
+   - Monitoring and observability service collecting metrics, logs, and events from AWS resources and applications.
+   - Custom dashboards and alarms provide real-time visibility into system performance and trigger automated actions.
+   - CloudWatch Logs Insights allows querying and analyzing log data for troubleshooting and optimization.
+
+9. API Gateway
+   - Fully managed service for creating, publishing, maintaining, monitoring, and securing REST and WebSocket APIs.
+   - Request throttling, caching, and API versioning capabilities for production-ready API management.
+   - Integrates with Lambda, EC2, or any HTTP endpoint, handling authorization, transformation, and request routing.
+
+10. ECS/EKS (Elastic Container Service / Elastic Kubernetes Service)
+    - ECS: Fully managed container orchestration service supporting Docker containers with Fargate (serverless) or EC2 launch types.
+    - EKS: Managed Kubernetes service for running containerized applications with full Kubernetes API compatibility.
+    - Both services handle container scheduling, scaling, and load balancing, simplifying microservices deployment.
+
+11. DynamoDB
+    - Fully managed NoSQL database service with single-digit millisecond latency at any scale.
+    - Automatic scaling adjusts capacity based on traffic patterns with on-demand or provisioned capacity modes.
+    - Global tables enable multi-region replication for disaster recovery and low-latency global access.
+
+12. SQS (Simple Queue Service)
+    - Fully managed message queuing service for decoupling and scaling microservices, distributed systems, and serverless applications.
+    - Standard queues offer unlimited throughput with at-least-once delivery; FIFO queues guarantee exactly-once processing.
+    - Dead-letter queues capture failed messages for troubleshooting and retry mechanisms.
+
+13. SNS (Simple Notification Service)
+    - Fully managed pub/sub messaging service for instant notification delivery via email, SMS, HTTP, Lambda, and SQS.
+    - Topic-based messaging enables fan-out patterns where one message can trigger multiple subscribers.
+    - Integrates seamlessly with CloudWatch alarms and other AWS services for event-driven architectures.
+
+14. CloudFront
+    - Global Content Delivery Network (CDN) service delivering content from edge locations closest to end users.
+    - Reduces latency and improves user experience with caching, HTTPS termination, and DDoS protection.
+    - Integrates with S3, API Gateway, and custom origins for static and dynamic content acceleration.
+
+15. Route 53
+    - Scalable Domain Name System (DNS) web service providing reliable routing to applications via domain names.
+    - Health checks monitor application endpoints and automatically route traffic away from unhealthy resources.
+    - Supports various routing policies (weighted, latency-based, geolocation) for optimal traffic distribution.
+
+16. ELB (Elastic Load Balancer)
+    - Distributes incoming application traffic across multiple targets (EC2, containers, IP addresses) in multiple Availability Zones.
+    - Application Load Balancer (ALB) provides advanced request routing based on content, ideal for microservices.
+    - Network Load Balancer (NLB) offers ultra-high performance for TCP/UDP traffic with low latency.
+
+17. ElastiCache
+    - Managed in-memory caching service supporting Redis and Memcached for improving application performance.
+    - Reduces database load by caching frequently accessed data, lowering latency and increasing throughput.
+    - Supports cluster mode for horizontal scaling and automatic failover for high availability.
+
+18. Secrets Manager
+    - Service for securely storing, rotating, and retrieving database credentials, API keys, and other secrets.
+    - Automatic rotation of secrets reduces security risks without requiring application code changes.
+    - Fine-grained access control via IAM policies ensures only authorized services can retrieve secrets.
+
+19. EBS (Elastic Block Store)
+    - Persistent block storage volumes for EC2 instances with high availability and durability.
+    - Multiple volume types (gp3, io1, io2) optimized for different performance requirements (IOPS, throughput, cost).
+    - Snapshots enable point-in-time backups and can be used to create new volumes or migrate data across regions.
+
+20. ECR (Elastic Container Registry)
+    - Fully managed Docker container registry service for storing, managing, and deploying container images.
+    - Integrates seamlessly with ECS, EKS, and Lambda for streamlined container-based application deployment.
+    - Image scanning for vulnerabilities and lifecycle policies for automatic cleanup of old images.
+
