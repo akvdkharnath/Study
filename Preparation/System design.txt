@@ -426,6 +426,59 @@ login it you re connect to another server if it is able to connect from session 
 good Scalability, Reliability, CI/CD
 
 ------------------------------
+
+Offset Pagination: 
+
+GET /api/posts?limit=10&offset=20
+Fetch 10 posts starting from record number 21 (offset 20).
+
+Simple and easy, Supported natively by SQL (LIMIT + OFFSET)
+Performance degrades with large offsets
+Risk of inconsistent results if underlying data changes during pagination
+
+Cursor-Based Pagination:
+
+GET /api/posts?limit=10&cursor=abc123
+Fetch 10 posts starting after the unique cursor abc123
+
+Consistent performance regardless of dataset size
+
+
+Page-Based Pagination:
+GET /api/posts?page=3&limit=10
+Fetch 3rd page of posts with 10 items per page.
+
+------------------------------
+
+
+URI (Path) Versioning:
+/api/v1/users
+/api/v2/users
+
+ADG:
+easy to understand for clients and developers
+Works well with caching
+
+DIS-ADG:
+maintenance overhead
+
+
+Header Versioning:
+/api/users
+
+Accept-Version: v2
+Keeps URLs clean
+
+DIS:
+Version information is hidden in headers, making it less discoverable and harder to debug
+caching systems and proxies may not cache differently based on headers
+
+Query Parameter Versioning:
+/api/users?version=2
+
+Easy to implement and consume, especially for debugging
+
+------------------------------
 https://www.geeksforgeeks.org/system-design/rate-limiting-in-system-design/
 
 Rate Limiting: Cap on number of request user can make in a specific window 
@@ -434,7 +487,18 @@ Patterns:
 2. Sliding Window Pattern, Leaky Bucket Pattern, Token Bucket Pattern (Common for both)
 3. Counter Pattern
 
-Throttling: Control how fast requests sre processed 
+Throttling: Control how  requests processing rate (you may delay, queue, or slow down requests when limits are hit to avoid overloading the system.)
+
+Quotas:
+Long-term usage caps, such as “10,000 calls/day” or “1M calls/month”
+
+Burst limits:
+Short-term, very small-window limits (for example X requests/second)
+
+Rate limit = rules
+throttling = behavior when exceeding rules
+quotas = long-term caps
+bursts = short-term caps
 
 1. Token Bucket Pattern (https://www.youtube.com/watch?v=my5dGtncxfw)
     A bucket fills with tokens at a constant rate (e.g., 10 tokens/second), 
