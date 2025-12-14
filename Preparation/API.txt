@@ -13,18 +13,13 @@ Think need to look into:
 3. Authentication: OAuth 2.0, JWT, API Keys, Basic Auth
 4. Authorization: RBAC, ABAC, Scopes
 7. REST Principles: Stateless, Cacheable, Uniform Interface
-9. API Versioning: URL, Header, Content-Type
-10. Rate Limiting: Throttling, Quotas, Burst limits
-12. Pagination: Offset, Cursor-based, Page-based
 13. Filtering & Sorting: Query parameters, Search
 15. gRPC: Protocol Buffers, Streaming
 16. WebSockets: Real-time communication
 
 17. Server-Sent Events: One-way streaming
 18. WSGI/ASGI: Python web servers (Gunicorn, uvicorn)
-19. API Design Patterns: CRUD, Event Sourcing, CQRS
 20. API Mesh: Service mesh for APIs
-21. Rate Limiting Algorithms: Token bucket, Leaky bucket, Fixed window
 22. API Integration Patterns: Point-to-point, Hub-and-spoke, Event-driven
 23. API Performance Metrics: RPS, Response time, Error rates
 24. Distributed Tracing: Jaeger, Zipkin, OpenTelemetry

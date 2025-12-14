@@ -64,6 +64,48 @@ Whereas the ‘is’ operator checks whether both the operands refer to the same
 https://www.geeksforgeeks.org/difference-operator-python/#:~:text=The%20Equality%20operator%20(%3D%3D),in%20the%20same%20memory%20location).
 
 
+Datetime package 
+
+from datetime import datetime 
+
+
+datetime.now(), datetime.today() --> give current datetime in datetime object
+
+
+.strftime(<string format>):  formats a datetime object to a string according to the format
+.strptime(string, <its format>): formats a string to datetime
+.weekday(): gives me which day it is 0-4 mon to friday 
+.timezone
+.astimezone(timedelta(xx,xx))
+.isoformat()
+
+
+%d -> days 1-31
+%m -> months (1-12)
+%b -> months (3char months)
+%y -> year (last 2 digts 98, 99)
+%Y -> year (4 digts 1998, 1999)
+
+%H -> Hours (24)
+%i -> hours (12)
+
+%M -> mins 
+%S -> sec 
+%f -> micro sec
+%p -> PM or AM 
+
+%z -> off set 
+%Z -> UTC, IST icons 
+
+
+
+
+
+
+
+
+
+
 Generator: functions are functions that can suspend their execution after returning a value, in order to resume it at some later time and return another value. This is made possible by the yield keyword, which you use in place of return
 Decorator: is defined as a function that adds functionality to another function without changing it. It wraps the function to add some functionality to it.Some PDB commands include
 

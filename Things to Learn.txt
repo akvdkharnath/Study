@@ -200,8 +200,9 @@ Completed:
 - Quorum
 - API Rate Limiting
 - Master-Slave Replication, Master-Master Replication
-
-
+- Rate Limiting: Throttling, Quotas, Burst limits
+- API Versioning: URL, Header, Content-Type
+- Pagination: Offset, Cursor-based, Page-based
 
 
 Concurrency https://www.youtube.com/watch?v=RlM9AfWf1WU 
