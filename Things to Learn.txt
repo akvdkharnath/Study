@@ -82,7 +82,7 @@ A. Basic System Design Terms:
 - Orchestration
 - Choreography
 - OLAP and OLTP
-
+- Different type of servers 
 
 Messaged protocals:
 1. AMQP
@@ -170,6 +170,136 @@ https://www.fullstack.cafe/blog/backend-developer-interview-questions
 https://www.fullstack.cafe/blog/solution-architect-interview-questions
 
 
+call by refernce and call by value 
+    
+Concurrency https://www.youtube.com/watch?v=RlM9AfWf1WU 
+single core serving multiple request at a time but all will have some progress 
+
+Parallelism 
+Heavy Compunational power 
+
+
+
+DTO pattern 
+Load Balancer: ? 
+
+=========================================================================================================
+
+
+Python:
+https://www.youtube.com/playlist?list=PLM6furP1T9os9YbOu64PUtmy1DEWgbvpz
+Chaining Comparison Operator
+tokens 
+Higher Order Functions --> Decorators 
+Closures and Lexical Scoping
+Context Management and with Statement 
+Functional programming (Map, Filter, Reduce)
+Meta Classes and Type Magic
+Descriptors and Memory Optimizations (__get__, __set__, __delete__, __call__, __slots__)
+Type Hinting and Static Typing
+Data Classes __init__, __repr__, __eq__, __hash__, @dataclass ect   
+Introspection & Reflection  (type(), id(), dir(),getattr(), hasattr(), setattr(), delattr(), eval(), exec())
+
+- Collections module (deque, Counter, defaultdict, OrderedDict, ChainMap)
+- Heapq module (priority queues, heap operations)
+- Bisect module (binary search operations)
+
+Weak references (weakref module)
+- Memory profiling and optimization techniques
+- __slots__ for memory optimization
+- GIL (Global Interpreter Lock) deep understanding
+
+1. ADVANCED DATA STRUCTURES & ALGORITHMS
+- Collections module (deque, Counter, defaultdict, OrderedDict, ChainMap)
+- Heapq module (priority queues, heap operations)
+- Bisect module (binary search operations)
+- Advanced list operations (list slicing, list comprehensions optimization)
+
+2. MEMORY MANAGEMENT & PERFORMANCE
+- Reference counting and circular references
+- Weak references (weakref module)
+- Memory profiling and optimization techniques
+- __slots__ for memory optimization
+- GIL (Global Interpreter Lock) deep understanding
+
+3. ADVANCED OOP CONCEPTS
+- Metaclasses and class creation
+- Descriptors and property decorators
+- Method Resolution Order (MRO) in multiple inheritance
+- Abstract Base Classes (ABC)
+- Protocols and duck typing
+
+4. ADVANCED FUNCTION CONCEPTS
+- Closures and lexical scoping
+- Function annotations and type hints
+- Lambda functions advanced usage
+- Partial functions (functools.partial)
+- Higher-order functions (map, filter, reduce)
+
+5. EXCEPTION HANDLING
+- Custom exceptions and exception hierarchies
+- Exception chaining and context managers
+- try/except/else/finally advanced patterns
+- Exception handling best practices
+
+6. FILE I/O & SERIALIZATION
+- Context managers (with statement)
+- File operations (binary vs text)
+- JSON, XML, CSV handling
+- Pickle security considerations
+
+7. REGULAR EXPRESSIONS
+- Pattern matching and compilation
+- Groups and capturing
+- Lookahead/lookbehind assertions
+- Performance optimization
+
+8. NETWORKING & WEB
+- Socket programming
+- HTTP requests (requests library)
+- Web scraping (BeautifulSoup, Scrapy)
+- RESTful APIs and authentication
+
+9. DATABASE OPERATIONS
+- SQLite operations
+- ORM concepts (SQLAlchemy basics)
+- Database connection management
+- Transaction handling
+
+10. TESTING & DEBUGGING
+- Unit testing (unittest, pytest)
+- Mocking and patching
+- Debugging techniques (pdb, logging)
+- Code coverage and testing strategies
+
+11. PACKAGE MANAGEMENT
+- pip and virtual environments
+- setup.py and package creation
+- Module loading and sys.path
+
+
+
+12. ADVANCED PYTHON FEATURES
+- Async/await programming
+- Generators and yield from
+- Coroutines and asyncio
+- Concurrent.futures module
+
+13. SECURITY
+- Input validation and sanitization
+- SQL injection prevention
+- XSS prevention
+- Secure coding practices
+
+14. PERFORMANCE OPTIMIZATION
+- Profiling tools (cProfile, line_profiler)
+- Algorithm optimization
+- Memory optimization techniques
+
+
+
+
+=========================================================================================================
 
 Completed:
 - Persistence
@@ -203,20 +333,3 @@ Completed:
 - Rate Limiting: Throttling, Quotas, Burst limits
 - API Versioning: URL, Header, Content-Type
 - Pagination: Offset, Cursor-based, Page-based
-
-
-Concurrency https://www.youtube.com/watch?v=RlM9AfWf1WU 
-single core serving multiple request at a time but all will have some progress 
-
-Parallelism 
-Heavy Compunational power 
-
-
-
-DTO pattern 
-
-
-
-
-Load Balancer: ? 
-
