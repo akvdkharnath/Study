@@ -92,6 +92,57 @@ datetime.now(), datetime.today() --> give current datetime in datetime object
 %z -> off set 
 %Z -> UTC, IST icons 
 
+----------------------------------------------------------------------------------------
+
+Tokens: smallest unit of a program or sequence/group of characters that have a meaning for a interpreter or compiler
+
+price = 100
+tax = 10
+total = price + tax
+
+price, tax, total, =, +, 100, 10 are tokens
+
+Types of tokens:
+
+1. Keywords: if, for, while, def, class etc,.
+2. Identifiers: price, tax, total etc. (Variables)
+3. Operators: =, +, -, *, /, % etc.
+4. Literals: fixed values such as numbers, strings, booleans etc.: 100, 10, "Harnath" etc.
+5. Delimiters: (, ), {, }, [, ], ;, :, , etc.
+
+----------------------------------------------------------------------------------------
+
+Types of Dictionaries:
+Link: https://www.youtube.com/playlist?list=PLlX3wQv3Hamy3vBehNtryeCGLIvlD1F4e
+
+
+1. Standard dict: Normal dictionary
+    user_data = {"id": 1, "name": "Alice", "email": "alice@example.com"}
+    print(user_data["name"])  # Alice
+
+2. OrderedDict: maintains order of insertion
+    from collections import OrderedDict
+    cache = OrderedDict()
+    cache["recent"] = "data1"
+    cache["older"] = "data2"
+    print(list(cache.keys()))  # ['recent', 'older']
+
+
+3. defaultdict: provides default value for missing keys
+   from collections import defaultdict
+   user_actions = defaultdict(list)
+   user_actions["user1"].append("login")
+   print(user_actions["user1"])  # ['login'] (no KeyError if key is not present)
+
+
+4. ChainMap: combines multiple dictionaries into a single view
+   from collections import ChainMap
+   dic1 = {"id": 1, "name": "Alice", "email": "alice@example.com"}
+   dic2 = {"name": "Bob", "email": "bob@example.com"}
+   user_data = ChainMap(dic1, dic2)
+   print(user_data["name"])  # Bob
+   print(user_data["email"])  # alice@example.com
+   print(user_data["id"])  # 1
 
 ----------------------------------------------------------------------------------------
 
