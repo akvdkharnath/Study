@@ -146,6 +146,90 @@ Link: https://www.youtube.com/playlist?list=PLlX3wQv3Hamy3vBehNtryeCGLIvlD1F4e
 
 ----------------------------------------------------------------------------------------
 
+Collections module:
+
+Chain Map:  (https://youtu.be/Y93NAGYyBNg?si=lVzZfxqDCRW3e-QZ)
+Maps multiple dictionaries into a single view
+
+from collections import ChainMap
+d1 = {"a": 1, "b": 2, "c": 3}
+d2 = {"c": 4, "d": 5, "e": 6}
+chain = ChainMap(d1, d2)
+
+- here if i access "c" like chain["c"] it will take from d1 because it is first in the chain
+- any key added, deleted, updated will only affect the first dictionary in the chain
+
+chain.maps.append(d3) -> will add d3 at end 
+chain.new_child(d4) -> will add d4 at start 
+reversed(chain) -> will reverse the chain
+
+
+Order Dict: (https://youtu.be/RVAJi_xnfDE?si=R9y5TNz-xy9XK43M)
+Maintains order of insertion
+
+from collections import OrderedDict
+d = OrderedDict()
+d["a"] = 1
+d["b"] = 2
+d["c"] = 3
+print(d)  # OrderedDict([('a', 1), ('b', 2), ('c', 3)])
+
+- For order dicts where two dicts with same keys are present, but different order then they both are not same == will return False 
+
+reversed(d) -> will reverse the order
+d.move_to_end("a") -> will move "a" to end (moves to last)
+d.move_to_end("b", last=False) -> will move "b" to start (moves to first)
+
+d.popitem() -> will remove and return the last item in this case "c"
+d.popitem(last=False) -> will remove and return the first item in this case "a"
+
+
+
+Deque: (https://youtu.be/34SNQHapJYE?si=uEFpus05jgv4bUBi)
+
+helps to add and remove elements from both ends efficiently
+
+from collections import deque
+d = deque([1, 2, 3, 4, 5])
+
+d.append(6) -> will add 6 to end
+d.appendleft(0) -> will add 0 to start
+
+d.pop() -> will remove and return the last item in this case 5
+d.popleft() -> will remove and return the first item in this case 1
+
+d.extend([7, 8, 9]) -> will add 7, 8, 9 to end
+d.extendleft([-1, -2, -3]) -> will add -1, -2, -3 to start
+
+d.rotate(-1) -> will rotate the deque by 1 position to clockwise
+d.rotate(1) -> will rotate the deque by 1 position to anti-clockwise
+
+How is it different from list:
+Adding and removing from right/end   O(1) in list and O(1) in deque
+Adding and removing from left/start  O(n) in list and O(1) in deque
+Accessing elements by index          O(1) in list and O(n) in deque
+Memory usage                         less in list and High in deque
+
+
+
+Counter: (https://www.youtube.com/watch?v=s6FITVmIm8A)
+Counts the frequency of elements
+
+from collections import Counter
+c = Counter("hello world")
+print(c)  # Counter({'l': 3, 'o': 2, 'h': 1, 'e': 1, ' ': 1, 'w': 1, 'r': 1, 'd': 1})
+print(c["l"])  # 3
+print(c["hello"])  # 0
+print(c.most_common(2))  # [('l', 3), ('o', 2)]
+print(c.elements())  # ['h', 'e', 'l', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+print(c.total())  # 11
+
+-- Takes more memory than list
+-- Good for counting frequency of elements
+
+
+----------------------------------------------------------------------------------------
+
 Time complexity
 1. Loop(n)    O(n)
 2. Nested Loop  O(n^n)   ^n is number of loops 

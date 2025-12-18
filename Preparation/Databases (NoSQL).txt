@@ -26,22 +26,3 @@ Referenced Relationships: where we will have object ID here and real data will b
 
 Need to look:
 index types of index 
-REstfull API
-
-sorting in python 
-commends for list and dic 
-API troffice 
-git commends 
-merge and concat in pandas 
-
-
-pands lo questions 
-
-Memory management in pyhton 
-filter, reduce 
-is multi tread parelly working 
-
-# sliding consept window 
-# tri 
-how hash maps works internal
-call by refernce and call by value 

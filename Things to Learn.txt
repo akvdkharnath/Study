@@ -149,7 +149,7 @@ D. Concurrency & Parallelism:
 - Thread Pool
 - Producer-Consumer
 - Reader-Writer Lock
-- Semaphore
+- Semaphore (https://www.youtube.com/watch?v=tCwdsIwEsZk&list=PLlX3wQv3HamwxdM-biy3H8vaon0rc5J1S&index=1)
 - Mutex
 - Barrier
 - Atomic Operations
@@ -189,7 +189,6 @@ Load Balancer: ?
 Python:
 https://www.youtube.com/playlist?list=PLM6furP1T9os9YbOu64PUtmy1DEWgbvpz
 Chaining Comparison Operator
-tokens 
 Higher Order Functions --> Decorators 
 Closures and Lexical Scoping
 Context Management and with Statement 
@@ -200,7 +199,6 @@ Type Hinting and Static Typing
 Data Classes __init__, __repr__, __eq__, __hash__, @dataclass ect   
 Introspection & Reflection  (type(), id(), dir(),getattr(), hasattr(), setattr(), delattr(), eval(), exec())
 
-- Collections module (deque, Counter, defaultdict, OrderedDict, ChainMap)
 - Heapq module (priority queues, heap operations)
 - Bisect module (binary search operations)
 
@@ -210,7 +208,6 @@ Weak references (weakref module)
 - GIL (Global Interpreter Lock) deep understanding
 
 1. ADVANCED DATA STRUCTURES & ALGORITHMS
-- Collections module (deque, Counter, defaultdict, OrderedDict, ChainMap)
 - Heapq module (priority queues, heap operations)
 - Bisect module (binary search operations)
 - Advanced list operations (list slicing, list comprehensions optimization)
@@ -296,8 +293,9 @@ Weak references (weakref module)
 - Algorithm optimization
 - Memory optimization techniques
 
+https://www.youtube.com/playlist?list=PL4KX3oEgJcfd7I5KmEnUF7cTVqrvCPRDj
 
-
+pip, pipx, conda, poetry, uv
 
 =========================================================================================================
 
@@ -333,3 +331,4 @@ Completed:
 - Rate Limiting: Throttling, Quotas, Burst limits
 - API Versioning: URL, Header, Content-Type
 - Pagination: Offset, Cursor-based, Page-based
+- Collections module (Counter, deque, OrderedDict, ChainMap)
