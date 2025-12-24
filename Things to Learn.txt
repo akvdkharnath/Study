@@ -32,6 +32,82 @@
 36. 2 Phase Commit (2PC)
 37. over head 
 
+PACELC Theorem
+Consistency Hashing
+Bloom Filters 
+Checksum
+Batch Processing And Stream Processing 
+Load Balancer Vs Api Gateway
+Proxy Vs Reverse Proxy
+DNS 
+TCP, UDP, HTTP,
+REST & RESTfulness 
+Layered (N-Tier) (Multi-Tier Architecture) 2-Tier, 3-Tier, and N-Tier architectures
+
+Scaling Strategies: Horizontal, Vertical & Diagonal (New)
+Load Balancers: Types, Algorithms & Cloud Solutions
+Polyglot Persistence
+SLAs, SLOs, and percentiles
+Concurrency & Parallelism
+
+Sequencer
+Blob Storage
+
+Primary Repica Vs Peer to Peer Replication
+Data Compression Vs Data Deduplication
+
+UML Diagrams
+
+SOLID & GRASP
+DRY & KISS
+
+Topology
+Multi Leader Replication Topology
+Leaderless Replication Topology
+Sharding Strategies
+Rebalancing
+
+Strategy Pattern
+Observer Pattern
+Factory Pattern
+Abstract Factory Pattern
+Singleton Pattern
+Command Pattern
+Proxy Pattern
+Bridge Pattern
+Template method Pattern
+Composite Pattern
+Iterator Pattern
+
+Work on designing systems like 
+1. Pastebin 
+2. Instagram
+3. Dropbox
+4. Facebook Messanger 
+5. Twitter 
+6. Youtube
+7. Netflix
+8. Typeahead Suggestions
+9. API Rate Limiting
+10. Twitter
+11. Quora
+12. Google Maps 
+13. Uber 
+14. Proximity Service/Yelp
+15. URL Shortening Service/ TinyURL
+16. Web Crawler/ Scraper
+17. Movie Ticket Booking System
+18. Airline Booking System
+
+
+
+Best Courses to Learn System Design:
+1. Grokking the System Design Interview (https://www.designgurus.io/course/grokking-the-system-design-interview)
+2. Grokking Modern System Design Interview (xhttps://www.educative.io/courses/grokking-the-system-design-interview?utm_campaign=system_design&utm_source=google&utm_medium=ppc&utm_content=search&utm_term=course&eid=5082902844932096&utm_term=bytebytego&utm_campaign=%5BNew%5D+System+Design-Search-+Exc+US+CN+IND&utm_source=adwords&utm_medium=ppc&hsa_acc=5451446008&hsa_cam=18181328148&hsa_grp=173954309880&hsa_ad=723908396610&hsa_src=g&hsa_tgt=kwd-1929190786770&hsa_kw=bytebytego&hsa_mt=b&hsa_net=adwords&hsa_ver=3&gad_source=1&gad_campaignid=18181328148&gbraid=0AAAAADfWLuSVbvME6DVFVxbICClGXLfgu&gclid=CjwKCAiA9aPKBhBhEiwAyz82J239GHA24hb597nN3jrXSQ4eOIeRQ2nFXZE-o_J-pFpqOYlwfFzJuxoCQUUQAvD_BwE)
+
+
+
+
 ---
 
 System Design Terms, Patterns, and Algorithms (for 7+ years experience):
@@ -191,7 +267,6 @@ https://www.youtube.com/playlist?list=PLM6furP1T9os9YbOu64PUtmy1DEWgbvpz
 Chaining Comparison Operator
 Higher Order Functions --> Decorators 
 Closures and Lexical Scoping
-Context Management and with Statement 
 Functional programming (Map, Filter, Reduce)
 Meta Classes and Type Magic
 Descriptors and Memory Optimizations (__get__, __set__, __delete__, __call__, __slots__)
@@ -297,7 +372,7 @@ https://www.youtube.com/playlist?list=PL4KX3oEgJcfd7I5KmEnUF7cTVqrvCPRDj
 
 pip, pipx, conda, poetry, uv
 
-=========================================================================================================
+==========================================================================================================================================
 
 Completed:
 - Persistence
@@ -332,3 +407,4 @@ Completed:
 - API Versioning: URL, Header, Content-Type
 - Pagination: Offset, Cursor-based, Page-based
 - Collections module (Counter, deque, OrderedDict, ChainMap)
+- Context Management and with Statement 

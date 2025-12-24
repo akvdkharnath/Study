@@ -20,7 +20,10 @@ super() --> The parent class members can be accessed in child class using the su
 issubclass(A,B) --> used to find weather A is sub class of B or not 
 Ord() –-> converts characters into integer
 print ("Hola! ", end="")  --> 2 print statements in single line (No new line after this)
-
+round(x,y) --> rounds x to y decimal places
+round(x.5) --> rounds x to nearest even number
+dic.get(key, default) --> returns value of key if key is present otherwise returns default, here data is not added to the dictionary
+dic.setdefault(key, default) --> returns value of key if key is present otherwise sets the key to default and returns the value, here data is added to the dictionary
 
 local --> variables inside a local scope
 global  --> to access global variables
@@ -227,6 +230,20 @@ print(c.total())  # 11
 -- Takes more memory than list
 -- Good for counting frequency of elements
 
+----------------------------------------------------------------------------------------
+
+Context Manager:
+
+We use these contaxt manager to manage resources safely setting up and cleaning up resources
+uses for DB connections, Files, Locks 
+
+
+`with something as x:`
+
+here something will act like context manager abd 
+x will be the context manager object (obj.__enter__())
+
+once we exit the with block it will call the obj.__exit__()
 
 ----------------------------------------------------------------------------------------
 

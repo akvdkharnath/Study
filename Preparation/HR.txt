@@ -99,3 +99,124 @@ The employee and I, together, will create achievable goals based on the company 
 
 
 
+
+1. Tell me about a time you worked on a challenging project with a team. What was your role?
+
+Recently I worked on a challenging project with the team where our gile to intigrate a third party applications into our product
+previously to onboard a customer we need to code for each customer which slow down out on boarding process and getting them golive 
+as a team we designed and optimized this process with a set if json rules, allowed users to finish configurations in few days 
+
+After getting feeedback we sat with UI team and tried even optimised ways to intigrate the ssytem using set of UI as well to reduce KT of josn process
+make things even user friendly and intutive for users
+
+
+
+2. Describe a situation where you and a teammate strongly disagreed. What happened and how was it resolved?
+
+Recently we had a situation where we were working on an async data processing task where i suggest to go with celery buy teamamte  suggested 
+to use airflow dags with APis 
+
+So we both disscusssed pros and cons of both the approches and made a POC
+
+involed our leads for suggestions and got it resolved 
+
+i would see these sistuations as good learning experience and a chance to learn from each other, and aggers we should always be  ready to listen and unders others point of view 
+dont hesitate to ask questions even if he is a bit low expericed in the field 
+
+
+How do you usually handle conflicts in your team?
+I usually handle conflicts in my team by having a discussion with the team member and understanding their point of view and then coming up with a solution that is best for the team.
+
+
+When you join a new team, what do you do in the first few weeks to integrate yourself?
+I usually spend the first few weeks getting to know the team and the project.
+spend time reading the codebase and understanding the architecture.
+talking to the team members and understanding their roles and responsibilities.
+
+
+In a team setting, what role do you naturally take (driver, facilitator, implementer, etc.)?
+
+I usually take the role of a driver, I am a quick learner and I am always willing to learn new things. (if in know the context of the project and the team)
+if not i will take the role of a facilitator and will help the team to understand the project and the team.
+I start as a facilitator—asking questions to map out goals, clarifying ambiguities, and helping everyone align before accelerating
+
+
+
+Describe a production incident you were involved in. What did you do during and after the incident?
+
+In my current role, I’m part of the extended production support group, so I get pulled in whenever the L1/L2 support team cannot handle an issue or the impact is high. 
+During an incident, my first step is to understand the problem clearly: I look at logs, monitoring dashboards, and recent deployments to identify the root symptoms. 
+Then I quickly estimate which customers are affected, the severity, and the time sensitivity, 
+so we can decide whether to apply a quick workaround, roll back, or put the system into a safe but degraded mode.
+
+If there is a known temporary fix or configuration change that can restore service quickly, 
+I help implement that first to reduce impact, even if it means temporarily disabling the specific feature causing the issue. 
+Once the system is stable, I work on the permanent fix—this might involve code changes, data correction scripts, or replaying/retriggering failed jobs where possible, 
+and for cases that cannot be retriggered, planning compensating actions.
+
+
+Have you ever made a mistake that impacted production or the team? How did you handle it?
+Yes, I've made mistakes that impacted production, and each one has made me a better engineer. One example was when I overlooked a logging statement in a recently deployed backend service. 
+It unintentionally triggered infinite API calls in a loop during high-load error scenarios, 
+creating a bottleneck that spiked latency and consumed resources.​
+
+I caught it early through proactive monitoring—I noticed a sharp spike in API call volumes on our dashboards before customers reported issues. Immediately, 
+I rolled back the deployment, applied a quick config fix to disable the loop (with lead approval),
+
+
+
+Describe a time you had to push back on unrealistic deadlines or scope.
+
+recently i worked on a project that would generate millions of ARR where expections where hight and we have tight deadlines and customer expections where if not we might look customer 
+we designed the solutions and got the very critical parts done first allowing us to buy some time from customs and keep them happy showing things where happning 
+explained the risks and complicities in the design and volitory by team colabaration we nomitaed our self to work over weekend and later we got paied 
+
+
+
+Tell me about a time you mentored or coached a junior engineer. What did you do specifically?
+
+I started relationally—no "sir," just open dialogue. First, I gave them sandbox access (dev/demo environments) to explore freely, then had them document findings: 
+"Why this stack? Pros/cons of our DB choices? Research alternatives." This built ownership. Next, we reviewed together—I shared real-world trade-offs (e.g., why we chose PostgreSQL over Mongo for our workloads), 
+incorporated their ideas for process improvements (like better onboarding docs), and assigned bite-sized tasks: fix a small bug, add a simple API endpoint, contribute to a code review. 
+Weekly 1:1s tracked progress with feedback loops.
+
+
+
+Have you ever helped improve a team process (code review, deployment, incident management, etc.)?
+
+Our team struggled with inconsistent code reviews—PRs took 2-3 days due to manual checks and overlooked issues like security scans or linting. 
+Deployments were manual, error-prone, and took hours.
+
+For code reviews, I researched tools like cursor bot, code rabbit, codium + GitHub Actions, and automated python scripts to check the commits getting release from lower to higher level 
+
+
+Tell me about a time you helped unblock the team or removed a major bottleneck.
+
+What do you do when you see a quality or design issue but there is time pressure to deliver?
+
+
+
+Work style, motivation, and culture
+
+What kind of team environment helps you do your best work?
+
+Describe the best team you have worked with. What made it great?
+
+Describe the worst team or environment you have worked in. What would you change there?
+
+How do you handle stress, tight deadlines, or being on‑call?
+
+What motivates you in your work as a backend engineer after 7+ years?
+
+How do you keep your skills and knowledge up to date?
+
+Alignment with company and role
+Why are you interested in this role and this team specifically?
+
+What are you looking for in your next team and manager?
+
+How do you decide whether to stay and fix problems in a team vs move on?
+
+Where do you see yourself in the next 3–5 years in terms of role and responsibilities?
+
+Why should we add you to this team over other strong backend engineers?
