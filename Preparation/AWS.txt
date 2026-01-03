@@ -1,103 +1,272 @@
-TOP 20 AWS SERVICES FOR SENIOR SOFTWARE DEVELOPERS
-====================================================
+ARN: Amazon Resource Name
+it is a unique identifier for a resource in AWS and it is used to identify a resource in AWS
 
-1. EC2 (Elastic Compute Cloud)
-   - Virtual servers in the cloud with scalable compute capacity and full control over operating systems.
-   - Supports multiple instance types (compute-optimized, memory-optimized, storage-optimized) for different workload requirements.
-   - Auto Scaling groups automatically adjust capacity based on demand to maintain performance and cost efficiency.
 
-2. S3 (Simple Storage Service)
-   - Object storage service with 99.999999999% durability, storing any amount of data at any time.
-   - Supports lifecycle policies for automatic data archival to cheaper storage classes (Standard, IA, Glacier, Deep Archive).
-   - Fine-grained access control via bucket policies, ACLs, and IAM for secure data management.
+SQS: Simple Queue Service 
+Fully managed Queue Service, mainly used to decouple two services 
 
-3. RDS (Relational Database Service)
-   - Managed relational database service supporting MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server.
-   - Automated backups, patch management, and high availability with Multi-AZ deployments and read replicas.
-   - Handles database administration tasks, allowing developers to focus on application logic.
+Decoupling: Producer and Consumer are independent of each other, they dont need to be online at a time 
+Scale: Stores Any number of messages in the queue  with no limit 
+Durability: Messages are stored in the queue and are not lost if the consumer is not available
 
-4. Lambda
-   - Serverless compute service that runs code in response to events without managing servers.
-   - Pay-per-request pricing model with automatic scaling from zero to thousands of concurrent executions.
-   - Integrates with 200+ AWS services and supports multiple programming languages (Python, Node.js, Java, etc.).
+Producer: The service that sends messages to the queue
 
-5. VPC (Virtual Private Cloud)
-   - Isolated network environment in AWS cloud with complete control over IP address ranges, subnets, and routing.
-   - Security groups act as virtual firewalls controlling inbound and outbound traffic at instance level.
-   - Enables hybrid cloud connectivity via VPN or AWS Direct Connect for secure on-premises integration.
+Consumer: The service that receives messages from the queue 
+they use polling to receive messages (long polling)
+they can use batch messages to recive multiple messages at a time  
 
-6. IAM (Identity and Access Management)
-   - Centralized access control managing users, groups, roles, and permissions for AWS resources.
-   - Principle of least privilege through fine-grained policies defining who can do what on which resources.
-   - Multi-factor authentication (MFA) and access key rotation enhance security posture.
 
-7. CloudFormation
-   - Infrastructure as Code service that models and provisions AWS resources using JSON or YAML templates.
-   - Enables version control, repeatable deployments, and automated resource management across environments.
-   - Stack updates handle dependencies and rollback capabilities ensure safe infrastructure changes.
+Queue: The storage for the messages
 
-8. CloudWatch
-   - Monitoring and observability service collecting metrics, logs, and events from AWS resources and applications.
-   - Custom dashboards and alarms provide real-time visibility into system performance and trigger automated actions.
-   - CloudWatch Logs Insights allows querying and analyzing log data for troubleshooting and optimization.
+Types of SQS Queues:
+Standard Queue: 
+Messages are not processed in the order they are sent, processed at least once (1 or many times)
 
-9. API Gateway
-   - Fully managed service for creating, publishing, maintaining, monitoring, and securing REST and WebSocket APIs.
-   - Request throttling, caching, and API versioning capabilities for production-ready API management.
-   - Integrates with Lambda, EC2, or any HTTP endpoint, handling authorization, transformation, and request routing.
+FIFO Queue: 
+Messages are processed in the order they are sent, processed exactly once (1 time)
+name must end with .fifo
+IF created using api need to pass FifoQueue True 
+        
+--> Queue can not be converted from standard to fifo or vice versa
 
-10. ECS/EKS (Elastic Container Service / Elastic Kubernetes Service)
-    - ECS: Fully managed container orchestration service supporting Docker containers with Fargate (serverless) or EC2 launch types.
-    - EKS: Managed Kubernetes service for running containerized applications with full Kubernetes API compatibility.
-    - Both services handle container scheduling, scaling, and load balancing, simplifying microservices deployment.
 
-11. DynamoDB
-    - Fully managed NoSQL database service with single-digit millisecond latency at any scale.
-    - Automatic scaling adjusts capacity based on traffic patterns with on-demand or provisioned capacity modes.
-    - Global tables enable multi-region replication for disaster recovery and low-latency global access.
+Message Lifecycle:
+1. Producer: The service that sends messages to the queue
+2. Consumer: Once Consumer receives the message 
+3. In flight: Message is still in the queue but hidden for other consumers (this time is called visibility timeout)
+4. Success: Message is processed successfully and deleted from the queue (DeleteMessage)
+5. Failure: Message got crashed or failed to process, it will be retried for a given number of times then it will be moved to Dead Letter Queue
+6. If no dead letter queue is configured, the message will be visible again after the visibility timeout
+7. if message us still process we can increase the visibility timeout for that message  (ChangeMessageVisibility)
 
-12. SQS (Simple Queue Service)
-    - Fully managed message queuing service for decoupling and scaling microservices, distributed systems, and serverless applications.
-    - Standard queues offer unlimited throughput with at-least-once delivery; FIFO queues guarantee exactly-once processing.
-    - Dead-letter queues capture failed messages for troubleshooting and retry mechanisms.
 
-13. SNS (Simple Notification Service)
-    - Fully managed pub/sub messaging service for instant notification delivery via email, SMS, HTTP, Lambda, and SQS.
-    - Topic-based messaging enables fan-out patterns where one message can trigger multiple subscribers.
-    - Integrates seamlessly with CloudWatch alarms and other AWS services for event-driven architectures.
+Sample Python Code:
+import boto3
+```python
+# Initialize SQS client
+sqs = boto3.client('sqs', region_name='us-east-1')
+queue_url = 'https://sqs.us-east-1.amazonaws.com/123456789012/MyQueue'
 
-14. CloudFront
-    - Global Content Delivery Network (CDN) service delivering content from edge locations closest to end users.
-    - Reduces latency and improves user experience with caching, HTTPS termination, and DDoS protection.
-    - Integrates with S3, API Gateway, and custom origins for static and dynamic content acceleration.
+# 1. Sending a message
+sqs.send_message(
+    QueueUrl=queue_url,
+    MessageBody='Order ID: 5521',
+    DelaySeconds=0
+)
 
-15. Route 53
-    - Scalable Domain Name System (DNS) web service providing reliable routing to applications via domain names.
-    - Health checks monitor application endpoints and automatically route traffic away from unhealthy resources.
-    - Supports various routing policies (weighted, latency-based, geolocation) for optimal traffic distribution.
+# 2. Receiving a message (Long Polling)
+response = sqs.receive_message(
+    QueueUrl=queue_url,
+    MaxNumberOfMessages=1,
+    WaitTimeSeconds=20  # Long Polling
+)
 
-16. ELB (Elastic Load Balancer)
-    - Distributes incoming application traffic across multiple targets (EC2, containers, IP addresses) in multiple Availability Zones.
-    - Application Load Balancer (ALB) provides advanced request routing based on content, ideal for microservices.
-    - Network Load Balancer (NLB) offers ultra-high performance for TCP/UDP traffic with low latency.
+messages = response.get('Messages', [])
+for msg in messages:
+    print(f"Processing: {msg['Body']}")
+    
+    # 3. Explicitly Delete after processing
+    sqs.delete_message(
+        QueueUrl=queue_url,
+        ReceiptHandle=msg['ReceiptHandle']
+    )
+```
 
-17. ElastiCache
-    - Managed in-memory caching service supporting Redis and Memcached for improving application performance.
-    - Reduces database load by caching frequently accessed data, lowering latency and increasing throughput.
-    - Supports cluster mode for horizontal scaling and automatic failover for high availability.
+Alternatives to SQS: Azure (Azure Queue Storage), Google (Cloud Storage Queues)
 
-18. Secrets Manager
-    - Service for securely storing, rotating, and retrieving database credentials, API keys, and other secrets.
-    - Automatic rotation of secrets reduces security risks without requiring application code changes.
-    - Fine-grained access control via IAM policies ensures only authorized services can retrieve secrets.
+===========================================================================================
 
-19. EBS (Elastic Block Store)
-    - Persistent block storage volumes for EC2 instances with high availability and durability.
-    - Multiple volume types (gp3, io1, io2) optimized for different performance requirements (IOPS, throughput, cost).
-    - Snapshots enable point-in-time backups and can be used to create new volumes or migrate data across regions.
+SNS: Simple Notification Service 
+Fully managed Pub/Sub messaging service, mainly used to decouple two services 
 
-20. ECR (Elastic Container Registry)
-    - Fully managed Docker container registry service for storing, managing, and deploying container images.
-    - Integrates seamlessly with ECS, EKS, and Lambda for streamlined container-based application deployment.
-    - Image scanning for vulnerabilities and lifecycle policies for automatic cleanup of old images.
+Decoupling: Producer and Consumer are independent of each other, they dont need to be online at a time 
+Scale: Stores Any number of messages in the queue  with no limit 
+Durability: Messages are stored in the queue and are not lost if the consumer is not available
+Push-based: Unlike SQS, SNS is push-based, the producer pushes the message to the topic and the topic pushes the message to the subscribers
+
+Topics: A logical access point and communication channel.
+Publishers: The service that sends messages to the topic
+Subscribers: The service that tune to the topic and receive messages from the topic
+Messages: The data that is sent to the topic
+
+Where SNS can Push Notifications: SQS, Lambda, HTTP, SMS, Email, Kinesis, S3, SES
+
+
+
+Message Lifecycle:
+1. Publisher: The service that sends messages to the topic
+2. If no one is subscribed to the topic, the message will be gone 
+3. Subscriber: Once Subscriber receives the message 
+4. If subscriber is down, we can configure to retry for a given number of times then it will be moved to Dead Letter Queue
+
+Sample Python Code:
+
+```
+import boto3
+
+sns = boto3.client('sns', region_name='us-east-1')
+
+# 1. Create a Topic
+topic_response = sns.create_topic(Name='OrderUpdates')
+topic_arn = topic_response['TopicArn']
+
+# 2. Subscribe an SQS queue to the Topic
+sns.subscribe(
+    TopicArn=topic_arn,
+    Protocol='sqs',
+    Endpoint='arn:aws:sqs:us-east-1:123456789012:MyQueue',
+    Attributes={
+        'FilterPolicy': '{"event_type": ["order_cancelled"]}' # Only send cancellations
+    }
+)
+
+# 3. Publish a Message
+sns.publish(
+    TopicArn=topic_arn,
+    Message='Order #1234 has been cancelled',
+    Subject='Alert: Cancellation',
+    MessageAttributes={
+        'event_type': {'DataType': 'String', 'StringValue': 'order_cancelled'}
+    }
+)
+```
+
+Delayed Queue: Messages are processed after a given delay
+Dead Letter Queue: Messages that are not processed after a given number of attempts
+
+Alternatives to SNS: Azure (Azure Service Bus topics), Google (Cloud Pub/Sub)
+
+===========================================================================================
+
+EC2: Elastic Compute Cloud: 
+
+Fully managed VM's in cloud
+Will have OS level access to the instance, Once the EC2 instance is killed or stopped then data in the instance is lost
+to solve this use EBS (Elastic Block Store)
+
+AWS names instances like t3.large
+
+Family (t): The "Specialty" (t=General Purpose, c=Compute, m=Memory, r=RAM, g=Graviton/ARM).
+Generation (3): The age. Higher is newer, faster, and usually cheaper.
+Size (large): How much RAM/CPU. Each size up usually doubles the resources and the price.
+
+
+Types of EC2 Instances:
+1. On-Demand: Pay as you go, no upfront cost, no commitment
+2. Reserved: Pay for a period of time, no upfront cost, commitment
+3. Spot: Bid for a period of time, no upfront cost, no commitment
+4. Dedicated: Dedicated to a single customer, no shared resources
+
+Use only if your application is not a containerized application
+when we need to have full control over the underlying infrastructure like OS
+
+===========================================================================================
+
+ECS: Elastic Container Service
+Fully managed container orchestration service, mainly used to deploy and manage containerized applications like Docker containers
+using a config we can manage the number of containers and the resources they need
+
+using fargate we can run the containers without managing the underlying infrastructure
+
+Use only if your application is a containerized application and Kubernetes is not required
+Only working with AWS and want to intigrate all services in AWS
+
+Alternatives to ECS: Azure (AKS: Azure Kubernetes Service), Google (GKE: Google Kubernetes Engine)
+
+===========================================================================================
+
+
+EKS: Elastic Kubernetes Service
+Fully managed Kubernetes service, mainly used to deploy and manage Kubernetes applications like Docker containers
+
+Nodes: workers that run the containers
+pods: the smallest unit that can be scheduled to a node
+helm: package manager for kubernetes
+
+
+Use only if your application is a containerized application and Kubernetes is required
+Easy scaling and management of the application
+
+Alternatives to EKS: Azure (AKS: Azure Kubernetes Service), Google (GKE: Google Kubernetes Engine)
+
+===========================================================================================
+
+Fargate: Fully managed serverless container runtime for ECS and EKS
+
+For code like how we have lambda, we have fargate for container 
+
+With out fargate we need to manage the underlying infrastructure 
+Inatlling Agents, Monitoring, Managing the nodes, etc
+With fargate we can focus on the code and the application
+
+===========================================================================================
+
+ECR: Elastic Container Registry
+Fully managed container registry service for storing, managing, and deploying container images
+
+Alternatives to ECR: Azure (Azure Container Registry), Google (Container Registry)
+
+===========================================================================================
+
+CloudWatch: 
+Fully managed monitoring and observability service for AWS resources and applications
+
+Logging: We can log the data to CloudWatch
+
+Custom dashboards and alarms provide real-time visibility into system performance and trigger automated actions.
+CloudWatch Logs Insights allows querying and analyzing log data for troubleshooting and optimization.
+We can create alarms to monitor the performance of the application and trigger automated actions.
+
+Alternatives to CloudWatch: Azure (Azure Monitor), Google (Cloud Monitoring)
+
+===========================================================================================
+
+Lambda: Fully managed serverless compute service for running code in response to events
+
+Handler: entry point for the function 
+Event: the data that is passed to the function
+Context: the context of the function
+Layers: the dependencies that are needed for the function
+
+Cold Start: the first time the function is called, it takes longer to start up
+Warm Start: the function is already running, it takes less time to start up
+
+It can scale automatically to handle the traffic 
+
+Max Execution Time: 15 minutes (hard limit).
+Max Payload Size: 6 MB (Synchronous), 256 KB (Asynchronous).
+
+```
+import json
+import os
+
+def lambda_handler(event, context):
+    # 1. Read environment variables
+    db_url = os.environ.get('DB_URL')
+    
+    # 2. Extract data from event (e.g., from API Gateway)
+    body = json.loads(event.get('body', '{}'))
+    name = body.get('name', 'Stranger')
+    
+    # 3. Check remaining time
+    if context.get_remaining_time_in_millis() < 100:
+        return {"statusCode": 504, "body": "Timeout imminent!"}
+        
+    print(f"Hello {name} from Lambda!")
+    
+    return {
+        'statusCode': 200,
+        'body': json.dumps({'message': f'Success for {name}'})
+    }
+```
+
+Alternatives to Lambda: Azure (Azure Functions), Google (Cloud Functions)
+
+
+
+Alternatives to Lambda: Azure (Azure Functions), Google (Cloud Functions)
+
+===========================================================================================
+
+S3: Simple Storage Service
 
