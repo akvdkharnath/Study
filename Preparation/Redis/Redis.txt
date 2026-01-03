@@ -14,9 +14,10 @@ Redis:
 2. R/W operations are extremely fast
 3. Primary memory is in lesser in size and super costely
 4. can also be used as primary DB like SQL
-5. single threaded (DIS)
-6. Data replication is supported.
+5. single threaded
+6. Support Replication (Master-Slave, Data mirroring)
 7. We can use several data types here.
+8. Support Sharding (Partitioning)
 
 Normal Database:
 1. Stores everything in secondary memory
@@ -47,25 +48,79 @@ a: 1,2,3
 b: 3,4,5
 SUNION: 3
 
-Sharding: 
-also called partitioning, method of distributing data across multiple Redis instances. 
-Each instance holds a subset of the data, allowing Redis to scale horizontally.
 
-1. Good for Production, High Availability
-2. Fault tolerance (if one node goes down, the other nodes can continue to serve requests)
-3. High Performance (can handle more requests per second)
-4. Reduces memory load on a single resource
+KEYS tutorial*               (will return all varible names starting with tutorial)
+SCAN 0 tutorial*
 
-5. Complexity of implementation and management
+KEYS:
+Will scan all the keys in ONE go, As redis is a single threaded server it will block all other request till then resulting timeout issues 
 
-Use Cases:
-1. High traffic applications
-2. Large Scale Applications
+1. Never user in PRODUCTION 
+2. Only user for debugging and testing 
+3. User only on small data sets 
+4. O(N) time complexity
 
-Replication: also called mirroring, refers to copying all the data. This helps to get high availability of reads. The hit rate on all the resources will reduce if you are reading from multiple replicas. But the memory requirement remains the same for all the resources.
+SCAN:
+Will scan and return a batch of keys at once and a cursor to the next batch, if cursor is 0  then scan is complete
+
+1. good for production
+2. very fast if there is huge data  
+3. O(1) time complexity but per run
+
+
+Supported Patterns:
+* -> Any charater next or before it 
+user* -> will return all keys starting with user
+*user -> will return all keys ending with user
+*user* -> will return all keys containing user anywhere in the key
+user*profile -> will return all keys containing user at the start and profile at the end anywhere in the key
+
+
+? -> Any single character
+?? -> Any two characters
+
+user? -> user1, user2, userA
+user?? -> user12, user23, userA4
+use?r -> use1r, use2r, useAr
+
+
+[...] -> Matches any single character in the range
+[a-z] -> Matches any lowercase letter
+[A-Z] -> Matches any uppercase letter
+[0-9] -> Matches any digit
+[a-zA-Z] -> Matches any letter
+[a-zA-Z0-9] -> Matches any letter or digit
+
+
+[^...] -> Matches any single character not in the range
+[^a-z] -> Matches any character not a lowercase letter
+
+
+KEYS *  --> Most Dangerous Command in Redis it will return all the keys in database 
+
+\ -> Escape character
+
+
+
+to delete data we have 2 cmds DEL and UNLINK 
+DEL: will delete data in blocking mode if the value assocated with key is too long it will block redis for some time to delete 
+
+Step-1: Unlinking and deleating will happen in main thread
+
+
+UNLINK: will just un link and leave it so other requests are not blocked and delete will happen in background
+
+Step-1:
+IF a unlink is called then main thread will unlink the key (remove it from key space)
+Add memeory allocated block to "Lazy Free List"
+returns OK to Client (How requested this operation)
+
+Step-2:
+Background Thread will delete them from memory and free the block
+
 
 DataTypes:
-0. Keys:
+0. Keys: 
     Note − A key value can be at max 512 MB in length.
     case 
 
@@ -75,23 +130,6 @@ DataTypes:
     
     to get data back we have 2 cmds KEYS and SCAN 
     
-    KEYS tutorial*               (will return all varible names starting with tutorial)
-    SCAN 0 tutorial*
-
-    KEYS:
-    1. not good for production
-    2. only for debugging
-    3. very slow if there is huge data  
-
-    SCAN:
-    1. good for production
-    3. very fast if there is huge data  
-
-    to delete data we have 2 cmds DEL and UNLINK 
-    DEL: will delete data in blocking mode if the value assocated with key is too long it will block redis for some time to delete 
-    UNLINK: will just un link and delete it asyc 
-
-    size is less than 64 go for DEL or else UNLINK
 
 1. String
     Note − A string value can be at max 512 MB in length.
@@ -176,33 +214,21 @@ DataTypes:
 
 
 
-Search Types: (Week 2)
-1. Object Inspection 
-2. Faceted Search (Set Intersection)
-3. Hashed index or keys
+Search Types:
+1. Object Inspection: Pulling all data into your code to filter it. Very slow for large datasets because of high network traffic.
+2. Faceted Search (Set Intersection): Using Sets or Sorted Sets as indexes. Example: Finding "Engineers" in "London" using SINTER. This is the fastest way to filter in Redis.
+3. Hashed Index/Keys: Using a consistent naming pattern (like user:email_hash) for instant O(1) lookups when you know the unique ID.
 
-Object Inspection:
-get data to your code level and inspect very slow with huge data 
+Transactions (MULTI/EXEC):
+Redis transactions group commands to run them together without interruption.
+- MULTI: Starts the transaction (commands are queued, not run yet).
+- EXEC: Runs all queued commands at once.
+- DISCARD: Cancels the transaction and clears the queue.
 
-Set Intersection:
-createing lists, sets, Sortedsets and filtering them using intersection
+Note: Redis does NOT support SQL-like rollbacks. If one command fails during execution, the others will still run.
 
-Hashed index or keys:
-SHA-512 MD5
-RIPEMD160
-Key syntex:  hsf:has_hvalue
-
-
-Transaction:
-if cmd queued up and connection is lost, none of the cmds will be executed 
-
-MULTI       indicates start of a transaction 
-EXEC        will exec the commentds 
-DISCORD     will discord all existing commends in queue
-
-
-until unless EXEC is given all the cmds in transaction will queued up 
-MULTI in MULTI cmd is not possible 
-
-
-Fsysnc() -> calling this function for every second will help us to retrive data loss till last but one second (durability of Redis be enhanced)
+Durability (Fsync):
+AOF (Append Only File) uses fsync() to save data to disk. 
+- everysec (Default): Best balance. You only lose max 1 second of data if the system crashes.
+- always: Safest but very slow.
+- no: Fastest but risky data loss.
