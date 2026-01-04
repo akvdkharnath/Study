@@ -138,6 +138,47 @@ Alternatives to SNS: Azure (Azure Service Bus topics), Google (Cloud Pub/Sub)
 
 ===========================================================================================
 
+Event Bridge: 
+Fully managed Event bus service for managing events with AWS Services or third party services
+
+Event: A json describing the event
+Rule: A rule that is used to route the event to a target
+Target: A target that is used to receive the event
+
+Main use cases:
+1. Schedule Events: Cron jobs, periodic data processing
+2. Events from AWS services: S3, SNS, SQS, etc like sending alerets based on server logs or events from S3 or SNS or SQS
+3. Events from third party services: Slack, Twilio, Pager etc
+
+If required we can save early events and get all the events retriggered later from the event bus
+
+```
+import boto3
+import json
+
+events = boto3.client('events')
+
+# 1. Putting an event on the bus
+response = events.put_events(
+    Entries=[
+        {
+            'Source': 'com.mycompany.orders',
+            'DetailType': 'OrderCreated',
+            'Detail': json.dumps({
+                'order_id': '12345',
+                'status': 'new',
+                'amount': 150.00
+            }),
+            'EventBusName': 'MyCustomBus'
+        }
+    ]
+)
+```
+
+Alternatives to Event Bridge: Azure (Event Grid), Google (Cloud Pub/Sub)
+
+===========================================================================================
+
 EC2: Elastic Compute Cloud: 
 
 Fully managed VM's in cloud
@@ -270,3 +311,19 @@ Alternatives to Lambda: Azure (Azure Functions), Google (Cloud Functions)
 
 S3: Simple Storage Service
 
+Fully managed object storage service for storing any type of data
+
+Unlimited storage capacity
+Durability: 99.999999999%
+Availability: 99.99%
+Allows Encryption, Versioning, Lifecycle Policies (Can set to delete after a certain period of time), etc
+for uploading large files we can use multipart upload or upload file in chunks
+
+For downloading files we can use pre-signed URLs or CloudFront to cache the files
+
+Supports events like S3 events, SNS events, SQS events, etc
+
+Object: A file and its metadata
+Bucket: A container for objects
+
+===========================================================================================
