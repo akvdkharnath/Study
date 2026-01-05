@@ -323,7 +323,39 @@ For downloading files we can use pre-signed URLs or CloudFront to cache the file
 
 Supports events like S3 events, SNS events, SQS events, etc
 
+S3 Bucket can not be mounted as native volume in the operating system, but we can use tools to kind of mount it 
+and view files like we view files in a directory
+
+
 Object: A file and its metadata
 Bucket: A container for objects
 
 ===========================================================================================
+
+EBS: Elastic Block Storage:
+
+Fully managed block storage service, unlike S3 we can mount it as native volume in the operating system
+and view files like we view files in a directory
+
+Unlimited storage capacity
+Durability: 99.999999999%
+Availability: 99.99%
+
+Mainly used to store the data for the EC2 instance 
+
+===========================================================================================
+
+EFS: Elastic File System
+Fully managed file storage service for storing any type of data
+
+Unlimited storage capacity
+Durability: 99.999999999%
+Availability: 99.99%
+
+lets say multiple services need to share the same data, we can use EFS to store the data and the services can mount it as a native volume in the operating system
+and view files like we view files in a directory
+
+Like multiple  developers using same cloud storage for their code and data (Cloud Hard Disk)
+
+===========================================================================================
+
