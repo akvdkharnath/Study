@@ -1,9 +1,100 @@
+Memory Management:
+
+In python every thing is an object 
+
+Ram will have 2 types of memory:
+1. Stack Memory : Static Memory Allocation, will store  refernce variables and functions calls 
+2. Heap Memory (Private Heap Space) : Dynamic Memory Allocation, Objects will be stored here
+
+```python
+a = 10
+b = 20
+c = a + b
+```
+
+here a, b, c are reference variables  stored in stack memory 
+10, 20 are objects stored in heap memory
+
+```python 
+def calculate(x, y):
+    result = x + y
+    message = f"Result: {result}"
+    return message
+
+name = "Alice"
+value = 42
+final = calculate(10, 20)
+```
+
+here once the function is called a stack frame is created 
+
+1. x,y are local variables stored in stack memory and 10, 20 are objects stored in heap memory
+2. result is a local variable stored in stack memory and 30 is an object stored in heap memory
+3. message is a local variable stored in stack memory and "Result: 30" is an object stored in heap memory
+4. Once after execution of the function the stack frame is popped and all the local variables (x,y,result,message) are deleted 
+5. But the objects (10, 20, 30, "Result: 30") are still in heap memory and will be deleted when the reference count is 0
+
+
+Key Differences: Stack vs. Heap in Python
+
+Stack:
+1. Stores references/variable names, function parameters
+2. Allocated automatically at function call
+3. Deallocated automatically at function return (LIFO)
+4. Extremely fast (contiguous memory)
+5. Limited (per thread)
+6. LIFO stack structure
+7. Duration of function execution
+8. Each thread has own stack
+
+Heap:
+1. Stores all actual Python objects
+2. Allocated at object creation (runtime)
+3. Deallocated when reference count reaches 0 (reference counting) + GC
+4. Slower (fragmentation, indirect access)
+5. Large, flexible
+6. Dynamic allocation
+7. Until no references exist
+8. Shared among threads, requires GC
+
+
+Python memory manager divide the heap memory into 3 parts 
+
+1. Block: Smallest unit of memory allocation, 8 to 12 bytes 
+2. Pools: Collections of blocks where all blocks in pool are of same size, will have different pools for different sizes of objects like (4,8,16 Bytes )
+3. Arena: Collections of pools where all pools in arena are of same size, will have different arenas for different sizes of objects like (4,8,16 Bytes )
+
+
+----------------------------------------------------------------------------------------
+
 Garbage Collection:
 when a value in memeory is no longer referenced by a variable then python interpreter will remove it automatically 
 this process is called garbage collection
--- it will take care of memory management 
+
+Reference Counting:
+each object in python has a reference count, when the reference count is 0 then the object is deleted by garbage collector
+
+```python
+import sys
+a = 10
+print(sys.getrefcount(a))  # Shows reference count of A which is 2
+
+b = 10 
+print(sys.getrefcount(b))  # Shows reference count of B which is 3 
+
+del a
+print(sys.getrefcount(b))  # Shows reference count of B which is 2 
+```
+
+The Three Generations
+
+1. Generation 0: Newly created objects
+2. Generation 1: Objects that have survived one garbage collection
+3. Generation 2: Objects that have survived two garbage collections
+
 
 ----------------------------------------------------------------------------------------
+
 
 GIL: Global Interpreter Lock   (refer: https://www.youtube.com/watch?v=XVcRQ6T9RHo)
 
@@ -71,18 +162,42 @@ myFun(first ='Geeks', mid ='for', last='Geeks')
 Memory management in python is managed by Python private heap space
 
 
-_ variable --> Protected 
-__ variable --> Private  (can only access inside a class)
-Local Namespace --> variables inside a function or class, deletes after returning the data
-Global Namespace --> created when a package is imported 
-Built-in Namespace --> have some built-in variables and types of errors 
-
 
 difference between == and is:
 The Equality operator (==) compares the values of both the operands and checks for value equality. 
 Whereas the ‘is’ operator checks whether both the operands refer to the same object or not (present in the same memory location).
 https://www.geeksforgeeks.org/difference-operator-python/#:~:text=The%20Equality%20operator%20(%3D%3D),in%20the%20same%20memory%20location).
 
+
+----------------------------------------------------------------------------------------
+
+Access Modifiers:
+Public: can be accessed from anywhere
+Protected: can be accessed from within the class and its subclasses
+Private: can only be accessed from within the class not even from the subclasses
+
+variables --> Public
+_ variable --> Protected  (can be accessed from within the class and its subclasses Note: No strict rule for protected variables still we can access)
+__ variable --> Private  (can only access inside a class)
+
+```python 
+
+class Access():
+  def __init__(self, a, b, c):
+    self.public = a
+    self._protected = b
+    self.__private = c
+```
+
+class_object.__variable --> will not work
+name-mangling: __variable --> variable is mangled to _class__variable to access private variables from outside the class
+class_object._<class_name>__variable --> will work like class_object _Access__private
+
+
+
+Local Namespace --> variables inside a function or class, deletes after returning the data
+Global Namespace --> created when a package is imported 
+Built-in Namespace --> have some built-in variables and types of errors 
 
 ----------------------------------------------------------------------------------------
 One liners:
