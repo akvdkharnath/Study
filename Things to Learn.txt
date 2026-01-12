@@ -30,8 +30,11 @@
 34. Security loops in logging 
 35. URL Shortening 
 36. 2 Phase Commit (2PC)
-37. over head 
-
+37. over head
+38. Best Designs for File Upoad and File Download
+39. Different Data inputs like form data, raw JSON, x-www-form-urlencoded, etc in API'S
+40. Multipart Upload and Download use case related to File Upload and File Download for large files
+41. Poison Pill in message queue to stop the consumer from processing more messages
 PACELC Theorem
 Consistency Hashing
 Bloom Filters 
@@ -98,6 +101,10 @@ Work on designing systems like
 16. Web Crawler/ Scraper
 17. Movie Ticket Booking System
 18. Airline Booking System
+19. Torrent File Sharing System
+20. CVV Generator
+21. Spotify Web APP
+22. 
 
 
 
@@ -269,8 +276,7 @@ Higher Order Functions --> Decorators
 Closures and Lexical Scoping
 Functional programming (Map, Filter, Reduce)
 Meta Classes and Type Magic
-Descriptors and Memory Optimizations (__get__, __set__, __delete__, __call__, __slots__)
-Type Hinting and Static Typing
+Descriptors and Memory Optimizations (__get__, __set__, __delete__, __call__, )
 Data Classes __init__, __repr__, __eq__, __hash__, @dataclass ect   
 Introspection & Reflection  (type(), id(), dir(),getattr(), hasattr(), setattr(), delattr(), eval(), exec())
 
@@ -279,8 +285,6 @@ Introspection & Reflection  (type(), id(), dir(),getattr(), hasattr(), setattr()
 
 Weak references (weakref module)
 - Memory profiling and optimization techniques
-- __slots__ for memory optimization
-- GIL (Global Interpreter Lock) deep understanding
 
 1. ADVANCED DATA STRUCTURES & ALGORITHMS
 - Heapq module (priority queues, heap operations)
@@ -288,17 +292,12 @@ Weak references (weakref module)
 - Advanced list operations (list slicing, list comprehensions optimization)
 
 2. MEMORY MANAGEMENT & PERFORMANCE
-- Reference counting and circular references
-- Weak references (weakref module)
 - Memory profiling and optimization techniques
-- __slots__ for memory optimization
-- GIL (Global Interpreter Lock) deep understanding
 
 3. ADVANCED OOP CONCEPTS
 - Metaclasses and class creation
 - Descriptors and property decorators
 - Method Resolution Order (MRO) in multiple inheritance
-- Abstract Base Classes (ABC)
 - Protocols and duck typing
 
 4. ADVANCED FUNCTION CONCEPTS
@@ -372,6 +371,8 @@ https://www.youtube.com/playlist?list=PL4KX3oEgJcfd7I5KmEnUF7cTVqrvCPRDj
 
 pip, pipx, conda, poetry, uv
 
+# momory profiling 
+
 ==========================================================================================================================================
 
 Completed:
@@ -408,3 +409,10 @@ Completed:
 - Pagination: Offset, Cursor-based, Page-based
 - Collections module (Counter, deque, OrderedDict, ChainMap)
 - Context Management and with Statement 
+- __slots__ for memory optimization
+- GIL (Global Interpreter Lock) deep understanding
+- Type Hinting and Static Typing
+-- Abstract Base Classes (ABC)
+- Reference counting and circular references
+- Weak references (weakref module)
+

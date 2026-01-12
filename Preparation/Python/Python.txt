@@ -67,6 +67,21 @@ Python memory manager divide the heap memory into 3 parts
 
 ----------------------------------------------------------------------------------------
 
+malloc(): dynamically allocates a single block of memory from the heap, but this memory can contain garbage data in python we need to use PyMem_Malloc()	
+calloc(): dynamically allocates a single block of memory from the heap, and initializes all bytes to 0 in python we need to use PyMem_Calloc()	
+realloc(): dynamically reallocates a single block of memory from the heap, in python we need to use PyMem_Realloc(), uses existing memory block from melloc or celloc and then resize it to new size
+if things go wrong in realloc then it will return NULL and the original memory block will be lost
+
+
+free(): to free the memory we need to use free(): frees a single block of memory from the heap in python we need to use PyMem_Free()	
+
+for both malloc and calloc we need to use free() to free the memory manually 
+
+melloc is a bit faster than calloc because it does not initialize the memory to 0
+
+
+----------------------------------------------------------------------------------------
+
 Garbage Collection:
 when a value in memeory is no longer referenced by a variable then python interpreter will remove it automatically 
 this process is called garbage collection
@@ -86,15 +101,57 @@ del a
 print(sys.getrefcount(b))  # Shows reference count of B which is 2 
 ```
 
-The Three Generations
-
-1. Generation 0: Newly created objects
-2. Generation 1: Objects that have survived one garbage collection
-3. Generation 2: Objects that have survived two garbage collections
-
+The Three Generations (Objects start in Generation 0 and move to Generation 1 and then to Generation 2)
+1. Generation 0: Newly created objects (Young Generation)
+2. Generation 1: Objects that have survived one garbage collection (Young Generation)
+3. Generation 2: Objects that have survived two garbage collections (Old Generation)
 
 ----------------------------------------------------------------------------------------
 
+weakref: is a module that provides a weak reference to an object, it is used to avoid circular references
+meaning if an object is referenced by a weak reference then it will not be counted as a reference and will be garbage collected
+
+Weak References is not supported in python for int, str, list, tuple, dict, set, etc,.
+
+But it is supported for custom objects and classes
+
+
+```python
+import weakref
+
+class MyList:
+    def __init__(self, data):
+        self.data = data
+    
+    def __getitem__(self, index):
+        return self.data[index]
+    
+    def __repr__(self):
+        return f"MyList({self.data})"
+
+a = MyList([1, 2, 3])
+b = weakref.ref(a)
+print(b())  # <__main__.MyList object at 0x...>
+
+del a
+print(b())  # None (object was garbage collected)
+
+# in the same example if b is created like a = b then it will not be a weak reference and will be a strong reference
+# then event if a is deleted b will still be a reference to the object and will not be garbage collected
+
+print(b)  # --> value of b will be the object address
+```
+
+----------------------------------------------------------------------------------------
+
+Main root cause of memory leaks in python:
+
+1. Circular References: when two objects reference each other and the reference count is not 0 then the objects will not be garbage collected
+2. Unclosed Resources: when a resource is not closed then the memory will not be freed and will lead to memory leaks (Files, Database Connections, etc,)
+3. Cache and Unhandled Global Variables: when a cache is not cleared or a global variable is not handled then the memory will not be freed and will lead to memory leaks
+4. Exceptions: when an exception is not handled then the memory will not be freed and will lead to memory leaks
+
+----------------------------------------------------------------------------------------
 
 GIL: Global Interpreter Lock   (refer: https://www.youtube.com/watch?v=XVcRQ6T9RHo)
 
@@ -102,6 +159,21 @@ It makes python to run one thread at a time, so multiple threads cannot run in p
 meaning it will make only one thread to use python interpreter at a time.
 
 Analogy: lets say i have a big 6 one way road but insted of allowing 6 cars to run parallelly i will allow only 1 car to run at a time.
+
+Why is this is python memory management runs using reference counting and its on top of Cpython which is not thread safe 
+
+meaning with out GIL if two thread are using same memory this might lead to data corruption or inconsistent state of the memory
+so to avoid this python uses GIL to make sure that only one thread can use the memory at a time.
+
+----------------------------------------------------------------------------------------
+
+But how python uses Multithreading and Processing 
+
+In multiprocessing we create multiple processes and each process has its own memory  and GIL  
+Use for CPU bound tasks where we need to use multiple cores of the CPU. Example: Image processing, Video processing, etc,.
+
+In multithreading we create multiple threads and each thread (Still not true parallelism and thread safe) memory and GIL are shared 
+Use for I/O bound tasks where we need to use multiple threads to handle multiple requests. Example: Web server, etc,.
 
 ----------------------------------------------------------------------------------------
 
@@ -721,26 +793,139 @@ https://stackabuse.com/differences-between-pyc-pyd-and-pyo-python-files/
 
 ---------------------------------------- OOPS ---------------------------------------------
 
-Single Inheritance         A --> B
-Multi-level Inheritance    A --> B --> C
-Multiple Inheritance       A --> C    and B --> C
-Hierarchical Inheritance   A --> B    and A --> C 
-
-Superclass --> is the class from which we are inheriting. It is also called the base class or parent class.
-Derived Class --> is the class that is inherited. It is also called the child class
-
-print(class_object) --> uses this function __repr__
-print([class_object]) --> uses this function __str__
-if no __str__ then for both class_object and [class_object] it will use __repr__
-
-Encapsulation: used to restrict access to methods and variables. 
-code and data are wrapped together within a single unit from being modified by accident
-
 instance: each object created for a class is called an instance
-Self --> is a variable that represents the instance of the object to itself. helps to access attributes and methods of a class
-__init__: its called a constructor it will be executed while an object is assigned 
-1. if there is no constructor class will call the default constructor
-2. if there are more than 2 constructors it will call the last constructor
+
+Class Variables: values of class variables are same across all the instances 
+
+Instance Variable: values of instance variables are scoped to instance only will change based on instance 
+
+__init__: Its a constructor used to created instance objects 
+we can have multiple __init__ methods in a class but the last one will be used and rest will be ignored
+we can have class without __init__ method 
+
+
+
+Instance Methods: are the methods need to be called using an instance object and will have access to modify instance and class variables 
+using self key word to access resources
+accessing instance method objection creation is required 
+
+
+Class Methods: are the methods need to call using class Name (ClassName.methodName())  have access to class level resources
+using cls key word to access resorces  
+no need to create an onject of that class 
+
+Static Methods: are the methods will only  have acces to there local resorces  
+no need to create an object of that class 
+
+
+```python
+class Dog:
+    class_variable = " this is class level variable"
+    
+    # String representation (for print())
+    def __str__(self):
+        return f"Person: {self.name}, Age: {self.age}"
+    
+    # Developer representation (for debugging)
+    def __repr__(self):
+        return f"Person('{self.name}', {self.age})"
+    
+    
+    def __init__(self, name, age):
+        self.name = name    # these are instance variables 
+        self.age = age      # these are instance variables 
+
+    def instance_method(self, data):
+        temp = Dog.class_variable # how to access class level variables  
+        pass
+
+    @class_method
+    def class_method(cls, data):
+        temp = cls.class_variable # how to access class level variables
+        pass 
+
+    @static_method
+    def static_method(data):
+        data
+
+
+# calling instance methods 
+class_obj = Dog("pappy", 40)
+class_obj.instance_method
+
+
+# calling class method 
+Dog.class_method("") # no need to create object 
+
+# calling static method 
+Dog.static_method("") # no need to create object 
+
+``` 
+
+---------------------------------------------  Inheritance ---------------------------------------------
+
+Inheritance: is a way to inherit (Accessing and using) attributes and methods from a parent class to a child class
+
+Types of Inheritance:
+1. Single Inheritance         A (Parent) --> B (Child)
+2. Multi-level Inheritance    A (Parent) --> B (Child) --> C (GrandChild)
+3. Multiple Inheritance       A (Parent) --> C (Child)    and B (Parent) --> C (Child)
+4. Hierarchical Inheritance   A (Parent) --> B (Child)    and A (Parent) --> C (Child) 
+
+super() --> used to call parent class method 
+
+
+Method Resolution Order (MRO): is a way to determine the order in which methods should be called in a class
+When obj.method() is called → Python searches: Class -> Parent Class -> GrandParent Class -> ... -> Object
+
+MRO is critical for multiple inheritance to avoid ambiguity and ensure the correct method is called
+
+
+```
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(B):
+    pass
+```
+
+How MRO works: object C is called then it will search for method in C, then B, then A, then Object
+C.__mro__ --> (C, B, A, Object)
+
+
+```python
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(A):
+    pass
+class D(B, C):
+    pass
+```
+
+How MRO works: object D is called then it will search for method in D, then B, then C, then A, then Object
+D.__mro__ --> (D, B, C, A, Object)
+If child has 2 parent classes then it will search for method in the first parent class and then the second parent class
+left to right 
+
+
+
+---------------------------------------------  Polymorphism ---------------------------------------------
+
+Polymorphism: is a way to use the same method for different objects
+
+Types of Polymorphism:
+1. Duck Typing:
+1. Overloading: 
+2. Overriding: same method name with same parameters
+
+
 
 -------------------------------------------------------- Multiprocessing and Multithreading -----------------------------------
 
