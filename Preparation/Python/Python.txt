@@ -175,6 +175,55 @@ Use for CPU bound tasks where we need to use multiple cores of the CPU. Example:
 In multithreading we create multiple threads and each thread (Still not true parallelism and thread safe) memory and GIL are shared 
 Use for I/O bound tasks where we need to use multiple threads to handle multiple requests. Example: Web server, etc,.
 
+Concurrent programming or Asynchronous programming:
+Here we use asyncio to create multiple tasks and each task is a coroutine and each coroutine is a function that can be paused and resumed.
+We only use one thread to handle multiple requests. Example: Web server, etc,.
+
+```python 
+import asyncio
+import time
+
+async def table_order(table_num, wait_time):
+    print(f"🧑‍🍳 Table {table_num} placed order (wait {wait_time}s)")
+    await asyncio.sleep(wait_time)  # Simulate network/DB wait
+    print(f"✅ Table {table_num} food ready! Served.")
+    return f"Table {table_num} meal complete"
+
+async def restaurant():
+    print("🏃‍♂️ Waiter (event loop) starts single-thread work...")
+    start = time.time()
+    
+    # 5 tables all start "cooking" simultaneously
+    orders = [
+        table_order(1, 2),  # Slow network
+        table_order(2, 1),  # Fast API  
+        table_order(3, 3),  # Slow DB
+        table_order(4, 0.5),# Quick cache
+        table_order(5, 1.5) # Medium file I/O
+    ]
+    
+    # Waiter serves ALL when ready (total 3s, not 8s sequential!)
+    results = await asyncio.gather(*orders)
+    print(f"🏆 All {len(results)} tables served in {time.time()-start:.1f}s")
+
+# Run restaurant
+asyncio.run(restaurant())
+```
+
+Output:
+🏃‍♂️ Waiter (event loop) starts single-thread work...
+🧑‍🍳 Table 1 placed order (wait 2s)
+🧑‍🍳 Table 2 placed order (wait 1s) 
+🧑‍🍳 Table 3 placed order (wait 3s)
+🧑‍🍳 Table 4 placed order (wait 0.5s)
+🧑‍🍳 Table 5 placed order (wait 1.5s)
+✅ Table 4 food ready! Served.
+✅ Table 2 food ready! Served.
+✅ Table 5 food ready! Served.
+✅ Table 1 food ready! Served.
+✅ Table 3 food ready! Served.
+🏆 All 5 tables served in 3.0s
+
 ----------------------------------------------------------------------------------------
 
 Monkey patching is dynamically modifying classes, modules, or objects at runtime by replacing their methods/functions/attributes. 
@@ -209,7 +258,6 @@ local --> variables inside a local scope
 global  --> to access global variables
 nonlocal --> in the nested functions we use this to access variables from the parent function
 
-multiprocessing and asyncio  are packages for python multi-threading
 annotations --> saying python compiler to accept only selected datatypes are allowed for a variable
 virtualenv's --> helps to create an isolated workspace for the project 
 Cython --> is a programming language that aims to be a superset of the Python programming language, designed to give C-like performance with code that is written mostly in Python with optional additional C-inspired syntax.
@@ -230,10 +278,6 @@ special environment variable that provides guidance to the Python interpreter ab
 myFun('Hello', 'Welcome', 'to', 'GeeksforGeeks')
 **kwargs is a special syntax used in the function definition to pass variable-length keyworded arguments
 myFun(first ='Geeks', mid ='for', last='Geeks')   
-
-Memory management in python is managed by Python private heap space
-
-
 
 difference between == and is:
 The Equality operator (==) compares the values of both the operands and checks for value equality. 
@@ -799,9 +843,21 @@ Class Variables: values of class variables are same across all the instances
 
 Instance Variable: values of instance variables are scoped to instance only will change based on instance 
 
+Interface: is a way to define a common interface for a group of classes and enforce that a subclass to be implemented for sure  (Abstract Base Class which will have all mandatory methods)
+
+Metaclasses: is a class of a class, it is used to create a class 
+
+
 __init__: Its a constructor used to created instance objects 
 we can have multiple __init__ methods in a class but the last one will be used and rest will be ignored
 we can have class without __init__ method 
+
+
+__call__: is a special method that allows an object to be called like a function
+
+__str__: is a special method that allows an object to be converted to a string
+
+__repr__: is a special method that allows an object to be represented as a string for debugging
 
 
 
@@ -914,18 +970,151 @@ D.__mro__ --> (D, B, C, A, Object)
 If child has 2 parent classes then it will search for method in the first parent class and then the second parent class
 left to right 
 
+--------------------------------------------- Abstract Base Class ---------------------------------------------
+
+Abstract Base Class: is a class that is not meant to be instantiated and is meant to be subclassed
+it is used to define a common interface for a group of classes and enforce that a subclass to be implemented for sure 
+
+abstractproperty (@property): we use this to convert a method to a property
+abstractmethod (@abstractmethod): we use this enforce that a subclass to implement a method for sure making it mandatory
+
+```
+from abc import ABC, abstractmethod, abstractproperty
+
+class Animal(ABC):
+
+  @property
+  @abstractmethod
+  def colour(self):
+    pass
+  
+  @abstractmethod
+  def location(self):
+    pass
+
+  @abstractmethod
+  def food_habits(self):
+    pass
+
+
+class Cat(Animal):
+  
+  def __str__(self):
+    # print("this has __str__ method")
+    return "this has __str__ method"
+  
+  def __repr__(self):
+    return "this has __repr__ method"
+
+  def __call__(self):
+    return "this is call"
+
+  
+  def __init__(self,a):
+    print("init 1")
+
+  def __init__(self,a,b):
+    print("init 2")
+  
+
+
+  @property
+  def colour(self):
+    print("Colour Of cat")
+    return "Return colour"
+  
+  def location(self):
+    print("Location of cat")
+
+  def food_habits(self):
+    print("Food Habities of cat")
+    return "Return food"
+
+c = Cat(1,2)
+print(c)
+
+print(c())
+  
+# print(c.colour)
+print(c.colour)
+
+print(c.food_habits())
+print(c.food_habits)
+
+```
+
+
 
 
 ---------------------------------------------  Polymorphism ---------------------------------------------
 
-Polymorphism: is a way to use the same method for different objects
+Polymorphism: is a way to use the same method for different objects 
+one can handel many forms of the same object
+
 
 Types of Polymorphism:
-1. Duck Typing:
-1. Overloading: 
-2. Overriding: same method name with same parameters
+1. Operator Overloading: same method name with different parameters
+   + with int valus gives addition
+   + with string valus gives concatenation
+   + with list valus gives list concatenation
+
+   * with int valus gives multiplication
+   * with string valus gives string multiplication
+   * with list valus gives list multiplication
+
+   ```
+   def sum(*args):
+        value = type(args[0])()
+        for arg in arges:
+            value =  value + arg
+        return value
+     
+
+ 2. Method Overloading: same method name with different parameters (not supported in python)
+
+ ```
+from  multipledispatch import dispatch
+class Addition:
+    
+    @dispatch(int, int)
+    def sum(self, a, b):
+        return a + b
+    
+    @dispatch(int, int, int)
+    def sum(self, a, b, c):
+        return a + b + c
+
+    
+    @dispatch(str, str)
+    def sum(self,a,b):
+        return a + b
 
 
+3. Method Overriding: same method name with same parameters
+ ```
+ class Addition:
+    def sum(self, a, b):
+        return a + b
+
+class Subtraction(Addition):
+    def sum(self, a, b): # this will be called instead of parent class method
+        return a - b
+
+```
+
+
+---------------------------------------------  Encapsulation ---------------------------------------------
+
+
+Encapsulation: is a way to hide the implementation details of a class from the outside world
+we can achieve encapsulation by using private and protected variables
+
+```
+class Encapsulation:
+    def __init__(self, a, b):
+        self.__a = a
+        self.__b = b
+```
 
 -------------------------------------------------------- Multiprocessing and Multithreading -----------------------------------
 
