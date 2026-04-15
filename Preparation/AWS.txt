@@ -1,6 +1,31 @@
 ARN: Amazon Resource Name
 it is a unique identifier for a resource in AWS and it is used to identify a resource in AWS
 
+Inbound: Traffic or requests coming into the resource (Internet to EC2)
+
+Outbound: Traffic or requests going out from the resource (EC2 to Internet)
+
+
+CDK: Cloud Development Kit
+
+tool for defining and deploying infrastructure as code in a programming language like Python, JavaScript, etc
+CDK convert that code into CloudFormation templates, then deploys them to AWS
+
+
+
+===========================================================================================
+
+CloudFront:
+
+Fully managed content delivery network service for delivering content to users with low latency and high availability
+
+(AWS version of CDN)
+
+Will have edge locations around the world, it will cache the content and deliver it to the users with low latency and high availability
+
+if request to edge location server (child server) is not available, it will deliver the content from the origin server (parent server)
+
+===========================================================================================
 
 SQS: Simple Queue Service 
 Fully managed Queue Service, mainly used to decouple two services 
@@ -252,13 +277,33 @@ Alternatives to ECR: Azure (Azure Container Registry), Google (Container Registr
 CloudWatch: 
 Fully managed monitoring and observability service for AWS resources and applications
 
-Logging: We can log the data to CloudWatch
+Collect --> Application logs, Service logs, Maintenance events, etc
+Monitor --> Metrics (CPU, Memory, Network, etc), alarms on metrics (High CPU, Low Memory, etc), 
+analyze --> insights (SQL query to analyze the log data)
 
 Custom dashboards and alarms provide real-time visibility into system performance and trigger automated actions.
 CloudWatch Logs Insights allows querying and analyzing log data for troubleshooting and optimization.
 We can create alarms to monitor the performance of the application and trigger automated actions.
 
 Alternatives to CloudWatch: Azure (Azure Monitor), Google (Cloud Monitoring)
+
+===========================================================================================
+
+CloudTrail:
+Fully managed service for recording API activitys in AWS account, Audit trail of the AWS account
+
+Event: One API call (or one “action”). Contains who (identity), what (event name, e.g. RunInstances), when (timestamp), from where (IP, user agent), and request/response (if logged).
+Trail: A trail is a configuration that specifies the AWS services and resources that will be logged.
+
+Example:
+who create/updated/deleted the resource, when it was created, from where it was created, what was the request and response
+
+
+Event types:
+
+1. Management events (Control events): Alter resources, Ex: RunInstances, DeleteBucket, CreateUser, PutBucketPolicy
+2. Data Events: Read/Write to resources, Ex: GetObject, PutObject Ex: GetObject, PutObject on S3; Invoke on Lambda
+3. Insights events: 
 
 ===========================================================================================
 
@@ -306,6 +351,68 @@ Alternatives to Lambda: Azure (Azure Functions), Google (Cloud Functions)
 
 
 Alternatives to Lambda: Azure (Azure Functions), Google (Cloud Functions)
+
+===========================================================================================
+
+Step function: (https://www.youtube.com/watch?v=77zSXuFs4GA)
+
+helps us to create worksflows, Here work flows are also called as state machines 
+
+each step in workflow is called state 
+
+one execution of the workflow is called as execution 
+
+types of worksflows:
+
+1. standard workflow: 
+   is executed for once, 
+   One execution can run for one year 
+   Long-running, human approval
+   pay for state 
+   execution history is stored for 90 days
+
+
+2. Express workflow:
+   is executed at least once, 
+   One execution can run for only 5 mins 
+   Short-running, no human approval
+   pay for execution
+   execution history is not stored
+
+===========================================================================================
+
+VPC: Virtual Private Cloud
+
+Fully managed virtual network service for AWS resources, where we can deploy our resources like EC2, RDS, etc
+and it will not be accessible from the internet
+
+Subnet: A subnet is a range of IP addresses in the VPC, it is a logical partition of the VPC
+
+Route Table: A route table is a set of rules that are used to route the traffic to the subnet
+
+Internet Gateway (IGW) is used to connect the VPC to the internet
+
+NAT Gateway: service that allows the private subnet to access internet by sending the request and then it will be sent to internet
+
+Public Subnet: A subnet that can access internet using IGW
+
+Private Subnet: A subnet that can not access internet even by using IGW (Mostely used for Databases) But for updating software in the private subnet we need to download information from internet these will be handled by NAT Gateway
+like yum update, apt update will download information from internet to update the software, these request to internet will be send to NAT Gateway and then it will be sent to internet
+
+VPC Endpoint: A VPC endpoint is a private connection between the VPC and the AWS service, it is used to access the AWS service without using the internet
+Example: S3 Endpoint, DynamoDB Endpoint, etc
+
+VPC Peering: A VPC peering is a connection between two VPC's, it is used to connect the two VPC's without using the internet
+
+===========================================================================================
+
+KMS: Key Management Service
+Fully managed service for managing encryption keys, it is used to encrypt and decrypt data at rest
+
+AWS Managed Keys: AWS managed keys are used to encrypt and decrypt, also called as Default Master Keys
+
+Customer Managed Keys: 
+
 
 ===========================================================================================
 
