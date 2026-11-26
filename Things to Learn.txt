@@ -35,6 +35,8 @@
 41. Poison Pill in message queue to stop the consumer from processing more messages
 42. AWS AVP
 43. IAM Trust 
+44. The Four Golden Signals, RED and USE methods (https://grafana.com/blog/the-red-method-how-to-instrument-your-services/)
+45. umbrilla for AWS cost
 
 PACELC Theorem
 Consistency Hashing
